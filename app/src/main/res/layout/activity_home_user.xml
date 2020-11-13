@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+<FrameLayout
+    android:id="@+id/fr_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_above="@id/bottomBar"
+   >
+
+
+
+</FrameLayout>
+    <me.ibrahimsn.lib.SmoothBottomBar
+        android:id="@+id/bottomBar"
+        app:iconSize="24dp"
+        app:textSize="14sp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:backgroundColor="@android:color/holo_orange_dark"
+        app:menu="@menu/bottom_nav_menu"/>
+<!--    <com.gauravk.bubblenavigation.BubbleNavigationLinearView-->
+<!--        android:id="@+id/bottom_nav"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:background="@drawable/round"-->
+<!--        android:orientation="horizontal">-->
+<!--        <com.gauravk.bubblenavigation.BubbleToggleView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:bt_icon="@drawable/home"-->
+<!--            app:bt_title="Home"-->
+<!--            android:layout_marginRight="12dp"-->
+<!--            app:bt_colorActive="@android:color/holo_orange_dark"-->
+<!--            app:bt_colorInactive="@color/black"-->
+<!--            android:id="@+id/bnav_home"/>-->
+<!--        <com.gauravk.bubblenavigation.BubbleToggleView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:bt_icon="@drawable/notification"-->
+<!--            app:bt_title="Notification"-->
+<!--            android:layout_marginLeft="12dp"-->
+<!--            app:bt_colorActive="@android:color/holo_orange_dark"-->
+<!--            app:bt_colorInactive="@color/black"-->
+<!--            android:id="@+id/bnav_notification"/>-->
+<!--        <com.gauravk.bubblenavigation.BubbleToggleView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="12dp"-->
+<!--            app:bt_icon="@drawable/user"-->
+<!--            app:bt_title="Profile"-->
+<!--            app:bt_colorActive="@android:color/holo_orange_dark"-->
+<!--            app:bt_colorInactive="@color/black"-->
+<!--            android:id="@+id/bnav_profile"/>-->
+<!--    </com.gauravk.bubblenavigation.BubbleNavigationLinearView>-->
+
+</RelativeLayout>
