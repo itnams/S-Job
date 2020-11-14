@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -34,7 +35,6 @@ public class User_Profile extends Fragment {
         favoritedJob =  view.findViewById(R.id.favorited_jobs);
 //        posts = findViewById(R.id.your_Posts);
         logout = view.findViewById(R.id.logout);
-
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,7 +92,7 @@ public class User_Profile extends Fragment {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(view.getContext(), "Logout nè >_<", Toast.LENGTH_SHORT).show();
+                getActivity().finish();
             }
         });
     }
