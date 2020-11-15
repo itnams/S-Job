@@ -12,6 +12,12 @@
         android:theme="@style/Theme.SJob">
 <!--        <activity android:name=".post" />-->
         <activity android:name=".favoritedJobs" />
+        <activity android:name=".ThemWebTuyenDung"/>
+        <activity android:name=".ChiTietTaiKhoan" />
+        <activity android:name=".GiaoDienTrangTuyenDung" />
+        <activity android:name=".GiaoDienChapNhanYCDN" />
+        <activity android:name=".GiaoDienQLTK" />
+        <activity android:name=".GiaoDienAdmin" />
         <activity android:name=".activity.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
