@@ -12,6 +12,7 @@
         android:theme="@style/Theme.SJob">
 <!--        <activity android:name=".post" />-->
         <activity android:name=".favoritedJobs" />
+         <activity android:name=".MainActivity1"/>
         <activity android:name=".ThemWebTuyenDung"/>
         <activity android:name=".ChiTietTaiKhoan" />
         <activity android:name=".GiaoDienTrangTuyenDung" />
