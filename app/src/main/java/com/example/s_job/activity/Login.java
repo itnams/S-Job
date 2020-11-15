@@ -70,6 +70,11 @@ private EditText edtuser, edtpass;
                     Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                     startActivity(intent);
                 }
+                 else if(edtuser.getText().toString().equals("tx2") && edtpass.getText().toString().equals("1") )
+                {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity1.class);
+                    startActivity(intent);
+                }
                 else {
                     Toast.makeText(Login.this,"Mật khẩu tài khoản không tồn tại",Toast.LENGTH_SHORT).show();
                 }
