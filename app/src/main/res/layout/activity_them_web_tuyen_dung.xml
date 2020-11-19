@@ -11,7 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="4"
+        android:layout_weight="5"
         android:orientation="vertical">
 
         <TextView
@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:text="Thêm trang Web tuyển dụng"
+            android:text="@string/btnthemweb"
             android:textSize="30dp"
             android:textStyle="bold"></TextView>
     </LinearLayout>
@@ -28,59 +28,64 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="2"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center">
-
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/tentrangweb"
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"
+                android:textSize="18dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/urltrangwweb"
+                android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
-                android:text="URL trang Web: "
-                android:textColor="@color/black" />
+                android:textStyle="bold"
+                android:textSize="18dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/api"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="18dp"/>
 
-            <EditText
-                android:id="@+id/edtTentk"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Tên trang web: "
-                android:textColor="@color/black" />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="API:                     "
-                android:textColor="@color/black" />
+                android:layout_marginRight="5dp"
+                android:background="@drawable/edit_text" />
 
             <EditText
-
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/edit_text" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/edit_text" />
         </LinearLayout>
 
     </LinearLayout>
@@ -88,30 +93,34 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="4"
+        android:layout_weight="5"
         android:orientation="horizontal">
 
         <Button
-            android:layout_width="135dp"
-            android:layout_height="80dp"
+            android:layout_width="wrap_content"
+            android:layout_height="58dp"
             android:layout_gravity="bottom"
             android:layout_marginRight="2dp"
-            android:text="Thêm"
+            android:text="@string/btnthem"
+            android:layout_marginLeft="60dp"
             android:textColor="@color/black"></Button>
 
         <Button
-            android:layout_width="135dp"
-            android:layout_height="80dp"
+            android:layout_width="wrap_content"
+            android:layout_height="58dp"
             android:layout_gravity="bottom"
-            android:layout_marginRight="2dp"
-            android:text="Xóa"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:text="@string/btnxoa"
             android:textColor="@color/black"></Button>
 
         <Button
-            android:layout_width="135dp"
-            android:layout_height="80dp"
+            android:layout_width="wrap_content"
+            android:layout_height="58dp"
             android:layout_gravity="bottom"
-            android:text="Hủy"
+            android:text="@string/btnhuy"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:textColor="@color/black"></Button>
     </LinearLayout>
 

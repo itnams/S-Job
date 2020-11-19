@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_height="wrap_content">
+<TextView
+    android:id="@+id/tv_yeucau"
+    android:text="Doanh nghiệp A 0332175559 "
+    android:layout_width="wrap_content"
+    android:textStyle="bold"
+    android:layout_height="wrap_content"/>
+    <Button
+        android:text="@string/btndongy"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:textColor="@color/black"
+        android:textSize="10dp"
+        android:background="@drawable/custom_button"
+        android:layout_margin="5dp"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:text="@string/btntuchoi"
+        android:textSize="10dp"
+        android:background="@drawable/custom_button"
+        android:textColor="@color/black"
+        android:layout_height="30dp"/>
+</LinearLayout>
