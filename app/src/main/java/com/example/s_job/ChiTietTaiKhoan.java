@@ -12,7 +12,5 @@ public class ChiTietTaiKhoan extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chi_tiet_tai_khoan);
-        edtTentk = findViewById(R.id.edtTentk);
-        edtTentk.setText(name);
     }
 }

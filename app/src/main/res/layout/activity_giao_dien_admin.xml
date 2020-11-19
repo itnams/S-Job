@@ -151,7 +151,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:text="Quản lý các trang tuyển dụng"
+                android:text="@string/qlttd"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -196,7 +196,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:text="Quản lý tài khoản"
+                android:text="@string/qltk"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -221,7 +221,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:text="Chấp nhận yêu cầu doanh nghiệp"
+                android:text="@string/cnyc"
                 android:textSize="18sp" />
 
         </LinearLayout>
@@ -247,7 +247,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
-                android:text="Logout"
+                android:text="@string/logout"
                 android:textSize="18sp" />
 
         </LinearLayout>

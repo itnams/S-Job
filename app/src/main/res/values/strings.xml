@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">S-Job</string>
+    <string name="qlttd">Quản lý trang tuyển dụng</string>
+    <string name="qltk">Quản lý tài khoản</string>
+    <string name="logout">Logout</string>
+    <string name="cnyc">Chấp nhận yêu cầu doanh nghiệp</string>
+    <string name="dstuyendung">Danh sách trang web tuyển dụng</string>
+    <string name="dstaikhoan">Danh sách tài khoản</string>
+    <string name="themtrang">Thêm trang web tuyển dụng</string>
+    <string name="dsyeucau">Danh sách yêu cầu doanh nghiệp</string>
+    <string name="btnthemweb">Thêm trang web tuyển dụng</string>
+    <string name="btnthem">Thêm</string>
+    <string name="btnxoa">Xóa</string>
+    <string name="btnhuy">Hủy</string>
+    <string name="btndongy">Đồng ý</string>
+    <string name="btntuchoi">Từ chối</string>
+    <string name="urltrangwweb">Url trang web:</string>
+    <string name="tentrangweb">Tên trang web:</string>
+    <string name="api">API:</string>
+    <string name="tentaikhoan">Tên tài khoản:</string>
+    <string name="matkhau">Mật khẩu:</string>
+    <string name="douutien">Độ ưu tiên:</string>
+    <string name="khoa">Khóa</string>
+    <string name="luu">Lưu</string>
+    <string name="ttchitiettaikhoan">Thông tin chi tiết tài khoản</string>
 </resources>
