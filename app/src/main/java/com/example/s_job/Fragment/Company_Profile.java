@@ -32,7 +32,7 @@ public class Company_Profile extends Fragment {
         editProfile = view.findViewById(R.id.editProfile);
         changePassword = view.findViewById(R.id.change_Password);
         favoritedJob =  view.findViewById(R.id.favorited_jobs);
-//        posts = findViewById(R.id.your_Posts);
+
         logout = view.findViewById(R.id.logout);
 
         editProfile.setOnClickListener(new View.OnClickListener() {

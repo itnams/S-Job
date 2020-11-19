@@ -1,3 +1,35 @@
 <resources>
     <string name="app_name">S-Job</string>
+
+    <!--  Nhan Custom String -->
+    <string name="Toolbar">Danh Sách Đăng Tin</string>
+    <string name="tieude">Tiêu Đề</string>
+    <string name="deline">dd/mm/yyyy</string>
+    <string name="mota">Mô tả</string>
+    <string name="diaChi">Địa Chỉ</string>
+    <string name="ngoiSao">0</string>
+    <string name="cmt">0</string>
+    <string name="dsDangTin">Danh Sách Đăng Tin</string>
+    <string name="trangchu">Trang Chủ</string>
+    <string name="timkiem">Tìm Kiếm</string>
+    <string name="tao">Tạo</string>
+    <string name="nameCompany">Tên Doanh Nghiệp</string>
+    <string name="namePerson">Tên Người Tìm Việc</string>
+    <string name="idCompany">ID</string>
+    <string name="sdt">Số Điện Thoại</string>
+    <string name="diachi">Địa Chỉ</string>
+    <string name="email">Email</string>
+    <string name="xacthucPass">Xác Thực Mật Khẩu</string>
+    <string name="luu">Lưu</string>
+    <string name="trove">Trở Về</string>
+    <string name="tieuDe">Tiêu Đề</string>
+    <string name="timeDemo">DD/MM/YYYY</string>
+    <string name="mucLuong">Mức Lương</string>
+    <string name="bangCap">Bằng Cấp</string>
+    <string name="nganhNghe">Ngành Nghề</string>
+    <string name="soLuongTuyen">Số Lượng Tuyển</string>
+    <string name="diaDiem">Địa Điểm</string>
+    <string name="moTa">Viết Mô Tả...</string>
+    <string name="moTaDk">Mô Tả Người Đăng Ký</string>
+
 </resources>

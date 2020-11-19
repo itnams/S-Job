@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Login">
+    tools:context=".activity.Login">
     <RelativeLayout
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/logo"
@@ -52,6 +52,7 @@
                 android:orientation="vertical"
                 android:layout_margin="20dp">
                 <EditText
+
                     android:paddingHorizontal="4dp"
                     android:hint="Email"
                     android:layout_width="match_parent"
@@ -60,6 +61,7 @@
                     android:height="40dp"
                     android:layout_marginBottom="8dp"/>
                 <EditText
+
                     android:layout_marginTop="8dp"
                     android:paddingHorizontal="4dp"
                     android:hint="Password"
