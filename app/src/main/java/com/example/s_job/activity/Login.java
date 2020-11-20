@@ -17,12 +17,16 @@ import com.example.s_job.MainActivity;
 import com.example.s_job.MainActivity1;
 import com.example.s_job.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Login extends AppCompatActivity {
 private TextView fogotPW;
 private TextView Signup;
 private Button btnLogin;
 private EditText edtuser, edtpass;
+FirebaseDatabase database = FirebaseDatabase.getInstance();
+DatabaseReference myRef = database.getReference("message");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
