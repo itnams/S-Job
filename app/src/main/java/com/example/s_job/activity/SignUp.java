@@ -53,13 +53,14 @@ DatabaseReference mData;
                 if(chucvu.equals("Company"))
                 {
                     mData.child("Pending").child(email.getText().toString().replace("@gmail.com","")).setValue(account);
-
+                    Toast.makeText(SignUp.this,"Yêu cầu của bạn đang chờ xét duyệt !",Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
                     mData.child("User").child(email.getText().toString().replace("@gmail.com","")).setValue(account);
+                    Toast.makeText(SignUp.this,"Sign Up Success !",Toast.LENGTH_SHORT).show();
                 }
-                Toast.makeText(SignUp.this,"Sign Up Success",Toast.LENGTH_SHORT).show();
+
             }
         });
     }
