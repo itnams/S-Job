@@ -55,7 +55,6 @@ DatabaseReference mData;
                     if(chucvu.equals("Company"))
                     {
                         mData.child("Pending").child(email.getText().toString().replace("@gmail.com","")).setValue(account);
-
                     }
                     else
                     {
@@ -66,7 +65,6 @@ DatabaseReference mData;
                 else
                 {
                     Toast.makeText(SignUp.this,"Sign Up fail",Toast.LENGTH_SHORT).show();
-
                 }
             }
         });

@@ -2,9 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/LoginForm" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/LoginForm2" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/S-Job" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Tx2Store" vcs="Git" />
   </component>
 </project>
