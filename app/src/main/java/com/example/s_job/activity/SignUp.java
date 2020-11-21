@@ -49,18 +49,25 @@ DatabaseReference mData;
                 {
                     chucvu = "User";
                 }
-                account = new Account(name.getText().toString(),email.getText().toString(),pass.getText().toString(),confirmPass.getText().toString(),address.getText().toString(),chucvu.toString());
-                if(chucvu.equals("Company"))
+                if(confirmPass.getText().toString().equals(pass.getText().toString()))
                 {
-                    mData.child("Pending").child(email.getText().toString().replace("@gmail.com","")).setValue(account);
-                    Toast.makeText(SignUp.this,"Yêu cầu của bạn đang chờ xét duyệt !",Toast.LENGTH_SHORT).show();
+                    account = new Account(name.getText().toString(),email.getText().toString(),pass.getText().toString(),phone.getText().toString(),address.getText().toString(),chucvu.toString());
+                    if(chucvu.equals("Company"))
+                    {
+                        mData.child("Pending").child(email.getText().toString().replace("@gmail.com","")).setValue(account);
+
+                    }
+                    else
+                    {
+                        mData.child("User").child(email.getText().toString().replace("@gmail.com","")).setValue(account);
+                    }
+                    Toast.makeText(SignUp.this,"Sign Up Success",Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
-                    mData.child("User").child(email.getText().toString().replace("@gmail.com","")).setValue(account);
-                    Toast.makeText(SignUp.this,"Sign Up Success !",Toast.LENGTH_SHORT).show();
-                }
+                    Toast.makeText(SignUp.this,"Sign Up fail",Toast.LENGTH_SHORT).show();
 
+                }
             }
         });
     }
