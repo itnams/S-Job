@@ -71,7 +71,7 @@ public class GiaoDienChapNhanYCDN extends AppCompatActivity {
         listviewtk.setAdapter(arrayAdapter);
         listviewtk.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position1, long id) {
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(GiaoDienChapNhanYCDN.this);
                 builder1.setTitle("Vui lòng lựa chọn !");
                 builder1.setMessage("Click Accept để chấp nhận yêu cầu, Click Refuse để từ chối yêu cầu");
@@ -95,8 +95,11 @@ public class GiaoDienChapNhanYCDN extends AppCompatActivity {
                                         String passWord = account.passWord;
                                         String phone = account.phone;
                                         String position = account.position;
-                                        Account account1 = new Account(address,email,nameUser,passWord,phone,position);
-                                        mData.child("User").child(email.replace("@gmail.com","")).setValue(account1);
+                                        if(dstaikhoanyc.get(Integer.parseInt(String.valueOf(position1))).equals((nameUser + " " + phone).toString()))
+                                        {
+                                            Account account1 = new Account(address,email,nameUser,passWord,phone,position);
+                                            mData.child("User").child(email.replace("@gmail.com","")).setValue(account1);
+                                        };
                                     }
 
                                     @Override
