@@ -28,6 +28,7 @@ public class GiaoDienQLTK extends AppCompatActivity {
     ListView listviewtk;
     ArrayList<String> dstaikhoantk;
     DatabaseReference mData;
+    public static  String nameTK,passwordtk, douutien, trangthai;
     ArrayAdapter arrayAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,11 +79,46 @@ public class GiaoDienQLTK extends AppCompatActivity {
                 mData.addChildEventListener(new ChildEventListener() {
                     @Override
                     public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                        Intent intent = new Intent(GiaoDienQLTK.this,ChiTietTaiKhoan.class);
-                        startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                        String data=(String)parent.getItemAtPosition(position);
-                        String itemText = (String) ((TextView) view).getText();
-                        Toast.makeText(GiaoDienQLTK.this,itemText,Toast.LENGTH_SHORT).show();
+                        mData.child("User").addChildEventListener(new ChildEventListener() {
+                            @Override
+                            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                                Account account = dataSnapshot.getValue(Account.class);
+                                String nameUser = account.nameUser;
+                                String passWord = account.passWord;
+                                String position1 = account.position;
+                                String doouutien1 = account.douutien;
+                                String trangthai1 = account.trangthai;
+                                if(dstaikhoantk.get(position).equals("Tên TK: " + nameUser + "-" + "Loại TK: " + position1 + "-" + "Độ ưu tiên: " + douutien + "-" + "Trạng thái: " + trangthai))
+                                {
+                                    nameTK = nameUser;
+                                    passwordtk = passWord;
+                                    douutien = doouutien1;
+                                    trangthai = trangthai1;
+                                    Intent intent = new Intent(GiaoDienQLTK.this,ChiTietTaiKhoan.class);
+                                    startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                }
+                            }
+
+                            @Override
+                            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                            }
+
+                            @Override
+                            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                            }
+
+                            @Override
+                            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
                     }
 
                     @Override

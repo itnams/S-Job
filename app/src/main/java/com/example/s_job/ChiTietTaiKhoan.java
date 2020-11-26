@@ -5,7 +5,8 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ChiTietTaiKhoan extends GiaoDienQLTK {
+public class ChiTietTaiKhoan extends AppCompatActivity {
+    GiaoDienQLTK giaoDienQLTK;
     EditText edttentaikhoan, edtmatkhau, edtdouutien, edttrangthai;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,9 +17,9 @@ public class ChiTietTaiKhoan extends GiaoDienQLTK {
         edtdouutien = findViewById(R.id.edtdouutien);
         edttrangthai = findViewById(R.id.edttrangthai);
 
-        edttentaikhoan.setText("a");
-        edtmatkhau.setText("a");
-        edtdouutien.setText("a");
-        edttrangthai.setText("a");
+        edttentaikhoan.setText(giaoDienQLTK.nameTK);
+        edtmatkhau.setText(giaoDienQLTK.passwordtk);
+        edtdouutien.setText(giaoDienQLTK.douutien);
+        edttrangthai.setText(giaoDienQLTK.trangthai);
     }
 }
