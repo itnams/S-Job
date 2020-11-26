@@ -30,7 +30,7 @@ public class Company_Notification extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new dbFireBase().add_Company(new Company());
+                new dbFireBase();
             }
         });
     }

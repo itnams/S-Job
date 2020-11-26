@@ -75,6 +75,7 @@ DatabaseReference myRef = database.getReference("message");
                 mData.child("User").addChildEventListener(new ChildEventListener() {
                     @Override
                     public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                        //Nếu nhánh user là mảng thì get dữ liệu sai
                         Account account = dataSnapshot.getValue(Account.class);
                         String nameUser = account.nameUser;
                         String passWord = account.passWord;
@@ -89,11 +90,13 @@ DatabaseReference myRef = database.getReference("message");
                             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                             startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                         }
-                        else if(edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("Company"))
-                        {
+                        else if(edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("Company")) {
                             Intent intent = new Intent(getApplicationContext(), MainActivity1.class);
+                            intent.putExtra("user", "company");
+                            intent.putExtra("pass", "company");
+
                             startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                            Toast.makeText(Login.this,"Đăng nhập thành công !",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, "Đăng nhập thành công !", Toast.LENGTH_SHORT).show();
                         }
                         else {
                             Toast.makeText(Login.this,"Mật khẩu tài khoản không đúng !",Toast.LENGTH_SHORT).show();

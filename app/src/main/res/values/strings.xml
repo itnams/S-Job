@@ -24,4 +24,19 @@
     <string name="khoa">Khóa</string>
     <string name="luu">Lưu</string>
     <string name="ttchitiettaikhoan">Thông tin chi tiết tài khoản</string>
+
+
+    <!--    Nhan Custom String-->
+    <string name="tieuDe">Tiêu Đề</string>
+    <string name="timeDemo">Deline</string>
+    <string name="mucLuong">Mức Lương</string>
+    <string name="bangCap">Bằng Cấp</string>
+    <string name="nganhNghe">Ngành Nghề</string>
+    <string name="soLuongTuyen">Số Lượng Tuyển</string>
+    <string name="diachi">Địa Chỉ</string>
+    <string name="moTa">Mô Tả</string>
+    <string name="trove">Trở Về</string>
+    <string name="dsDangTin">Danh Sách Đăng Tin</string>
+    <string name="ngoiSao">0</string>
+    <!--    Nhan Custom String-->
 </resources>

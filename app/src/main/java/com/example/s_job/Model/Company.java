@@ -1,20 +1,14 @@
 package com.example.s_job.Model;
 
 public class Company {
-    int id;
+
     String nameCompany;
-    int sdt;
+    String sdt;
     String diaChi;
     String Email;
     String pass;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getNameCompany() {
         return nameCompany;
@@ -24,11 +18,11 @@ public class Company {
         this.nameCompany = nameCompany;
     }
 
-    public int getSdt() {
+    public String getSdt() {
         return sdt;
     }
 
-    public void setSdt(int sdt) {
+    public void setSdt(String sdt) {
         this.sdt = sdt;
     }
 
@@ -56,8 +50,8 @@ public class Company {
         this.pass = pass;
     }
 
-    public Company(int id, String nameCompany, int sdt, String diaChi, String email, String pass) {
-        this.id = id;
+    public Company (String nameCompany, String sdt, String diaChi, String email, String pass) {
+
         this.nameCompany = nameCompany;
         this.sdt = sdt;
         this.diaChi = diaChi;

@@ -23,25 +23,25 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tieude"
+                android:text="@string/tieuDe"
                 android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/deline"
+                android:text="@string/timeDemo"
                 android:textSize="18dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/diaChi" />
+                android:text="@string/diachi" />
         </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/mota"
+            android:text="@string/moTa"
             android:textSize="14dp" />
     </LinearLayout>
 
