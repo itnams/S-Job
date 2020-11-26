@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.s_job.Fragment.User_Home;
-import com.example.s_job.Fragment.User_Notification;
 import com.example.s_job.Fragment.User_Profile;
 
 import me.ibrahimsn.lib.OnItemSelectedListener;
@@ -46,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
                         ChuyenMangHinhFrament(R.id.fr_main, new User_Home());
                         break;
                     case 1:
-                        ChuyenMangHinhFrament(R.id.fr_main, new User_Notification());
+                        //ChuyenMangHinhFrament(R.id.fr_main, new User_Notification());
                         break;
                     case 2:
                         ChuyenMangHinhFrament(R.id.fr_main, new User_Profile());

@@ -51,17 +51,19 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:layout_margin="20dp">
-                <EditText
 
-                    android:paddingHorizontal="4dp"
-                    android:hint="Email"
+                <EditText
+                    android:id="@+id/edUser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/textinput"
+                    android:layout_marginBottom="8dp"
                     android:height="40dp"
-                    android:layout_marginBottom="8dp"/>
-                <EditText
+                    android:background="@drawable/textinput"
+                    android:hint="Email"
+                    android:paddingHorizontal="4dp" />
 
+                <EditText
+                    android:id="@+id/edPass"
                     android:layout_marginTop="8dp"
                     android:paddingHorizontal="4dp"
                     android:hint="Password"

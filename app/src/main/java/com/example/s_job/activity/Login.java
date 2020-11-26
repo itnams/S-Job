@@ -88,8 +88,7 @@ public class Login extends AppCompatActivity {
         Signup = findViewById(R.id.sigup);
         btnLogin = findViewById(R.id.btnLogin);
         Signup = findViewById(R.id.sigup);
-        btnLogin = findViewById(R.id.btnLogin);
-        edtuser = findViewById(R.id.btnLogin);
-        edtpass = findViewById(R.id.btnLogin);
+       edtuser = findViewById(R.id.edUser);
+       edtpass = findViewById(R.id.edPass);
     }
 }
