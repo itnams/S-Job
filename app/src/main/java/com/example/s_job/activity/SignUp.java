@@ -51,14 +51,16 @@ DatabaseReference mData;
                 }
                 if(confirmPass.getText().toString().equals(pass.getText().toString()))
                 {
-                    account = new Account(name.getText().toString(),email.getText().toString(),pass.getText().toString(),phone.getText().toString(),address.getText().toString(),chucvu.toString());
+                    String douutien = "Cao";
+                    String trangthai = "Bình thường";
+                    account = new Account(name.getText().toString(),email.getText().toString(),pass.getText().toString(),phone.getText().toString(),address.getText().toString(),chucvu.toString(),douutien,trangthai);
                     if(chucvu.equals("Company"))
                     {
-                        mData.child("Pending").child(email.getText().toString().replace("@gmail.com","")).setValue(account);
+                        mData.child("Pending").child(name.getText().toString()).setValue(account);
                     }
                     else
                     {
-                        mData.child("User").child(email.getText().toString().replace("@gmail.com","")).setValue(account);
+                        mData.child("User").child(name.getText().toString()).setValue(account);
                     }
                     Toast.makeText(SignUp.this,"Sign Up Success",Toast.LENGTH_SHORT).show();
                 }

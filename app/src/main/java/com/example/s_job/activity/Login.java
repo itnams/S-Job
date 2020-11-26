@@ -10,13 +10,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.s_job.Datacode.Account;
 import com.example.s_job.GiaoDienAdmin;
 import com.example.s_job.MainActivity;
 import com.example.s_job.MainActivity1;
 import com.example.s_job.R;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -26,6 +32,7 @@ private TextView Signup;
 private Button btnLogin;
 private EditText edtuser, edtpass;
 FirebaseDatabase database = FirebaseDatabase.getInstance();
+DatabaseReference mData;
 DatabaseReference myRef = database.getReference("message");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +43,7 @@ DatabaseReference myRef = database.getReference("message");
         btnLogin = findViewById(R.id.btnLogin);
         edtuser = findViewById(R.id.edtuser);
         edtpass = findViewById(R.id.edtpass);
+        mData = FirebaseDatabase.getInstance().getReference();
         fogotPW.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,30 +66,60 @@ DatabaseReference myRef = database.getReference("message");
             @Override
             public void onClick(View v) {
                 Intent  intent = new Intent(Login.this, SignUp.class);
-                startActivity(intent);
+                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             }
         });
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(edtuser.getText().toString().equals("admin") && edtpass.getText().toString().equals("long0077") ){
-                    Intent intent = new Intent(getApplicationContext(), GiaoDienAdmin.class);
-                    startActivity(intent);
+                mData.child("User").addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                        Account account = dataSnapshot.getValue(Account.class);
+                        String nameUser = account.nameUser;
+                        String passWord = account.passWord;
+                        String position = account.position;
+                        if(edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("Admin")){
+                            Intent intent = new Intent(getApplicationContext(), GiaoDienAdmin.class);
+                            startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                            Toast.makeText(Login.this,"Đăng nhập thành công !",Toast.LENGTH_SHORT).show();
+                        }
+                        else if(edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("User") )
+                        {
+                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                            startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                        }
+                        else if(edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("Company"))
+                        {
+                            Intent intent = new Intent(getApplicationContext(), MainActivity1.class);
+                            startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                            Toast.makeText(Login.this,"Đăng nhập thành công !",Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            Toast.makeText(Login.this,"Mật khẩu tài khoản không đúng !",Toast.LENGTH_SHORT).show();
+                        }
+                    }
 
-                }
-                else if(edtuser.getText().toString().equals("nguoidung") && edtpass.getText().toString().equals("tuancute") )
-                {
-                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                    startActivity(intent);
-                }
-                 else if(edtuser.getText().toString().equals("tx2") && edtpass.getText().toString().equals("1") )
-                {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity1.class);
-                    startActivity(intent);
-                }
-                else {
-                    Toast.makeText(Login.this,"Mật khẩu tài khoản không tồn tại",Toast.LENGTH_SHORT).show();
-                }
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
         });
     }
