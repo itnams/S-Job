@@ -1,35 +1,27 @@
 <resources>
     <string name="app_name">S-Job</string>
-
-    <!--  Nhan Custom String -->
-    <string name="Toolbar">Danh Sách Đăng Tin</string>
-    <string name="tieude">Tiêu Đề</string>
-    <string name="deline">dd/mm/yyyy</string>
-    <string name="mota">Mô tả</string>
-    <string name="diaChi">Địa Chỉ</string>
-    <string name="ngoiSao">0</string>
-    <string name="cmt">0</string>
-    <string name="dsDangTin">Danh Sách Đăng Tin</string>
-    <string name="trangchu">Trang Chủ</string>
-    <string name="timkiem">Tìm Kiếm</string>
-    <string name="tao">Tạo</string>
-    <string name="nameCompany">Tên Doanh Nghiệp</string>
-    <string name="namePerson">Tên Người Tìm Việc</string>
-    <string name="idCompany">ID</string>
-    <string name="sdt">Số Điện Thoại</string>
-    <string name="diachi">Địa Chỉ</string>
-    <string name="email">Email</string>
-    <string name="xacthucPass">Xác Thực Mật Khẩu</string>
+    <string name="qlttd">Quản lý trang tuyển dụng</string>
+    <string name="qltk">Quản lý tài khoản</string>
+    <string name="logout">Logout</string>
+    <string name="cnyc">Chấp nhận yêu cầu doanh nghiệp</string>
+    <string name="dstuyendung">Danh sách trang web tuyển dụng</string>
+    <string name="dstaikhoan">Danh sách tài khoản</string>
+    <string name="themtrang">Thêm trang web tuyển dụng</string>
+    <string name="dsyeucau">Danh sách yêu cầu doanh nghiệp</string>
+    <string name="btnthemweb">Thêm trang web tuyển dụng</string>
+    <string name="btnthem">Thêm</string>
+    <string name="btnxoa">Xóa</string>
+    <string name="btnhuy">Hủy</string>
+    <string name="btndongy">Đồng ý</string>
+    <string name="btntuchoi">Từ chối</string>
+    <string name="urltrangwweb">Url trang web:</string>
+    <string name="tentrangweb">Tên trang web:</string>
+    <string name="api">API:</string>
+    <string name="tentaikhoan">Tên tài khoản:</string>
+    <string name="matkhau">Mật khẩu:</string>
+    <string name="douutien">Độ ưu tiên:</string>
+    <string name="trangthai">Trạng thái:</string>
+    <string name="khoa">Khóa</string>
     <string name="luu">Lưu</string>
-    <string name="trove">Trở Về</string>
-    <string name="tieuDe">Tiêu Đề</string>
-    <string name="timeDemo">DD/MM/YYYY</string>
-    <string name="mucLuong">Mức Lương</string>
-    <string name="bangCap">Bằng Cấp</string>
-    <string name="nganhNghe">Ngành Nghề</string>
-    <string name="soLuongTuyen">Số Lượng Tuyển</string>
-    <string name="diaDiem">Địa Điểm</string>
-    <string name="moTa">Viết Mô Tả...</string>
-    <string name="moTaDk">Mô Tả Người Đăng Ký</string>
-
+    <string name="ttchitiettaikhoan">Thông tin chi tiết tài khoản</string>
 </resources>
