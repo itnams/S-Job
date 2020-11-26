@@ -15,12 +15,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.s_job.Datacode.Account;
+import com.example.s_job.activity.Login;
 import com.example.s_job.activity.SignUp;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -28,7 +30,7 @@ public class GiaoDienQLTK extends AppCompatActivity {
     ListView listviewtk;
     ArrayList<String> dstaikhoantk;
     DatabaseReference mData;
-    public static  String nameTK,passwordtk, douutien, trangthai;
+    public static  String nameTK1,passwordtk1, douutien1, trangthai1;
     ArrayAdapter arrayAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +43,11 @@ public class GiaoDienQLTK extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Account account = dataSnapshot.getValue(Account.class);
-                String name = account.nameUser;
-                String position = account.position;
-                String douutien = account.douutien;
-                String trangthai = account.trangthai;
-
-                    dstaikhoantk.add("Tên TK: " + name + "-" + "Loại TK: " + position + "-" + "Độ ưu tiên: " + douutien + "-" + "Trạng thái: " + trangthai);
-
+                String email = account.email;
+                if(account.position.equals("Company")||account.position.equals("User"))
+                {
+                    dstaikhoantk.add(email);
+                }
             }
 
             @Override
@@ -75,72 +75,53 @@ public class GiaoDienQLTK extends AppCompatActivity {
         listviewtk.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                mData.addChildEventListener(new ChildEventListener() {
+                String emailkey = dstaikhoantk.get(position).replace("@gmail.com","");
+                mData.child("User").child(emailkey).child("nameUser").addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                        mData.child("User").addChildEventListener(new ChildEventListener() {
-                            @Override
-                            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                                Account account = dataSnapshot.getValue(Account.class);
-                                String nameUser = account.nameUser;
-                                String passWord = account.passWord;
-                                String position1 = account.position;
-                                String doouutien1 = account.douutien;
-                                String trangthai1 = account.trangthai;
-                                if(dstaikhoantk.get(position).equals("Tên TK: " + nameUser + "-" + "Loại TK: " + position1 + "-" + "Độ ưu tiên: " + douutien + "-" + "Trạng thái: " + trangthai))
-                                {
-                                    nameTK = nameUser;
-                                    passwordtk = passWord;
-                                    douutien = doouutien1;
-                                    trangthai = trangthai1;
-                                    Intent intent = new Intent(GiaoDienQLTK.this,ChiTietTaiKhoan.class);
-                                    startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                                }
-                            }
-
-                            @Override
-                            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                            }
-
-                            @Override
-                            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-                            }
-
-                            @Override
-                            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                            }
-                        });
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        nameTK1 = snapshot.getValue().toString();
                     }
 
                     @Override
-                    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                    }
-
-                    @Override
-                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-                    }
-
-                    @Override
-                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    public void onCancelled(@NonNull DatabaseError error) {
 
                     }
                 });
+                mData.child("User").child(emailkey).child("passWord").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        passwordtk1 = snapshot.getValue().toString();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+                mData.child("User").child(emailkey).child("douutien").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        douutien1 = snapshot.getValue().toString();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+                mData.child("User").child(emailkey).child("trangthai").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        trangthai1 = snapshot.getValue().toString();
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+                Intent intent = new Intent(getApplicationContext(),ChiTietTaiKhoan.class);
+                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 
             }
         });

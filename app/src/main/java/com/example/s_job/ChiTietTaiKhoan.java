@@ -17,9 +17,9 @@ public class ChiTietTaiKhoan extends AppCompatActivity {
         edtdouutien = findViewById(R.id.edtdouutien);
         edttrangthai = findViewById(R.id.edttrangthai);
 
-        edttentaikhoan.setText(giaoDienQLTK.nameTK);
-        edtmatkhau.setText(giaoDienQLTK.passwordtk);
-        edtdouutien.setText(giaoDienQLTK.douutien);
-        edttrangthai.setText(giaoDienQLTK.trangthai);
+        edttentaikhoan.setText(giaoDienQLTK.nameTK1);
+        edtmatkhau.setText(giaoDienQLTK.passwordtk1);
+        edtdouutien.setText(giaoDienQLTK.douutien1);
+        edttrangthai.setText(giaoDienQLTK.trangthai1);
     }
 }
