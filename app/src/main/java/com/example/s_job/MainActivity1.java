@@ -1,6 +1,8 @@
 package com.example.s_job;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -8,6 +10,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.s_job.Fragment.Company_Notification;
 import com.example.s_job.Fragment.Company_Profile;
+import com.example.s_job.Model.Company;
+import com.example.s_job.db_firebase.dbFireBase;
 
 import me.ibrahimsn.lib.OnItemSelectedListener;
 import me.ibrahimsn.lib.SmoothBottomBar;
@@ -15,7 +19,7 @@ import me.ibrahimsn.lib.SmoothBottomBar;
 public class MainActivity1 extends AppCompatActivity {
     private FragmentTransaction fragmentTransaction;
     private SmoothBottomBar smoothBottomBar;
-
+    static public Company company = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +39,14 @@ public class MainActivity1 extends AppCompatActivity {
     }
     //set Event for Main
     private void setEvent() {
+        if (getIntent() != null) {
+            Intent intent = getIntent();
+            company = new dbFireBase().getData_InUser(intent.getStringExtra("user"));
+        } else {
+            Toast.makeText(this, "Không Có Dữ Liệu", Toast.LENGTH_LONG).show();
+            finish();
+        }
+
         ChuyenMangHinhFrament(R.id.fr_main1, new Company_Profile());
 
         smoothBottomBar.setOnItemSelectedListener(new OnItemSelectedListener() {

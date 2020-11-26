@@ -9,8 +9,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 public class dbFireBase {
@@ -24,7 +22,7 @@ public class dbFireBase {
 
 
 
-    public Company getData_InUser(String user, String pass) {
+    public Company getData_InUser(String user) {
         DatabaseReference myRef = database.getReference("User");
         Company data = null;
         myRef.child(user).addValueEventListener(new ValueEventListener() {

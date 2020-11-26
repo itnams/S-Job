@@ -92,7 +92,9 @@ public class Company_Profile extends Fragment {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(view.getContext(), "Logout nè >_<", Toast.LENGTH_SHORT).show();
+                Toast.makeText(view.getContext(), "LogOut", Toast.LENGTH_LONG).show();
+                getActivity().finish();
+
             }
         });
     }
