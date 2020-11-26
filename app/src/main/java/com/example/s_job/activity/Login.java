@@ -96,6 +96,7 @@ DatabaseReference myRef = database.getReference("message");
                         else if(edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("Company"))
                         {
                             Intent intent = new Intent(getApplicationContext(), MainActivity1.class);
+
                             startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                             Toast.makeText(Login.this,"Đăng nhập thành công !",Toast.LENGTH_SHORT).show();
                             n =1;

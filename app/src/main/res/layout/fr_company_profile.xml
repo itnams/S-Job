@@ -33,6 +33,7 @@
                     android:layout_weight="1"
                     app:cardCornerRadius="50dp">
                     <ImageView
+                        android:id="@+id/image_company"
                         android:scaleType="fitXY"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"

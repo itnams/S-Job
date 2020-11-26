@@ -1,17 +1,20 @@
 package com.example.s_job;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.s_job.Datacode.Account;
 import com.example.s_job.Fragment.Company_Notification;
 import com.example.s_job.Fragment.Company_Profile;
 import com.example.s_job.Model.Company;
 import com.example.s_job.db_firebase.dbFireBase;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 import me.ibrahimsn.lib.OnItemSelectedListener;
 import me.ibrahimsn.lib.SmoothBottomBar;
@@ -19,12 +22,18 @@ import me.ibrahimsn.lib.SmoothBottomBar;
 public class MainActivity1 extends AppCompatActivity {
     private FragmentTransaction fragmentTransaction;
     private SmoothBottomBar smoothBottomBar;
-    static public Company company = null;
+    static public String User = "company";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conpany_home);
+        //login thanh cong, chuyển intent qua màng hình inten có 1 dữ liệu , intent -> username
+//Nhan Get data form User
 
+
+//-----------------------------
         setControl();
         setEvent();
 
@@ -39,13 +48,7 @@ public class MainActivity1 extends AppCompatActivity {
     }
     //set Event for Main
     private void setEvent() {
-        if (getIntent() != null) {
-            Intent intent = getIntent();
-            company = new dbFireBase().getData_InUser(intent.getStringExtra("user"));
-        } else {
-            Toast.makeText(this, "Không Có Dữ Liệu", Toast.LENGTH_LONG).show();
-            finish();
-        }
+
 
         ChuyenMangHinhFrament(R.id.fr_main1, new Company_Profile());
 

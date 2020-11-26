@@ -1,14 +1,32 @@
 package com.example.s_job.Model;
 
-public class Company {
+import java.util.HashMap;
+import java.util.Map;
 
+public class Company {
+    String image;
+    String fullName;
     String nameCompany;
     String sdt;
     String diaChi;
     String Email;
     String pass;
 
+    public String getFullName() {
+        return fullName;
+    }
 
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public String getNameCompany() {
         return nameCompany;
@@ -50,8 +68,9 @@ public class Company {
         this.pass = pass;
     }
 
-    public Company (String nameCompany, String sdt, String diaChi, String email, String pass) {
-
+    public Company(String image, String fullName, String nameCompany, String sdt, String diaChi, String email, String pass) {
+        this.image = image;
+        this.fullName = fullName;
         this.nameCompany = nameCompany;
         this.sdt = sdt;
         this.diaChi = diaChi;
@@ -60,5 +79,32 @@ public class Company {
     }
 
     public Company() {
+        this.image = "";
+        this.nameCompany = "";
+        this.sdt = "";
+        this.diaChi = "";
+        this.Email = "";
+        this.pass = "";
+        this.fullName = "";
+    }
+
+    public Map toMapFormUser() {
+        HashMap resuflt = new HashMap();
+        resuflt.put("address", this.diaChi);
+        resuflt.put("email", this.Email);
+        resuflt.put("phone", this.sdt);
+        resuflt.put("passWord", this.pass);
+
+        return resuflt;
+    }
+
+    public Map toMapFormCompany() {
+        HashMap resuflt = new HashMap();
+
+        resuflt.put("fullName", this.fullName);
+        resuflt.put("Image", this.image);
+
+
+        return resuflt;
     }
 }
