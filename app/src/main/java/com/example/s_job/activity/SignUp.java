@@ -51,7 +51,9 @@ DatabaseReference mData;
                 }
                 if(confirmPass.getText().toString().equals(pass.getText().toString()))
                 {
-                    account = new Account(name.getText().toString(),email.getText().toString(),pass.getText().toString(),phone.getText().toString(),address.getText().toString(),chucvu.toString());
+                    String douutien = "Cao";
+                    String trangthai = "Bình thường";
+                    account = new Account(name.getText().toString(),email.getText().toString(),pass.getText().toString(),phone.getText().toString(),address.getText().toString(),chucvu.toString(),douutien,trangthai);
                     if(chucvu.equals("Company"))
                     {
                         mData.child("Pending").child(email.getText().toString().replace("@gmail.com","")).setValue(account);
