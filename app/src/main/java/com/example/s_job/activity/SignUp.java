@@ -56,13 +56,14 @@ DatabaseReference mData;
                     account = new Account(name.getText().toString(),email.getText().toString(),pass.getText().toString(),phone.getText().toString(),address.getText().toString(),chucvu.toString(),douutien,trangthai);
                     if(chucvu.equals("Company"))
                     {
-                        mData.child("Pending").child(name.getText().toString()).setValue(account);
+                        mData.child("Pending").child(email.getText().toString().replace("@gmail.com","")).setValue(account);
                     }
                     else
                     {
-                        mData.child("User").child(name.getText().toString()).setValue(account);
+                        mData.child("User").child(email.getText().toString().replace("@gmail.com","")).setValue(account);
                     }
                     Toast.makeText(SignUp.this,"Sign Up Success",Toast.LENGTH_SHORT).show();
+                    finish();
                 }
                 else
                 {
