@@ -2,6 +2,7 @@ package com.example.s_job.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -31,6 +32,7 @@ private TextView fogotPW;
 private TextView Signup;
 private Button btnLogin;
 private EditText edtuser, edtpass;
+public static String tentaikhoanAdmin;
 FirebaseDatabase database = FirebaseDatabase.getInstance();
 DatabaseReference mData;
 int n = 0;
@@ -84,6 +86,7 @@ DatabaseReference myRef = database.getReference("message");
                             Intent intent = new Intent(getApplicationContext(), GiaoDienAdmin.class);
                             startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                             Toast.makeText(Login.this,"Đăng nhập thành công !",Toast.LENGTH_SHORT).show();
+                            tentaikhoanAdmin = edtuser.getText().toString();
                             n = 1;
                         }
                         else if(edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("User") )

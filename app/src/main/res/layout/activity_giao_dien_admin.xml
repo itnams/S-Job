@@ -44,12 +44,12 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tenAdmin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="2dp"
                 android:textColor="@color/black"
                 android:fontFamily="serif-monospace"
-                android:text="Admin 007"
                 android:textSize="24dp"
                 android:textStyle="bold" />
 
@@ -67,10 +67,10 @@
                     android:src="@drawable/mail" />
 
                 <TextView
+                    android:id="@+id/emailAdmin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="dinhlong151020@gmail.com"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -90,9 +90,9 @@
                     android:src="@drawable/phonel" />
 
                 <TextView
+                    android:id="@+id/sdtAdmin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="0332175559"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -113,9 +113,9 @@
                     android:src="@drawable/location" />
 
                 <TextView
+                    android:id="@+id/diaChiAdmin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Quận 9, TP. HCM"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
             </LinearLayout>
