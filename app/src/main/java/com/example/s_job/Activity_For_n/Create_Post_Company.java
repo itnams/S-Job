@@ -1,6 +1,8 @@
 package com.example.s_job.Activity_For_n;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -61,8 +63,20 @@ public class Create_Post_Company extends AppCompatActivity {
         Luu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SendToDataBase();
-                onBackPressed();
+                if (input()) {
+                    SendToDataBase();
+                    onBackPressed();
+                } else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Create_Post_Company.this);
+                    builder.setTitle("Thong Bao").setMessage("Have Input Is Empty!!!").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    }).create().show();
+                }
+
+
             }
         });
         vitri.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +86,25 @@ public class Create_Post_Company extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    boolean input() {
+        if (tieuDe.getText().toString().isEmpty()
+                && deLine.getText().toString().isEmpty()
+                && mucLuong.getText().toString().isEmpty()
+                && bangCap.getText().toString().isEmpty()
+                && nganhNghe.getText().toString().isEmpty()
+                && soLuongTuyen.getText().toString().isEmpty()
+                && diaChi.getText().toString().isEmpty()
+                && moTa.getText().toString().isEmpty()) {
+
+
+            return false;
+        } else {
+            return true;
+        }
+
+
     }
 
     private void SendToDataBase() {
