@@ -27,6 +27,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.Serializable;
+
 public class Login extends AppCompatActivity {
 private TextView fogotPW;
 private TextView Signup;
@@ -93,6 +95,7 @@ DatabaseReference myRef = database.getReference("message");
                         else if(edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("User") )
                         {
                             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                            intent.putExtra("USER", (Serializable) account);//sent data to userHOme
                             startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                             n =1;
                         }
