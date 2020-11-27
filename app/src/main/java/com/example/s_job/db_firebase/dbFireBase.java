@@ -13,7 +13,7 @@ import com.google.firebase.database.ValueEventListener;
 public class dbFireBase {
     public FirebaseDatabase database;
     public DatabaseReference myRef;
-    long count = 0;
+
 
     public dbFireBase() {
         database = FirebaseDatabase.getInstance();
@@ -44,11 +44,11 @@ public class dbFireBase {
                 if (snapshot.exists()){
                     myRef.child("Post-Company")
                             .child(postForCompany.getCompany().getNameCompany())
-                            .child("" + (snapshot.getChildrenCount() + 1)).setValue(postForCompany.toMapCompany());
+                            .child( (snapshot.getChildrenCount())+"" ).setValue(postForCompany.toMapCompany());
                 }else {
                     myRef.child("Post-Company")
                             .child(postForCompany.getCompany().getNameCompany())
-                            .child("" + snapshot.getChildrenCount() ).setValue(postForCompany.toMapCompany());
+                            .child( ""+snapshot.getChildrenCount()).setValue(postForCompany.toMapCompany());
                 }
 
             }
