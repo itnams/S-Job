@@ -101,8 +101,8 @@ public class GiaoDienChapNhanYCDN extends AppCompatActivity {
                                         if(dstaikhoanyc.get(Integer.parseInt(String.valueOf(position1))).equals((nameUser + " " + phone).toString()))
                                         {
                                             Account account1 = new Account(nameUser,email,passWord,phone,address,position,douutien,trangthai);
-                                            mData.child("User").child(nameUser).setValue(account1);
-                                            mData.child("Pending").child(nameUser).removeValue();
+                                            mData.child("User").child(email.toString().replace("@gmail.com","")).setValue(account1);
+                                            mData.child("Pending").child(email.toString().replace("@gmail.com","")).removeValue();
                                         };
                                     }
 
