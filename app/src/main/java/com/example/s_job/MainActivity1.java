@@ -30,10 +30,7 @@ public class MainActivity1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conpany_home);
         //login thanh cong, chuyển intent qua màng hình inten có 1 dữ liệu , intent -> username
-//Nhan Get data form User
 
-
-//-----------------------------
         setControl();
         setEvent();
 

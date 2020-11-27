@@ -30,4 +30,7 @@ public class dbFireBase {
         myRef.child("Additional-Company").child(company.getNameCompany()).updateChildren(company.toMapFormCompany());
     }
 
+    public void NewoPoserForCompany() {
+
+    }
 }

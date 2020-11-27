@@ -6,15 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import com.example.s_job.Model.PostForCompany;
 import com.example.s_job.R;
 
 import java.util.ArrayList;
 
 public class Custom_lv_DangTin extends BaseAdapter {
     Activity activity;
-    ArrayList<Object> objects;
+    ArrayList<PostForCompany> objects;
 
-    public Custom_lv_DangTin(Activity activity, ArrayList<Object> objects) {
+    public Custom_lv_DangTin(Activity activity, ArrayList<PostForCompany> objects) {
         this.activity = activity;
         this.objects = objects;
     }

@@ -14,6 +14,7 @@
         android:orientation="vertical">
 
         <EditText
+            android:id="@+id/et_tieuDe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -26,12 +27,14 @@
             android:orientation="horizontal">
 
             <EditText
+                android:id="@+id/et_deLine"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="false"
                 android:text="@string/timeDemo" />
 
             <ImageButton
+                android:id="@+id/imgBtn_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/date_range"
@@ -39,6 +42,7 @@
                 />
 
             <EditText
+                android:id="@+id/et_mucLuong"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -54,6 +58,7 @@
             android:orientation="horizontal">
 
             <EditText
+                android:id="@+id/et_bangCap"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
@@ -62,6 +67,7 @@
 
 
             <EditText
+                android:id="@+id/et_nganhNghe"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -77,6 +83,7 @@
             android:orientation="horizontal">
 
             <EditText
+                android:id="@+id/et_soLuongTuyen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -85,6 +92,7 @@
 
 
             <EditText
+                android:id="@+id/et_diaChi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="25dp"
@@ -95,6 +103,7 @@
                 android:inputType="number" />
 
             <ImageButton
+                android:id="@+id/imgBtn_vitri"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/location_n" />
@@ -104,6 +113,7 @@
     </LinearLayout>
 
     <EditText
+        android:id="@+id/et_moTa"
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:ems="10"
@@ -121,7 +131,7 @@
         android:gravity="center">
 
         <Button
-
+            android:id="@+id/btn_trove"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="20dp"
@@ -129,6 +139,7 @@
             android:textAllCaps="false" />
 
         <Button
+            android:id="@+id/btn_luu"
             android:layout_width="wrap_content"
 
             android:layout_height="wrap_content"

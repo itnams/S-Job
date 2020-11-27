@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.s_job.Activity_For_n.Create_Post_Company;
 import com.example.s_job.Custom.Custom_lv_DangTin;
+import com.example.s_job.Model.PostForCompany;
 
 import java.util.ArrayList;
 
@@ -21,7 +22,7 @@ public class favoritedJobs extends AppCompatActivity {
     ListView listView;
     ImageButton back, create;
     Intent intent;
-
+    ArrayList<PostForCompany> posts = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,16 +35,10 @@ public class favoritedJobs extends AppCompatActivity {
     }
 
     private void setEvent() {
+        LoadData();
 
 
-        ArrayList<Object> objects = new ArrayList<>();
-        objects.add(new Object());
-        objects.add(new Object());
-        objects.add(new Object());
-        objects.add(new Object());
-        objects.add(new Object());
-        objects.add(new Object());
-        listView.setAdapter(new Custom_lv_DangTin(this, objects));
+        listView.setAdapter(new Custom_lv_DangTin(this, posts));
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,6 +52,10 @@ public class favoritedJobs extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void LoadData() {
+
     }
 
     private void setControl() {

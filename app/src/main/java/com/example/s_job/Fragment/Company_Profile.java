@@ -33,7 +33,7 @@ public class Company_Profile extends Fragment {
     ImageView img_company;
 
 
-    Company company = new Company();
+  static public Company company = new Company();
 
     //For bottomsheetView
     EditText fullname, mail, phone, address;
@@ -148,6 +148,7 @@ public class Company_Profile extends Fragment {
                     @Override
                     public void onClick(View view) {
                         UpLoadData();
+                        Toast.makeText(getContext(), "Change Infomation Success!!", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -238,7 +239,12 @@ public class Company_Profile extends Fragment {
     void UpLoadData() {
 //                EditText fullname, mail, phone, address;
 //                ImageView imageView_sheet;
+        company.setDiaChi(address.getText().toString());
+        company.setEmail(mail.getText().toString());
+        company.setSdt(phone.getText().toString());
+        company.setFullName(fullname.getText().toString());
         new dbFireBase().upDateCompanyFormCompany(company);
+        new dbFireBase().upDateCompanyFormUser(company);
 
     }
 
