@@ -39,6 +39,8 @@ public class Custom_lv_DangTin extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         view = LayoutInflater.from(activity.getApplicationContext()).inflate(R.layout.item_lv_dangtin, viewGroup, false);
 
+
+
         return view;
     }
 }

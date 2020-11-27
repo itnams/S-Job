@@ -1,8 +1,14 @@
 package com.example.s_job.db_firebase;
 
+import androidx.annotation.NonNull;
+
 import com.example.s_job.Model.Company;
+import com.example.s_job.Model.PostForCompany;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class dbFireBase {
     public FirebaseDatabase database;
@@ -30,7 +36,34 @@ public class dbFireBase {
         myRef.child("Additional-Company").child(company.getNameCompany()).updateChildren(company.toMapFormCompany());
     }
 
-    public void NewoPoserForCompany() {
+    public void NewPoserForCompany(PostForCompany postForCompany) {
+
+        myRef.child("Post-Company")
+                .child(postForCompany.getCompany().getNameCompany()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists() && snapshot.getChildrenCount() == 0) {
+                    myRef.child("Post-Company")
+                            .child(postForCompany.getCompany().getNameCompany())
+                            .child("" + snapshot.getChildrenCount()).setValue(postForCompany.toMapCompany());
+                    return;
+                } else {
+                    myRef.child("Post-Company")
+                            .child(postForCompany.getCompany().getNameCompany())
+                            .child("" + snapshot.getChildrenCount() + 1).setValue(postForCompany.toMapCompany());
+                    return;
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
     }
+
+
 }
