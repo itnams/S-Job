@@ -132,7 +132,7 @@
             android:layout_marginRight="5sp"
             android:layout_marginLeft="5sp"
             android:layout_toRightOf="@id/btnkhoa"
-            android:text="Mo khoa"
+            android:text="@string/mokhoatk"
             android:textColor="@color/black"></Button>
 
 

@@ -75,15 +75,15 @@ public class GiaoDienChapNhanYCDN extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position1, long id) {
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(GiaoDienChapNhanYCDN.this);
                 builder1.setTitle("Vui lòng lựa chọn !");
-                builder1.setMessage("Click Accept để chấp nhận yêu cầu, Click Refuse để từ chối yêu cầu");
+                builder1.setMessage("Click Đồng ý để chấp nhận yêu cầu, Click Từ chối để xóa yêu cầu");
                 builder1.setCancelable(true);
-                builder1.setPositiveButton("Refuse",
+                builder1.setPositiveButton("Từ chối",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 dialog.cancel();
                             }
                         });
-                builder1.setNegativeButton("Accept",
+                builder1.setNegativeButton("Đồng ý",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 mData.child("Pending").addChildEventListener(new ChildEventListener() {

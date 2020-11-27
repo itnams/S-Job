@@ -80,19 +80,19 @@ public class GiaoDienQLTK extends AppCompatActivity {
                 String emailkey = dstaikhoantk.get(position).replace("@gmail.com","");
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(GiaoDienQLTK.this);
                 builder1.setTitle("Vui lòng lựa chọn !");
-                builder1.setMessage("Ban muon xoa tai khoan " + emailkey);
+                builder1.setMessage("Bạn muốn xóa tài khoản " + emailkey);
                 builder1.setCancelable(true);
-                builder1.setPositiveButton("Refuse",
+                builder1.setPositiveButton("Quay về",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 dialog.cancel();
                             }
                         });
-                builder1.setNegativeButton("Accept",
+                builder1.setNegativeButton("Đồng ý",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 mData.child("User").child(emailkey).removeValue();
-                                Toast.makeText(GiaoDienQLTK.this,"Xoa thanh cong",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(GiaoDienQLTK.this,"Xóa thành công",Toast.LENGTH_SHORT).show();
                             }
                         });
                 AlertDialog alert11 = builder1.create();

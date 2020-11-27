@@ -33,6 +33,7 @@ private TextView Signup;
 private Button btnLogin;
 private EditText edtuser, edtpass;
 public static String tentaikhoanAdmin;
+public static  String trangThai;
 FirebaseDatabase database = FirebaseDatabase.getInstance();
 DatabaseReference mData;
 int n=0;
@@ -82,10 +83,10 @@ DatabaseReference myRef = database.getReference("message");
                         String nameUser = account.nameUser;
                         String passWord = account.passWord;
                         String position = account.position;
+                        trangThai = account.trangthai;
                         if(edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("Admin")){
                             Intent intent = new Intent(getApplicationContext(), GiaoDienAdmin.class);
                             startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                            Toast.makeText(Login.this,"Đăng nhập thành công !",Toast.LENGTH_SHORT).show();
                             tentaikhoanAdmin = edtuser.getText().toString();
                             n = 1;
                         }
@@ -93,14 +94,12 @@ DatabaseReference myRef = database.getReference("message");
                         {
                             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                             startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                            Toast.makeText(Login.this,"Đăng nhập thành công !",Toast.LENGTH_SHORT).show();
                             n =1;
                         }
                         else if(edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("Company"))
                         {
                             Intent intent = new Intent(getApplicationContext(), MainActivity1.class);
                             startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                            Toast.makeText(Login.this,"Đăng nhập thành công !",Toast.LENGTH_SHORT).show();
                             n =1;
                         }
                         else
