@@ -6,8 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -61,7 +59,7 @@ public class User_Profile extends Fragment {
                         view.getContext(), R.style.BottomSheetDialogTheme
                 );
                 View bottomSheetView = LayoutInflater.from(view.getContext())
-                        .inflate(R.layout.bs_change_password, (LinearLayout)view.findViewById(R.id.bs_change_password));
+                        .inflate(R.layout.bs_change_passwordadmin, (LinearLayout)view.findViewById(R.id.bs_change_password));
                 bottomSheetView.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

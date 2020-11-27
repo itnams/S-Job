@@ -61,7 +61,7 @@ public class Company_Profile extends Fragment {
                         view.getContext(), R.style.BottomSheetDialogTheme
                 );
                 View bottomSheetView = LayoutInflater.from(view.getContext())
-                        .inflate(R.layout.bs_change_password, (LinearLayout)view.findViewById(R.id.bs_change_password));
+                        .inflate(R.layout.bs_change_passwordadmin, (LinearLayout)view.findViewById(R.id.bs_change_password));
                 bottomSheetView.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
