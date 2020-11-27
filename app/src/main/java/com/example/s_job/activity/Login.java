@@ -33,7 +33,7 @@ private Button btnLogin;
 private EditText edtuser, edtpass;
 FirebaseDatabase database = FirebaseDatabase.getInstance();
 DatabaseReference mData;
-int n = 0;
+int n=0;
 DatabaseReference myRef = database.getReference("message");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,8 +100,9 @@ DatabaseReference myRef = database.getReference("message");
                             Toast.makeText(Login.this,"Đăng nhập thành công !",Toast.LENGTH_SHORT).show();
                             n =1;
                         }
-                        else {
-                            n = 0;
+                        else
+                        {
+                            n=2;
                         }
                     }
 
@@ -125,7 +126,7 @@ DatabaseReference myRef = database.getReference("message");
 
                     }
                 });
-                if(n == 0){
+                if(n == 2){
                     Toast.makeText(Login.this,"Đăng nhập không thành công !",Toast.LENGTH_SHORT).show();
                 }
             }

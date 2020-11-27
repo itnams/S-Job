@@ -63,6 +63,7 @@ DatabaseReference mData;
                         mData.child("User").child(email.getText().toString().replace("@gmail.com","")).setValue(account);
                     }
                     Toast.makeText(SignUp.this,"Sign Up Success",Toast.LENGTH_SHORT).show();
+                    finish();
                 }
                 else
                 {
