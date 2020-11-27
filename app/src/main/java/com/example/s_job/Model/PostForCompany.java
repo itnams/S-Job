@@ -1,5 +1,8 @@
 package com.example.s_job.Model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class PostForCompany {
     Company company;
     String tieuDe;
@@ -10,6 +13,20 @@ public class PostForCompany {
     String diaChi;
     String SoLuong;
     String Mota;
+
+    public Map toMapCompany() {
+        Map data = new HashMap();
+        data.put("nameUser", this.company.nameCompany);
+        data.put("tieuDe", this.tieuDe);
+        data.put("deLine", this.deline);
+        data.put("nganhNghe", this.nganhNghe);
+        data.put("bangCap", this.bangCap);
+        data.put("MucLuong", this.MucLuong);
+        data.put("diaChi", this.diaChi);
+        data.put("soLuongTuyen", this.SoLuong);
+        data.put("Mota", this.Mota);
+        return data;
+    }
 
     public PostForCompany() {
         this.company = new Company();
