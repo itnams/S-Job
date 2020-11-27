@@ -44,7 +44,7 @@ public class dbFireBase {
                 if (snapshot.exists()){
                     myRef.child("Post-Company")
                             .child(postForCompany.getCompany().getNameCompany())
-                            .child("" + snapshot.getChildrenCount() + 1).setValue(postForCompany.toMapCompany());
+                            .child("" + (snapshot.getChildrenCount() + 1)).setValue(postForCompany.toMapCompany());
                 }else {
                     myRef.child("Post-Company")
                             .child(postForCompany.getCompany().getNameCompany())
