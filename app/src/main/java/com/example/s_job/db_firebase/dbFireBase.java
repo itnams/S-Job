@@ -42,7 +42,7 @@ public class dbFireBase {
                 .child(postForCompany.getCompany().getNameCompany()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists() && snapshot.getChildrenCount() == 0) {
+                if (!snapshot.exists()) {
                     myRef.child("Post-Company")
                             .child(postForCompany.getCompany().getNameCompany())
                             .child("" + snapshot.getChildrenCount()).setValue(postForCompany.toMapCompany());
