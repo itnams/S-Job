@@ -10,11 +10,10 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.SJob">
-        <activity android:name=".bs_change_password"></activity>
-        <!-- <activity android:name=".post" /> -->
+<!--        <activity android:name=".post" />-->
         <activity android:name=".favoritedJobs" />
-        <activity android:name=".MainActivity1" />
-        <activity android:name=".ThemWebTuyenDung" />
+         <activity android:name=".MainActivity1"/>
+        <activity android:name=".ThemWebTuyenDung"/>
         <activity android:name=".ChiTietTaiKhoan" />
         <activity android:name=".GiaoDienTrangTuyenDung" />
         <activity android:name=".GiaoDienChapNhanYCDN" />
@@ -27,10 +26,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.SignUp" />
-        <activity
-            android:name=".MainActivity"
-            tools:ignore="DuplicateActivity"></activity>
+        <activity android:name=".activity.SignUp"/>
+        <activity android:name=".MainActivity"
+            tools:ignore="DuplicateActivity">
+
+        </activity>
     </application>
 
 </manifest>

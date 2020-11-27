@@ -61,14 +61,14 @@
                     android:height="40dp"
                     android:layout_marginBottom="8dp"/>
                 <EditText
-                    android:id="@+id/edtpass"
+           android:id="@+id/edtpass"
                     android:layout_marginTop="8dp"
                     android:paddingHorizontal="4dp"
                     android:hint="Password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/textinput"
-                    android:password="true"
+                    android:inputType="textPassword"
                     android:height="40dp"/>
                 <TextView
                     android:id="@+id/resetpw"
