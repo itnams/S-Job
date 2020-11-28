@@ -96,14 +96,14 @@ DatabaseReference myRef = database.getReference("message");
                         {
                             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                             startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                            n =1;
+                            n = 3;
                         }
                         else if(edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("Company"))
                         {
                             Intent intent = new Intent(getApplicationContext(), MainActivity1.class);
 
                             startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                            n =1;
+                            n = 4;
                         }
                         else
                         {
