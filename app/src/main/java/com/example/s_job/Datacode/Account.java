@@ -1,6 +1,8 @@
 package com.example.s_job.Datacode;
 
-public class Account {
+import java.io.Serializable;
+
+public class Account implements Serializable {
     public String nameUser,email,passWord,phone,address, position, douutien, trangthai;
 
     public Account(String nameUser, String email, String passWord, String phone, String address, String position, String douutien, String trangthai) {

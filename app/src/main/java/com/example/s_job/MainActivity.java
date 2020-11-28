@@ -1,65 +1,158 @@
 package com.example.s_job;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.s_job.Datacode.Account;
 import com.example.s_job.Fragment.User_Home;
+import com.example.s_job.Fragment.User_Notification;
 import com.example.s_job.Fragment.User_Profile;
+import com.example.s_job.Interrface.FragmentInterface;
 
-import me.ibrahimsn.lib.OnItemSelectedListener;
+import java.io.Serializable;
+
 import me.ibrahimsn.lib.SmoothBottomBar;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity  implements Serializable, FragmentInterface {
+private Account account;
     private FragmentTransaction fragmentTransaction;
  private SmoothBottomBar smoothBottomBar;
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_user);
-        setControl();
-        setEvent();
 
+        smoothBottomBar = findViewById(R.id.bottomBar);
 
-    }
+        Intent  intent = getIntent();
+        account = (Account) intent.getSerializableExtra("USER");
 
-    //Custom Void
-    void ChuyenMangHinhFrament(int idSoure, Fragment fragment) {
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
-        fragmentTransaction.replace(idSoure, fragment);
+        fragmentTransaction.replace(R.id.fr_main, new User_Home());
         fragmentTransaction.commit();
-    }
 
-    //Set Event For Main
-    private void setEvent() {
-        ChuyenMangHinhFrament(R.id.fr_main, new User_Home());
-        smoothBottomBar.setOnItemSelectedListener(new OnItemSelectedListener() {
-            @Override
-            public void onItemSelect(int i) {
-                switch (i) {
-                    case 0:
-                        ChuyenMangHinhFrament(R.id.fr_main, new User_Home());
-                        break;
-                    case 1:
-                        //ChuyenMangHinhFrament(R.id.fr_main, new User_Notification());
-                        break;
-                    case 2:
-                        ChuyenMangHinhFrament(R.id.fr_main, new User_Profile());
-                        break;
-                }
+        smoothBottomBar.setOnItemSelectedListener(i->{
+            switch (i){
+                case 0:
+                    fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.replace(R.id.fr_main, new User_Home());
+                    fragmentTransaction.commit();
+
+                    break;
+                case 1:
+                    fragmentTransaction = getSupportFragmentManager().beginTransaction();
+
+                    fragmentTransaction.replace(R.id.fr_main, new User_Notification());
+                    fragmentTransaction.commit();
+
+                    break;
+                case 2:
+                    fragmentTransaction = getSupportFragmentManager().beginTransaction();
+                    User_Profile  user_profile = new User_Profile();
+                    Bundle bundle =new Bundle();
+                    bundle.putSerializable("USER", account);
+                    user_profile.setArguments(bundle);
+                    fragmentTransaction.replace(R.id.fr_main, user_profile);
+                    fragmentTransaction.commit();
+
+                    break;
             }
         });
 
+
+
+//        ArrayList<String> arrayList = new ArrayList<String>();
+//        arrayList.add("TP.HCM");
+//        arrayList.add("Hà Nội");
+//        arrayList.add("Đà Nẵng");
+//        ArrayAdapter arrayAdapter = new ArrayAdapter(this,R.layout.support_simple_spinner_dropdown_item,arrayList);
+//        sprDiaDiem.setAdapter(arrayAdapter);
+
     }
 
-    private void setControl() {
-        smoothBottomBar = findViewById(R.id.bottomBar);
+    @Override
+    public void SentData(Account account) {
 
     }
 
+//    private void init() {
+//        editProfile = findViewById(R.id.editProfile);
+//        changePassword = findViewById(R.id.change_Password);
+//        favoritedJob =  findViewById(R.id.favorited_jobs);
+//        posts = findViewById(R.id.your_Posts);
+//        logout = findViewById(R.id.logout);
+//
+//
+//
+//
+//
+//
+//        editProfile.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
+//                        MainActivity.this, R.style.BottomSheetDialogTheme
+//                );
+//                View bottomSheetView = LayoutInflater.from(getApplicationContext())
+//                        .inflate(R.layout.bs_edit_profile, (LinearLayout)findViewById(R.id.bs_edit_profile_container));
+//                bottomSheetView.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        bottomSheetDialog.dismiss();
+//                    }
+//                });
+//                bottomSheetDialog.setContentView(bottomSheetView);
+//                bottomSheetDialog.show();
+//            }
+//        });
+//
+//        changePassword.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
+//                        MainActivity.this, R.style.BottomSheetDialogTheme
+//                );
+//                View bottomSheetView = LayoutInflater.from(getApplicationContext())
+//                        .inflate(R.layout.bs_change_password, (LinearLayout)findViewById(R.id.bs_change_password));
+//                bottomSheetView.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        bottomSheetDialog.dismiss();
+//                    }
+//                });
+//                bottomSheetDialog.setContentView(bottomSheetView);
+//                bottomSheetDialog.show();
+//            }
+//        });
+//
+//        favoritedJob.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, favoritedJobs.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        posts.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, post.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        logout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(MainActivity.this, "Logout nè >_<", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//
+//
+//    }
 
 }
