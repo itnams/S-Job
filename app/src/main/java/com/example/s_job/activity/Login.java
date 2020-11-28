@@ -25,6 +25,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Login extends AppCompatActivity {
     private TextView fogotPW;
@@ -77,58 +78,54 @@ public class Login extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mData.child("User").addChildEventListener(new ChildEventListener() {
+
+
+                mData.child("User").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
-                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                        Account account = dataSnapshot.getValue(Account.class);
-                        String nameUser = account.nameUser;
-                        String passWord = account.passWord;
-                        String position = account.position;
-                        String email = account.email;
-                        trangThai = account.trangthai;
-                        if (edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("Admin")) {
-                            Intent intent = new Intent(getApplicationContext(), GiaoDienAdmin.class);
-                            startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                            tentaikhoanAdmin = edtuser.getText().toString();
-                            curentpass = passWord;
-                            n = 1;
-                        } else if (edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("User")) {
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                            n = 1;
-                        } else if (edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("Company")) {
-                            Intent intent = new Intent(getApplicationContext(), MainActivity1.class);
-                            intent.putExtra("email", email.replace("@gmail.com", ""));
-                            startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                            n = 1;
-                        } else {
-                            n = 2;
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        //Nhan Fix
+                        if (snapshot.exists()) {
+                            for (DataSnapshot key : snapshot.getChildren()) {
+                                Account account = key.getValue(Account.class);
+                                String nameUser = account.nameUser;
+                                String passWord = account.passWord;
+                                String position = account.position;
+                                String email = account.email;
+                                trangThai = account.trangthai;
+                                if (edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("Admin")) {
+                                    Intent intent = new Intent(getApplicationContext(), GiaoDienAdmin.class);
+                                    Toast.makeText(Login.this, "Đăng Nhập Thành Công !", Toast.LENGTH_SHORT).show();
+                                    startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                    tentaikhoanAdmin = edtuser.getText().toString();
+                                    curentpass = passWord;
+                                    return;
+
+                                } else if (edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("User")) {
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    Toast.makeText(Login.this, "Đăng Nhập Thành Công !", Toast.LENGTH_SHORT).show();
+                                    startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                    return;
+
+                                } else if (edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("Company")) {
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity1.class);
+                                    Toast.makeText(Login.this, "Đăng Nhập Thành Công !", Toast.LENGTH_SHORT).show();
+                                    intent.putExtra("email", email.replace("@gmail.com", ""));
+                                    startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                    return;
+
+                                }
+
+                            }
+                            Toast.makeText(Login.this, "Đăng Nhập Không Thành Công !", Toast.LENGTH_SHORT).show();
                         }
+                        //---------
                     }
 
                     @Override
-                    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                    }
-
-                    @Override
-                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-                    }
-
-                    @Override
-                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    public void onCancelled(@NonNull DatabaseError error) {
 
                     }
                 });
-                if (n == 2) {
-                    Toast.makeText(Login.this, "Đăng nhập không thành công !", Toast.LENGTH_SHORT).show();
-                }
             }
         });
     }

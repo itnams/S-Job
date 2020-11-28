@@ -30,7 +30,6 @@ public class GiaoDienAdmin extends AppCompatActivity {
     Login login;
     LinearLayout changePassword;
     DatabaseReference mData;
-    bs_change_password bs_change_password1;
 
     TextView tenAdmin, emailAdmin, sdtAdmin, diaChiAmdin;
     TextView tvlogout;
@@ -143,18 +142,29 @@ public class GiaoDienAdmin extends AppCompatActivity {
                 bottomSheetView.findViewById(R.id.luupass).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
-                        if (account.getPassWord().equals(current.getText().toString())) {
-                            if (newPass.getText().toString().equals(comfirmpass.getText().toString())) {
-                                account.setPassWord(newPass.getText().toString());
-                                mData.child("User").child(account.nameUser).setValue(account);
-                                bottomSheetDialog.dismiss();
-                            } else {
-                                Toast.makeText(GiaoDienAdmin.this, "Mật Khẩu Không Khớp!!", Toast.LENGTH_SHORT).show();
-                            }
+                        if (current.getText().toString().isEmpty()) {
+                            Toast.makeText(GiaoDienAdmin.this, "Vui lòng nhập thông tin !", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(GiaoDienAdmin.this, "Mật Khẩu Hiện Tại Không Đúng!!", Toast.LENGTH_SHORT).show();
+                            if (newPass.getText().toString().isEmpty() && comfirmpass.getText().toString().isEmpty()) {
+                                Toast.makeText(GiaoDienAdmin.this, "Vui lòng nhập thông tin !", Toast.LENGTH_SHORT).show();
+
+                            } else {
+                                if (account.getPassWord().equals(current.getText().toString())) {
+                                    if (newPass.getText().toString().equals(comfirmpass.getText().toString())) {
+                                        account.setPassWord(newPass.getText().toString());
+                                        mData.child("User").child(account.nameUser).setValue(account);
+                                        Toast.makeText(GiaoDienAdmin.this, "Đổi Mật Khẩu Thành Công !", Toast.LENGTH_SHORT).show();
+                                        bottomSheetDialog.dismiss();
+                                    } else {
+                                        Toast.makeText(GiaoDienAdmin.this, "Mật Khẩu Không Khớp!!", Toast.LENGTH_SHORT).show();
+                                    }
+                                } else {
+                                    Toast.makeText(GiaoDienAdmin.this, "Mật Khẩu Hiện Tại Không Đúng!!", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
                         }
+
                     }
                 });
 
