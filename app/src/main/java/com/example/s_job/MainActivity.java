@@ -17,7 +17,7 @@ import java.io.Serializable;
 
 import me.ibrahimsn.lib.SmoothBottomBar;
 
-public class MainActivity extends AppCompatActivity  implements Serializable, FragmentInterface {
+public class MainActivity extends AppCompatActivity  implements Serializable {
 private Account account;
     private FragmentTransaction fragmentTransaction;
  private SmoothBottomBar smoothBottomBar;
@@ -74,10 +74,6 @@ private Account account;
 
     }
 
-    @Override
-    public void SentData(Account account) {
-
-    }
 
 //    private void init() {
 //        editProfile = findViewById(R.id.editProfile);
