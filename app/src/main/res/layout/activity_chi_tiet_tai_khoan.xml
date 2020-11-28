@@ -9,7 +9,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="20sp"
+        android:padding="10sp"
+        android:textColor="@color/black"
         android:textStyle="bold"
         android:text="@string/ttchitiettaikhoan"
         android:textSize="30sp"
@@ -30,6 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tentaikhoan"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -40,6 +42,7 @@
             android:padding="6dp"
             android:layout_marginHorizontal="8dp"
             android:layout_width="match_parent"
+            android:textColor="@color/black"
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text" />
     </LinearLayout>
@@ -59,6 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/matkhau"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -69,6 +73,7 @@
             android:layout_marginHorizontal="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:background="@drawable/edit_text" />
     </LinearLayout>
 
@@ -87,6 +92,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/douutien"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -96,6 +102,7 @@
             android:padding="6dp"
             android:layout_marginHorizontal="8dp"
             android:layout_width="match_parent"
+            android:textColor="@color/black"
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text" />
     </LinearLayout>
@@ -115,6 +122,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/trangthai"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
         </LinearLayout>
 
@@ -125,37 +133,41 @@
             android:layout_marginHorizontal="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/black"
             android:background="@drawable/edit_text" />
     </LinearLayout>
 
     <LinearLayout
         android:paddingTop="16dp"
         android:paddingBottom="32dp"
-        android:gravity="center"
+        android:gravity="right"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
+            android:layout_gravity="center"
             android:id="@+id/btnkhoa"
-            android:layout_marginEnd="16dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:text="@string/khoa"
             android:background="@drawable/custom_button"/>
 
         <Button
-            android:layout_marginStart="16dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:id="@+id/btnmokhoa"
+            android:layout_gravity="center"
+            android:layout_marginStart="2sp"
+            android:layout_marginEnd="2sp"
             android:text="@string/mokhoatk"
             android:background="@drawable/custom_button"/>
 
         <Button
-            android:layout_marginStart="16dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="40dp"
             android:id="@+id/btnluu"
+            android:layout_marginEnd="7sp"
             android:text="@string/luu"
             android:background="@drawable/custom_button"/>
     </LinearLayout>

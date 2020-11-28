@@ -68,7 +68,7 @@ public class Create_Post_Company extends AppCompatActivity {
                     onBackPressed();
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(Create_Post_Company.this);
-                    builder.setTitle("Thong Bao").setMessage("Have Input Is Empty!!!").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    builder.setTitle("Thông báo").setMessage("Have Input Is Empty!!!").setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             dialogInterface.dismiss();

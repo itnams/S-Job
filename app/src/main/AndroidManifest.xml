@@ -25,7 +25,10 @@
             android:value="@string/map_key" />
 
         <!--        <activity android:name=".post" />-->
+
         <activity android:name=".favoritedJobs" />
+        <activity android:name=".Activity_For_n.Create_Post_Company" />
+        <activity android:name=".Activity_For_n.Goole_map" />
         <activity android:name=".MainActivity1" />
         <activity android:name=".ThemWebTuyenDung" />
         <activity android:name=".ChiTietTaiKhoan" />
@@ -40,8 +43,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.SignUp"/>
-        <activity android:name=".MainActivity"
+        <activity android:name=".activity.SignUp" />
+        <activity
+            android:name=".MainActivity"
             tools:ignore="DuplicateActivity">
 
         </activity>
