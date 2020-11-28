@@ -102,6 +102,7 @@ DatabaseReference myRef = database.getReference("message");
                         else if(edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("Company"))
                         {
                             Intent intent = new Intent(getApplicationContext(), MainActivity1.class);
+
                             startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                             n =1;
                         }

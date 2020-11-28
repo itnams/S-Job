@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp"
+    tools:context=".Activity_For_n.Create_Post_Company">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/et_tieuDe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="@string/tieuDe" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_deLine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:text="@string/timeDemo" />
+
+            <ImageButton
+                android:id="@+id/imgBtn_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/date_range"
+
+                />
+
+            <EditText
+                android:id="@+id/et_mucLuong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:gravity="center"
+                android:hint="@string/mucLuong"
+                android:inputType="number" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_bangCap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+
+                android:hint="@string/bangCap" />
+
+
+            <EditText
+                android:id="@+id/et_nganhNghe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_weight="5"
+                android:gravity="center"
+                android:hint="@string/nganhNghe" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_soLuongTuyen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/soLuongTuyen"
+                android:inputType="number" />
+
+
+            <EditText
+                android:id="@+id/et_diaChi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_weight="115"
+                android:enabled="false"
+                android:gravity="center"
+                android:hint="@string/diachi"
+                android:inputType="number" />
+
+            <ImageButton
+                android:id="@+id/imgBtn_vitri"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/location_n" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_moTa"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:ems="10"
+        android:gravity="left|top"
+        android:hint="@string/moTa"
+        android:inputType="textMultiLine"
+        android:textSize="15sp">
+
+        <requestFocus />
+    </EditText>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_trove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:text="@string/trove"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_luu"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:padding="20dp"
+            android:text="@string/luu"
+            android:textAllCaps="false" />
+    </LinearLayout>
+
+</LinearLayout>

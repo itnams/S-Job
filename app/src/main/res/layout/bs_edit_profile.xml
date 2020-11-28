@@ -60,7 +60,6 @@
         </LinearLayout>
 
         <EditText
-            android:id="@+id/edt_user_name"
             android:layout_weight="1"
             android:padding="6dp"
             android:layout_marginHorizontal="8dp"
@@ -93,7 +92,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text"
-            android:id="@+id/edt_email"
             android:text="tranquangtuan0120@gmail.com"/>
     </LinearLayout>
     <LinearLayout
@@ -120,7 +118,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text"
-            android:id="@+id/edt_phone"
             android:text="0938661601"/>
     </LinearLayout>
     <LinearLayout
@@ -147,8 +144,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text"
-            android:text="Q.Thu Duc, TP. Ho Chi Minh"
-            android:id="@+id/edt_address"/>
+            android:text="Q.Thu Duc, TP. Ho Chi Minh"/>
     </LinearLayout>
     <LinearLayout
         android:paddingTop="16dp"
