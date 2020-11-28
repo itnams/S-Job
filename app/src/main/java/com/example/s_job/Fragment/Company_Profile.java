@@ -72,7 +72,7 @@ public class Company_Profile extends Fragment {
                 data.setPass((String) key.passWord);
                 data.setNameCompany((String) key.nameUser);
                 data.setSdt((String) key.phone);
-                data.setEmail((String) key.email);
+                data.setEmail((String) key.email.replace("@gmail.com",""));
                 data.setDiaChi((String) key.address);
                 company = data;
                 // Toast.makeText(getContext(), company.getDiaChi(), Toast.LENGTH_LONG).show();

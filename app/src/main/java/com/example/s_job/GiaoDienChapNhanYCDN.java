@@ -100,7 +100,7 @@ public class GiaoDienChapNhanYCDN extends AppCompatActivity {
                                             Account account1 = new Account(nameUser, email, passWord, phone, address, position, douutien, trangthai);
                                             //Nhan ------------
                                             Company ad = new Company();
-                                            ad.setNameCompany(nameUser);
+                                            ad.setEmail(email.replace("@gmail.com", ""));
                                             new dbFireBase().addDataToCompany(ad);
                                             // ------------
                                             mData.child("User").child(email.toString().replace("@gmail.com", "")).setValue(account1);
