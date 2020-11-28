@@ -17,11 +17,15 @@ import com.example.s_job.Datacode.Account;
 import com.example.s_job.R;
 import com.example.s_job.favoritedJobs;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class User_Profile extends Fragment {
     private LinearLayout editProfile, changePassword, favoritedJob, posts, logout;
     private TextView tvUserName, tvEmail, tvPhone, tvAddress;
+
+    private DatabaseReference databaseRef;
 private Account account;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,6 +45,7 @@ private Account account;
             account = (Account) bundle.getSerializable("USER");
             Log.d("ahihi", "user "+ account.nameUser);
         }
+        databaseRef = FirebaseDatabase.getInstance().getReference();
 
 
         editProfile = view.findViewById(R.id.editProfile);
@@ -75,7 +80,7 @@ private Account account;
                         bottomSheetDialog.dismiss();
                     }
                 });
-                 EditText edtuser_name = bottomSheetView.findViewById(R.id.edt_user_name);
+                EditText edtuser_name = bottomSheetView.findViewById(R.id.edt_user_name);
                 EditText edt_email = bottomSheetView.findViewById(R.id.edt_email);
                 EditText edt_phone = bottomSheetView.findViewById(R.id.edt_phone);
                 EditText edt_address = bottomSheetView.findViewById(R.id.edt_address);
@@ -84,6 +89,7 @@ private Account account;
                 edt_email.setText(account.email);
                 edt_phone.setText(account.phone);
                 edt_address.setText(account.address);
+
                 bottomSheetDialog.setContentView(bottomSheetView);
                 bottomSheetDialog.show();
             }
@@ -92,6 +98,7 @@ private Account account;
         changePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
                         view.getContext(), R.style.BottomSheetDialogTheme
                 );
@@ -101,6 +108,28 @@ private Account account;
                     @Override
                     public void onClick(View v) {
                         bottomSheetDialog.dismiss();
+                    }
+                });
+
+                EditText password = bottomSheetView.findViewById(R.id.et_current_pass_com);
+                EditText newPassword = bottomSheetView.findViewById(R.id.et_new_pass_com);
+                EditText confirmPassword = bottomSheetView.findViewById(R.id.et_confirm_pass_com);
+
+                bottomSheetView.findViewById(R.id.btn_save_company).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(password.getText().toString().equals("")||newPassword.getText().
+                                toString().equals("")||confirmPassword.getText().toString().equals(""))
+                            Toast.makeText(getActivity(), "vui lòng nhập đầy đủ thông tin nghen :D", Toast.LENGTH_LONG).show();
+                        else if(!password.getText().toString().equals(account.passWord))
+                            Toast.makeText(getActivity(), "Mật khẩu cũ sai òiiiii :(", Toast.LENGTH_LONG).show();
+                        else if(!newPassword.getText().toString().equals(confirmPassword.getText().toString()))
+                            Toast.makeText(getActivity(), "Mật khẩu mới hong giống nhau :(", Toast.LENGTH_LONG).show();
+                        else {
+                            databaseRef.child("User").child(account.email).child("passWord").setValue(newPassword.getText().toString());
+                            bottomSheetDialog.dismiss();
+                            Toast.makeText(getActivity(), "ahihi ><", Toast.LENGTH_LONG).show();
+                        }
                     }
                 });
                 bottomSheetDialog.setContentView(bottomSheetView);

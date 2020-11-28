@@ -50,9 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="3">
-
             <TextView
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Full Name: "
@@ -60,13 +58,14 @@
         </LinearLayout>
 
         <EditText
+            android:id="@+id/edt_user_name"
             android:layout_weight="1"
             android:padding="6dp"
             android:layout_marginHorizontal="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text"
-            android:text="Trần Quang Tuấn"/>
+            />
     </LinearLayout>
     <LinearLayout
         android:layout_margin="6dp"
@@ -86,6 +85,8 @@
         </LinearLayout>
 
         <EditText
+            android:enabled="false"
+            android:id="@+id/edt_email"
             android:layout_weight="1"
             android:padding="6dp"
             android:layout_marginHorizontal="8dp"
@@ -112,13 +113,14 @@
         </LinearLayout>
 
         <EditText
+            android:id="@+id/edt_phone"
             android:layout_weight="1"
             android:padding="6dp"
             android:layout_marginHorizontal="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text"
-            android:text="0938661601"/>
+            />
     </LinearLayout>
     <LinearLayout
         android:layout_margin="6dp"
@@ -138,15 +140,18 @@
         </LinearLayout>
 
         <EditText
+            android:id="@+id/edt_address"
             android:layout_weight="1"
             android:padding="6dp"
             android:layout_marginHorizontal="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edit_text"
-            android:text="Q.Thu Duc, TP. Ho Chi Minh"/>
+            />
     </LinearLayout>
     <LinearLayout
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="50dp"
         android:paddingTop="16dp"
         android:paddingBottom="32dp"
         android:gravity="center"
