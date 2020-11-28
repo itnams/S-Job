@@ -2,7 +2,6 @@ package com.example.s_job.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -28,17 +27,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class Login extends AppCompatActivity {
-private TextView fogotPW;
-private TextView Signup;
-private Button btnLogin;
-private EditText edtuser, edtpass;
-public static String curentpass;
-public static String tentaikhoanAdmin;
-public static  String trangThai;
-FirebaseDatabase database = FirebaseDatabase.getInstance();
-DatabaseReference mData;
-int n=0;
-DatabaseReference myRef = database.getReference("message");
+    private TextView fogotPW;
+    private TextView Signup;
+    private Button btnLogin;
+    private EditText edtuser, edtpass;
+    public static String curentpass;
+    public static String tentaikhoanAdmin;
+    public static String trangThai;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference mData;
+    int n = 0;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +56,7 @@ DatabaseReference myRef = database.getReference("message");
                         Login.this, R.style.BottomSheetDialogTheme
                 );
                 View bottomSheetView = LayoutInflater.from(getApplicationContext())
-                        .inflate(R.layout.bs_reset_password, (LinearLayout)findViewById(R.id.bs_change_password));
+                        .inflate(R.layout.bs_reset_password, (LinearLayout) findViewById(R.id.bs_change_password));
                 bottomSheetView.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -70,7 +70,7 @@ DatabaseReference myRef = database.getReference("message");
         Signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent  intent = new Intent(Login.this, SignUp.class);
+                Intent intent = new Intent(Login.this, SignUp.class);
                 startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             }
         });
@@ -84,30 +84,25 @@ DatabaseReference myRef = database.getReference("message");
                         String nameUser = account.nameUser;
                         String passWord = account.passWord;
                         String position = account.position;
+                        String email = account.email;
                         trangThai = account.trangthai;
-                        if(edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("Admin")){
+                        if (edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("Admin")) {
                             Intent intent = new Intent(getApplicationContext(), GiaoDienAdmin.class);
                             startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                             tentaikhoanAdmin = edtuser.getText().toString();
                             curentpass = passWord;
                             n = 1;
-                        }
-                        else if(edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("User") )
-                        {
-                            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                        } else if (edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("User")) {
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                            n = 3;
-                        }
-                        else if(edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("Company"))
-                        {
+                            n = 1;
+                        } else if (edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("Company")) {
                             Intent intent = new Intent(getApplicationContext(), MainActivity1.class);
-
+                            intent.putExtra("email", email.replace("@gmail.com", ""));
                             startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                            n = 4;
-                        }
-                        else
-                        {
-                            n=2;
+                            n = 1;
+                        } else {
+                            n = 2;
                         }
                     }
 
@@ -131,8 +126,8 @@ DatabaseReference myRef = database.getReference("message");
 
                     }
                 });
-                if(n == 2){
-                    Toast.makeText(Login.this,"Đăng nhập không thành công !",Toast.LENGTH_SHORT).show();
+                if (n == 2) {
+                    Toast.makeText(Login.this, "Đăng nhập không thành công !", Toast.LENGTH_SHORT).show();
                 }
             }
         });
