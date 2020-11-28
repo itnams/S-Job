@@ -32,6 +32,7 @@ private TextView fogotPW;
 private TextView Signup;
 private Button btnLogin;
 private EditText edtuser, edtpass;
+public static String curentpass;
 public static String tentaikhoanAdmin;
 public static  String trangThai;
 FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -88,6 +89,7 @@ DatabaseReference myRef = database.getReference("message");
                             Intent intent = new Intent(getApplicationContext(), GiaoDienAdmin.class);
                             startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                             tentaikhoanAdmin = edtuser.getText().toString();
+                            curentpass = passWord;
                             n = 1;
                         }
                         else if(edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("User") )
