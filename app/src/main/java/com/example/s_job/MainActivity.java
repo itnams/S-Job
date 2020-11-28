@@ -2,7 +2,6 @@ package com.example.s_job;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
@@ -11,13 +10,13 @@ import com.example.s_job.Datacode.Account;
 import com.example.s_job.Fragment.User_Home;
 import com.example.s_job.Fragment.User_Notification;
 import com.example.s_job.Fragment.User_Profile;
-import com.example.s_job.Interrface.FragmentInterface;
+
 
 import java.io.Serializable;
 
 import me.ibrahimsn.lib.SmoothBottomBar;
 
-public class MainActivity extends AppCompatActivity  implements Serializable, FragmentInterface {
+public class MainActivity extends AppCompatActivity  implements Serializable {
 private Account account;
     private FragmentTransaction fragmentTransaction;
  private SmoothBottomBar smoothBottomBar;
@@ -74,10 +73,7 @@ private Account account;
 
     }
 
-    @Override
-    public void SentData(Account account) {
 
-    }
 
 //    private void init() {
 //        editProfile = findViewById(R.id.editProfile);

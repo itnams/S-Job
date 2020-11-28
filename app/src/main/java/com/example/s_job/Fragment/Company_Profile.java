@@ -119,10 +119,10 @@ public class Company_Profile extends Fragment {
 //                EditText fullname, mail, phone, address;
 //                ImageView imageView_sheet;
 //                Button btnUpLoad_sheet;
-                fullname = bottomSheetView.findViewById(R.id.et_FullName);
-                mail = bottomSheetView.findViewById(R.id.et_Email);
-                phone = bottomSheetView.findViewById(R.id.et_Phone);
-                address = bottomSheetView.findViewById(R.id.et_address);
+                fullname = bottomSheetView.findViewById(R.id.edt_user_name);
+                mail = bottomSheetView.findViewById(R.id.edt_email);
+                phone = bottomSheetView.findViewById(R.id.edt_phone);
+                address = bottomSheetView.findViewById(R.id.edt_address);
                 imageView_sheet = bottomSheetView.findViewById(R.id.imgAvatar);
                 btnUpLoad_sheet = bottomSheetView.findViewById(R.id.upload);
 

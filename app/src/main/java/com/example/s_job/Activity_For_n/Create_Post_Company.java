@@ -27,6 +27,7 @@ public class Create_Post_Company extends AppCompatActivity {
     Button troVe, Luu;
     PostForCompany postForCompany = new PostForCompany();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +36,13 @@ public class Create_Post_Company extends AppCompatActivity {
         setEvent();
     }
 
+
     private void setEvent() {
+        final Calendar c = Calendar.getInstance();
+        int mYear = c.get(Calendar.YEAR);
+        int mMonth = c.get(Calendar.MONTH);
+        int mDay = c.get(Calendar.DAY_OF_MONTH);
+        deLine.setText(mDay + "/" + mMonth + "/" + mYear);
         date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,6 +93,12 @@ public class Create_Post_Company extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        troVe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
     boolean input() {
@@ -108,7 +121,7 @@ public class Create_Post_Company extends AppCompatActivity {
     }
 
     private void SendToDataBase() {
-        //postForCompany.setCompany(Company_Profile.company);
+        postForCompany.setCompany(Company_Profile.company);
         postForCompany.setTieuDe(tieuDe.getText().toString());
         postForCompany.setDeline(deLine.getText().toString());
         postForCompany.setMucLuong(mucLuong.getText().toString());

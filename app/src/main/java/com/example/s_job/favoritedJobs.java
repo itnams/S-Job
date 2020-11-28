@@ -14,6 +14,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.s_job.Activity_For_n.Create_Post_Company;
 import com.example.s_job.Custom.Custom_lv_DangTin;
 import com.example.s_job.Model.PostForCompany;
+import com.example.s_job.db_firebase.dbFireBase;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -23,6 +27,7 @@ public class favoritedJobs extends AppCompatActivity {
     ImageButton back, create;
     Intent intent;
     ArrayList<PostForCompany> posts = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,11 +39,12 @@ public class favoritedJobs extends AppCompatActivity {
         setEvent();
     }
 
+
     private void setEvent() {
+
         LoadData();
 
 
-        listView.setAdapter(new Custom_lv_DangTin(this, posts));
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,6 +61,27 @@ public class favoritedJobs extends AppCompatActivity {
     }
 
     private void LoadData() {
+        posts.clear();
+        listView.deferNotifyDataSetChanged();
+        dbFireBase db = new dbFireBase();
+        db.myRef.child("Post-Company").child(MainActivity1.User).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot key : snapshot.getChildren()) {
+                        PostForCompany data = key.getValue(PostForCompany.class);
+                        posts.add(data);
+                    }
+                    listView.setAdapter(new Custom_lv_DangTin(favoritedJobs.this, posts));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
     }
 
@@ -82,6 +109,16 @@ public class favoritedJobs extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
         return true;
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        finish();
+        overridePendingTransition(0, 0);
+        startActivity(getIntent());
+        overridePendingTransition(0, 0);
+
     }
 
 
