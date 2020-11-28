@@ -23,6 +23,7 @@ public class favoritedJobs extends AppCompatActivity {
     ImageButton back, create;
     Intent intent;
     ArrayList<PostForCompany> posts = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
