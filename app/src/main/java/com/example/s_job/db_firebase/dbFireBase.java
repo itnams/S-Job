@@ -21,6 +21,31 @@ public class dbFireBase {
 
     }
 
+    public void removePost(PostForCompany postForCompany) {
+        myRef.child("Post-Company")
+                .child(postForCompany.getCompany().getEmail())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            for (DataSnapshot key : snapshot.getChildren()) {
+                                if (postForCompany.getTieuDe().equals(key.getValue(PostForCompany.class).getTieuDe())
+                                        && postForCompany.getDeline().equals(key.getValue(PostForCompany.class).getDeline())) {
+                                    myRef.child("Post-Company")
+                                            .child(postForCompany.getCompany().getEmail()).child(key.getKey()).removeValue();
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+    }
+
     public void upDateCompanyFormUser(Company company) {
         myRef = database.getReference("User");
         myRef.child(company.getEmail()).updateChildren(company.toMapFormUser());

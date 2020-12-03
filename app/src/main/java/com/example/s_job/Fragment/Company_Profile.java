@@ -103,6 +103,7 @@ for (DataSnapshot a : snapshot.getChildren()){
                 email.setText(company.getEmail());
                 sdt.setText(company.getSdt());
                 diachi.setText(company.getDiaChi());
+
             }
 
             @Override
