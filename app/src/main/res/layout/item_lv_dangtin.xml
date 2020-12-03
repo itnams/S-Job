@@ -1,125 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
 
     android:orientation="vertical"
     android:padding="5dp">
 
-    <androidx.cardview.widget.CardView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="30dp"
+        android:layout_height="wrap_content">
 
-        >
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-
             android:layout_height="wrap_content"
-            android:background="@color/daApp">
+            app:cardCornerRadius="30dp"
 
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
+
+                android:layout_height="match_parent"
+                android:background="@color/daApp">
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
-                    android:gravity="center"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/tv_tieude"
-                        android:layout_width="wrap_content"
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/tieuDe"
-                        android:textSize="18dp"
-                        android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/tv_deline"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/timeDemo"
-                        android:textColor="@color/doApp"
-                        android:textSize="19dp" />
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/tv_diachi"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/diachi"
-                        android:textSize="19dp" />
-                </LinearLayout>
+                        <TextView
+                            android:id="@+id/tv_tieude"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tieuDe"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tv_mota"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/moTa"
-                    android:textSize="14dp" />
-            </LinearLayout>
+                        <TextView
+                            android:id="@+id/tv_deline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/timeDemo"
+                            android:textColor="@color/doApp"
+                            android:textSize="19dp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="5"
-
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/star_rating" />
+                        <TextView
+                            android:id="@+id/tv_diachi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/diachi"
+                            android:textSize="19dp" />
+                    </LinearLayout>
 
                     <TextView
+                        android:id="@+id/tv_mota"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/ngoiSao"
-                        android:textColor="@color/black" />
+                        android:text="@string/moTa"
+                        android:textSize="14dp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_weight="5"
+
                     android:gravity="center"
                     android:orientation="vertical">
 
-                    <ImageView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/write_rate" />
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-                    <TextView
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/star_rating" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ngoiSao"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/ngoiSao"
-                        android:textColor="@color/black" />
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/write_rate" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/ngoiSao"
+                            android:textColor="@color/black" />
+                    </LinearLayout>
+
+                    <ImageButton
+                        android:id="@+id/btn_edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/button_backgroud"
+                        android:padding="5dp"
+                        android:src="@drawable/pen" />
                 </LinearLayout>
-
-                <ImageButton
-                    android:id="@+id/btn_edit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/button_backgroud"
-                    android:padding="5dp"
-                    android:src="@drawable/pen" />
             </LinearLayout>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
 </LinearLayout>
