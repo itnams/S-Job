@@ -36,6 +36,11 @@ public class Create_Post_Company extends AppCompatActivity {
     }
 
     private void setEvent() {
+        final Calendar c = Calendar.getInstance();
+        int mYear = c.get(Calendar.YEAR);
+        int mMonth = c.get(Calendar.MONTH);
+        int mDay = c.get(Calendar.DAY_OF_MONTH);
+        deLine.setText(mDay + "/" + mMonth + "/" + mYear);
         date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
