@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -61,8 +62,8 @@ public class favoritedJobs extends AppCompatActivity {
     }
 
     private void LoadData() {
-        posts.clear();
-        listView.deferNotifyDataSetChanged();
+
+
         dbFireBase db = new dbFireBase();
         db.myRef.child("Post-Company").child(MainActivity1.User).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -71,6 +72,9 @@ public class favoritedJobs extends AppCompatActivity {
                     for (DataSnapshot key : snapshot.getChildren()) {
                         PostForCompany data = key.getValue(PostForCompany.class);
                         posts.add(data);
+                    }
+                    for (PostForCompany a : posts) {
+                        Toast.makeText(favoritedJobs.this, "" + a.getDeline(), Toast.LENGTH_LONG).show();
                     }
                     listView.setAdapter(new Custom_lv_DangTin(favoritedJobs.this, posts));
                 }
@@ -112,14 +116,8 @@ public class favoritedJobs extends AppCompatActivity {
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
-        finish();
-        overridePendingTransition(0, 0);
-        startActivity(getIntent());
-        overridePendingTransition(0, 0);
+    protected void onResume() {
+        super.onResume();
 
     }
-
-
 }
