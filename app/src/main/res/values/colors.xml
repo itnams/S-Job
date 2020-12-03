@@ -11,6 +11,8 @@
     <color name="cam">#FB8C00</color>
     <!--   Nhan Color-->
     <color name="daApp">#FFF8BE</color>
+    <color name="doApp">#FF2D03</color>
+
     <!--   Nhan Color-->
 
 </resources>

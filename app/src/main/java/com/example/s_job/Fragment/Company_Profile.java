@@ -63,6 +63,24 @@ public class Company_Profile extends Fragment {
     private void changeTextView() {
         dbFireBase db = new dbFireBase();
         db.myRef = db.database.getReference("User");
+     db.myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+         @Override
+         public void onDataChange(@NonNull DataSnapshot snapshot) {
+             if (snapshot.exists()){
+                 Company b = snapshot.getValue(Company.class);
+for (DataSnapshot a : snapshot.getChildren()){
+
+}
+             }
+
+         }
+
+         @Override
+         public void onCancelled(@NonNull DatabaseError error) {
+
+         }
+     });
+
         db.myRef.child(MainActivity1.User).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
