@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.s_job.Model.PostForCompany;
 import com.example.s_job.R;
@@ -54,7 +55,9 @@ public class Custom_lv_DangTin extends BaseAdapter {
         tieude.setText(data.getTieuDe());
         deline.setText(data.getDeline());
         diachi.setText(data.getDiaChi());
-        mota.setText(data.getMota().substring(0, data.getMota().length()/2) + " ...");
+        mota.setText(data.getMota().substring(0, data.getMota().length() / 2) + " ...");
+
+
         return view;
     }
 }

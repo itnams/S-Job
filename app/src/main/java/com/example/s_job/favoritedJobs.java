@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +15,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.s_job.Activity_For_n.Create_Post_Company;
 import com.example.s_job.Custom.Custom_lv_DangTin;
 import com.example.s_job.Model.PostForCompany;
+import com.example.s_job.db_firebase.dbFireBase;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -35,11 +40,12 @@ public class favoritedJobs extends AppCompatActivity {
         setEvent();
     }
 
+
     private void setEvent() {
+
         LoadData();
 
 
-        listView.setAdapter(new Custom_lv_DangTin(this, posts));
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,6 +62,30 @@ public class favoritedJobs extends AppCompatActivity {
     }
 
     private void LoadData() {
+
+
+        dbFireBase db = new dbFireBase();
+        db.myRef.child("Post-Company").child(MainActivity1.User).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()) {
+                    for (DataSnapshot key : snapshot.getChildren()) {
+                        PostForCompany data = key.getValue(PostForCompany.class);
+                        posts.add(data);
+                    }
+                    for (PostForCompany a : posts) {
+                        Toast.makeText(favoritedJobs.this, "" + a.getDeline(), Toast.LENGTH_LONG).show();
+                    }
+                    listView.setAdapter(new Custom_lv_DangTin(favoritedJobs.this, posts));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
     }
 
@@ -85,5 +115,9 @@ public class favoritedJobs extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
 
+    }
 }
