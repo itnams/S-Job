@@ -91,7 +91,6 @@ public class Login extends AppCompatActivity {
                                 String passWord = account.passWord;
                                 String position = account.position;
                                 String email = account.email;
-                                trangThai = account.trangthai;
                                 if (edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("Admin")) {
                                     Intent intent = new Intent(getApplicationContext(), GiaoDienAdmin.class);
                                     Toast.makeText(Login.this, "Đăng Nhập Thành Công !", Toast.LENGTH_SHORT).show();

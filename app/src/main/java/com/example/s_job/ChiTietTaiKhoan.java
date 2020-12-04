@@ -25,7 +25,6 @@ public class ChiTietTaiKhoan extends AppCompatActivity {
     EditText edttentaikhoan, edtmatkhau, edtdouutien, edttrangthai;
     Button btnKhoa, btnluu, btnmokhoa;
     DatabaseReference mData;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

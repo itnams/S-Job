@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -46,9 +47,11 @@ public class GiaoDienQLTK extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Account account = dataSnapshot.getValue(Account.class);
-                String email = account.email;
-                if (account.position.equals("Company") || account.position.equals("User")) {
-                    dstaikhoantk.add(email);
+                    String email = account.email;
+                    String position = account.position;
+                    if (account.position.equals("Company") || account.position.equals("User")) {
+                        dstaikhoantk.add(email);
+
                 }
             }
 
@@ -78,6 +81,7 @@ public class GiaoDienQLTK extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 String emailkey = dstaikhoantk.get(position).replace("@gmail.com", "");
+
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(GiaoDienQLTK.this);
                 builder1.setTitle("Vui lòng lựa chọn !");
                 builder1.setMessage("Bạn muốn xóa tài khoản " + emailkey);
