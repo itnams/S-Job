@@ -46,7 +46,7 @@ public class favoritedJobs extends AppCompatActivity {
 
 
     private void setEvent() {
-        
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -6,10 +6,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,8 +28,40 @@ public class Create_Post_Company extends AppCompatActivity {
     EditText tieuDe, deLine, mucLuong, bangCap, nganhNghe, soLuongTuyen, diaChi, moTa;
     ImageButton date, vitri;
     Button troVe, Luu;
+    Spinner tinhThanh;
     PostForCompany postForCompany = new PostForCompany();
-
+    String[] TinhThanhs = {"An Giang",
+            "Bà Rịa - Vũng Tàu", " Bắc Giang",
+            " Bắc Kạn", " Bạc Liêu",
+            "Bắc Ninh", " Bến Tre",
+            "Bình Định", "Bình Dương",
+            "Bình Phước", "Bình Thuận",
+            "Cà Mau", "Cao Bằng",
+            "Đắk Lắk", "Đắk Nông",
+            "Điện Biên", "Đồng Nai",
+            "Đồng Tháp", "Gia Lai",
+            "Hà Giang", "Hà Nam",
+            "Hà Tĩnh", "Hải Dương",
+            "Hậu Giang", "Hòa Bình",
+            "Hưng Yên", "Khánh Hòa",
+            "Kiên Giang", "Kon Tum",
+            "Lai Châu", "Lâm Đồng",
+            "Lạng Sơn", "Lào Cai",
+            "Long An", "Nam Định",
+            "Nghệ An", "Ninh Bình",
+            "Ninh Thuận", "Phú Thọ",
+            "Quảng Bình", "Quảng Nam",
+            "Quảng Ngãi", "Quảng Ninh",
+            "Quảng Trị", "Sóc Trăng",
+            "Sơn La", "Tây Ninh",
+            "Thái Bình", "Thái Nguyên",
+            "Thanh Hóa", "Thừa Thiên Huế",
+            "Tiền Giang", "Trà Vinh",
+            "Tuyên Quang", "Vĩnh Long",
+            "Vĩnh Phúc", "Yên Bái",
+            "Phú Yên", "Cần Thơ",
+            "Đà Nẵng", "Hải Phòng",
+            "Hà Nội", "TP HCM"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +73,14 @@ public class Create_Post_Company extends AppCompatActivity {
 
 
     private void setEvent() {
-
-
+        tinhThanh.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, TinhThanhs));
+        tinhThanh.setSelection(0);
         Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
 
         int currentYear = calendar.get(Calendar.YEAR);
         int currentMonth = calendar.get(Calendar.MONTH) + 1;
         int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
-        deLine.setText(""+currentDay + '/' + currentMonth + '/' + currentYear);
+        deLine.setText("" + currentDay + '/' + currentMonth + '/' + currentYear);
         date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -134,6 +168,7 @@ public class Create_Post_Company extends AppCompatActivity {
         postForCompany.setSoLuong(soLuongTuyen.getText().toString());
         postForCompany.setDiaChi(diaChi.getText().toString());
         postForCompany.setMota(moTa.getText().toString());
+        postForCompany.setTinhThanh(TinhThanhs[tinhThanh.getSelectedItemPosition()]);
         new dbFireBase().NewPoserForCompany(postForCompany);
         Toast.makeText(this, "New Post Is Success!!", Toast.LENGTH_SHORT).show();
     }
@@ -152,7 +187,7 @@ public class Create_Post_Company extends AppCompatActivity {
         vitri = findViewById(R.id.imgBtn_vitri);
         troVe = findViewById(R.id.btn_trove);
         Luu = findViewById(R.id.btn_luu);
-
+        tinhThanh = findViewById(R.id.spn_tinhThanh);
 
         //Sau nay remove
         diaChi.setText("123 Company");
