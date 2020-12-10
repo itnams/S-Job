@@ -6,7 +6,7 @@ import java.util.Map;
 public class PostForCompany {
     Company company;
     String tieuDe;
-    String deline;
+    String deLine;
     String nganhNghe;
     String bangCap;
     String MucLuong;
@@ -18,7 +18,7 @@ public class PostForCompany {
         Map data = new HashMap();
         data.put("nameUser", this.company.nameCompany);
         data.put("tieuDe", this.tieuDe);
-        data.put("deLine", this.deline);
+        data.put("deLine", this.deLine);
         data.put("nganhNghe", this.nganhNghe);
         data.put("bangCap", this.bangCap);
         data.put("MucLuong", this.MucLuong);
@@ -31,7 +31,7 @@ public class PostForCompany {
     public PostForCompany() {
         this.company = new Company();
         this.tieuDe = "";
-        this.deline = "";
+        this.deLine = "";
         this.nganhNghe = "";
         this.bangCap = "";
         this.MucLuong = "";
@@ -43,7 +43,7 @@ public class PostForCompany {
     public PostForCompany(Company company, String tieuDe, String deline, String nganhNghe, String bangCap, String mucLuong, String diaChi, String soLuong, String mota) {
         this.company = company;
         this.tieuDe = tieuDe;
-        this.deline = deline;
+        this.deLine = deline;
         this.nganhNghe = nganhNghe;
         this.bangCap = bangCap;
         MucLuong = mucLuong;
@@ -69,11 +69,11 @@ public class PostForCompany {
     }
 
     public String getDeline() {
-        return deline;
+        return deLine;
     }
 
     public void setDeline(String deline) {
-        this.deline = deline;
+        this.deLine = deline;
     }
 
     public String getNganhNghe() {

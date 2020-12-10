@@ -20,12 +20,14 @@ import com.example.s_job.R;
 import com.example.s_job.db_firebase.dbFireBase;
 
 import java.util.Calendar;
+import java.util.TimeZone;
 
 public class Create_Post_Company extends AppCompatActivity {
     EditText tieuDe, deLine, mucLuong, bangCap, nganhNghe, soLuongTuyen, diaChi, moTa;
     ImageButton date, vitri;
     Button troVe, Luu;
     PostForCompany postForCompany = new PostForCompany();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +37,16 @@ public class Create_Post_Company extends AppCompatActivity {
         setEvent();
     }
 
+
     private void setEvent() {
+
+
+        Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
+
+        int currentYear = calendar.get(Calendar.YEAR);
+        int currentMonth = calendar.get(Calendar.MONTH) + 1;
+        int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
+        deLine.setText(""+currentDay + '/' + currentMonth + '/' + currentYear);
         date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,7 +64,7 @@ public class Create_Post_Company extends AppCompatActivity {
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
 
-                                deLine.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                                deLine.setText(""+dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
 
                             }
                         }, mYear, mMonth, mDay);
@@ -84,6 +95,12 @@ public class Create_Post_Company extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Create_Post_Company.this, Goole_map.class);
                 startActivity(intent);
+            }
+        });
+        troVe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
             }
         });
     }

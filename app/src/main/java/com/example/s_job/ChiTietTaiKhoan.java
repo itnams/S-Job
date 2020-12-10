@@ -23,8 +23,9 @@ import com.google.firebase.database.FirebaseDatabase;
 public class ChiTietTaiKhoan extends AppCompatActivity {
     GiaoDienQLTK giaoDienQLTK;
     EditText edttentaikhoan, edtmatkhau, edtdouutien, edttrangthai;
-    Button btnKhoa,btnluu,btnmokhoa;
+    Button btnKhoa, btnluu, btnmokhoa;
     DatabaseReference mData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +60,7 @@ public class ChiTietTaiKhoan extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int id) {
                                 mData = FirebaseDatabase.getInstance().getReference();
                                 mData.child("User").child(giaoDienQLTK.emailkeyword).child("trangthai").setValue("Bình thường");
-                                Toast.makeText(ChiTietTaiKhoan.this,"Mo Khoa thanh cong",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ChiTietTaiKhoan.this, "Mo Khoa thanh cong", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         });
@@ -87,7 +88,7 @@ public class ChiTietTaiKhoan extends AppCompatActivity {
                                 mData.child("User").child(giaoDienQLTK.emailkeyword).child("nameUser").setValue(edttentaikhoan.getText().toString());
                                 mData.child("User").child(giaoDienQLTK.emailkeyword).child("passWord").setValue(edtmatkhau.getText().toString());
                                 mData.child("User").child(giaoDienQLTK.emailkeyword).child("douutien").setValue(edtdouutien.getText().toString());
-                                Toast.makeText(ChiTietTaiKhoan.this,"Luu thanh cong",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ChiTietTaiKhoan.this, "Luu thanh cong", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         });
@@ -114,7 +115,7 @@ public class ChiTietTaiKhoan extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int id) {
                                 mData = FirebaseDatabase.getInstance().getReference();
                                 mData.child("User").child(giaoDienQLTK.emailkeyword).child("trangthai").setValue("Khoa");
-                                Toast.makeText(ChiTietTaiKhoan.this,"Khoa thanh cong",Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ChiTietTaiKhoan.this, "Khoa thanh cong", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         });

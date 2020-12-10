@@ -66,7 +66,7 @@ public class GiaoDienChapNhanYCDN extends AppCompatActivity {
 
             }
         });
-         arrayAdapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item,dstaikhoanyc);
+        arrayAdapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, dstaikhoanyc);
         listviewtk.setAdapter(arrayAdapter);
         listviewtk.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -96,16 +96,17 @@ public class GiaoDienChapNhanYCDN extends AppCompatActivity {
                                         String position = account.position;
                                         String douutien = account.douutien;
                                         String trangthai = account.trangthai;
-                                        if(dstaikhoanyc.get(Integer.parseInt(String.valueOf(position1))).equals((nameUser + " " + phone).toString())) {
+                                        if (dstaikhoanyc.get(Integer.parseInt(String.valueOf(position1))).equals((nameUser + " " + phone).toString())) {
                                             Account account1 = new Account(nameUser, email, passWord, phone, address, position, douutien, trangthai);
                                             //Nhan ------------
                                             Company ad = new Company();
-                                            ad.setNameCompany(nameUser);
+                                            ad.setEmail(email.replace("@gmail.com", ""));
                                             new dbFireBase().addDataToCompany(ad);
                                             // ------------
                                             mData.child("User").child(email.toString().replace("@gmail.com", "")).setValue(account1);
                                             mData.child("Pending").child(email.toString().replace("@gmail.com", "")).removeValue();
-                                        };
+                                        }
+                                        ;
                                     }
 
                                     @Override

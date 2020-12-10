@@ -48,6 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="2dp"
+                android:layout_marginLeft="8dp"
                 android:textColor="@color/black"
                 android:fontFamily="serif-monospace"
                 android:textSize="24dp"
@@ -176,6 +177,7 @@
         <!--                android:textSize="18sp" />-->
         <!--        </LinearLayout>-->
 
+
         <LinearLayout
             android:id="@+id/your_Posts"
             android:layout_width="match_parent"
@@ -210,6 +212,8 @@
             android:layout_marginLeft="4dp"
             android:orientation="horizontal">
 
+
+
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
@@ -226,6 +230,29 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/change_Password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical='16dp'
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginHorizontal="6dp"
+                android:src="@drawable/pin" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="@string/changepass"
+                android:textSize="18sp" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/logout"

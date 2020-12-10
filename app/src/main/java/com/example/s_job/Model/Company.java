@@ -91,7 +91,7 @@ public class Company {
     public Map toMapFormUser() {
         HashMap resuflt = new HashMap();
         resuflt.put("address", this.diaChi);
-        resuflt.put("email", this.Email);
+        resuflt.put("email", this.Email+"@gmail.com");
         resuflt.put("phone", this.sdt);
         resuflt.put("passWord", this.pass);
 

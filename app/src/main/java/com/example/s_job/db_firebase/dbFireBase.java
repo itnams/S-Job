@@ -21,33 +21,58 @@ public class dbFireBase {
 
     }
 
+    public void removePost(PostForCompany postForCompany) {
+        myRef.child("Post-Company")
+                .child(postForCompany.getCompany().getEmail())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            for (DataSnapshot key : snapshot.getChildren()) {
+                                if (postForCompany.getTieuDe().equals(key.getValue(PostForCompany.class).getTieuDe())
+                                        && postForCompany.getDeline().equals(key.getValue(PostForCompany.class).getDeline())) {
+                                    myRef.child("Post-Company")
+                                            .child(postForCompany.getCompany().getEmail()).child(key.getKey()).removeValue();
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+    }
+
     public void upDateCompanyFormUser(Company company) {
         myRef = database.getReference("User");
-        myRef.child(company.getNameCompany()).updateChildren(company.toMapFormUser());
+        myRef.child(company.getEmail()).updateChildren(company.toMapFormUser());
     }
 
     public void addDataToCompany(Company User) {
 
-        myRef.child("Additional-Company").child(User.getNameCompany()).setValue(User.toMapFormCompany());
+        myRef.child("Additional-Company").child(User.getEmail()).setValue(User.toMapFormCompany());
     }
 
     public void upDateCompanyFormCompany(Company company) {
 
-        myRef.child("Additional-Company").child(company.getNameCompany()).updateChildren(company.toMapFormCompany());
+        myRef.child("Additional-Company").child(company.getEmail()).updateChildren(company.toMapFormCompany());
     }
 
     public void NewPoserForCompany(PostForCompany postForCompany) {
         myRef.child("Post-Company")
-                .child(postForCompany.getCompany().getNameCompany()).addListenerForSingleValueEvent(new ValueEventListener() {
+                .child(postForCompany.getCompany().getEmail()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()){
                     myRef.child("Post-Company")
-                            .child(postForCompany.getCompany().getNameCompany())
+                            .child(postForCompany.getCompany().getEmail())
                             .child( (snapshot.getChildrenCount())+"" ).setValue(postForCompany.toMapCompany());
                 }else {
                     myRef.child("Post-Company")
-                            .child(postForCompany.getCompany().getNameCompany())
+                            .child(postForCompany.getCompany().getEmail())
                             .child( ""+snapshot.getChildrenCount()).setValue(postForCompany.toMapCompany());
                 }
 

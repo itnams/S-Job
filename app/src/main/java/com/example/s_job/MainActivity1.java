@@ -1,20 +1,14 @@
 package com.example.s_job;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.s_job.Datacode.Account;
 import com.example.s_job.Fragment.Company_Notification;
 import com.example.s_job.Fragment.Company_Profile;
-import com.example.s_job.Model.Company;
-import com.example.s_job.db_firebase.dbFireBase;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.ValueEventListener;
 
 import me.ibrahimsn.lib.OnItemSelectedListener;
 import me.ibrahimsn.lib.SmoothBottomBar;
@@ -22,7 +16,7 @@ import me.ibrahimsn.lib.SmoothBottomBar;
 public class MainActivity1 extends AppCompatActivity {
     private FragmentTransaction fragmentTransaction;
     private SmoothBottomBar smoothBottomBar;
-    static public String User = "company";
+    static public String User = "";
 
 
     @Override
@@ -30,7 +24,11 @@ public class MainActivity1 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conpany_home);
         //login thanh cong, chuyển intent qua màng hình inten có 1 dữ liệu , intent -> username
-
+        if (getIntent() != null) {
+            User = getIntent().getStringExtra("email");
+        } else {
+            Toast.makeText(this, "Is Not Data!!!", Toast.LENGTH_SHORT).show();
+        }
         setControl();
         setEvent();
 
