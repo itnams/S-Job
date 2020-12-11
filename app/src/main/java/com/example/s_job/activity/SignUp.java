@@ -65,7 +65,6 @@ DatabaseReference mData;
                             Toast.makeText(SignUp.this,"Đăng ký thành công !",Toast.LENGTH_SHORT).show();
                         }
                         finish();
-
                 }
                 else
                 {
