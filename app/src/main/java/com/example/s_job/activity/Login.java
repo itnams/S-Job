@@ -39,7 +39,6 @@ public class Login extends AppCompatActivity {
     DatabaseReference mData;
     int n = 0;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

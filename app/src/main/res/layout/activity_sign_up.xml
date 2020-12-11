@@ -88,6 +88,7 @@
                     android:paddingHorizontal="4dp"
                     android:hint="@string/phone"
                     android:id="@+id/phone"
+                    android:inputType="number"
                     android:layout_width="match_parent"
                     android:layout_height="40sp"
                     android:background="@drawable/textinput" />
