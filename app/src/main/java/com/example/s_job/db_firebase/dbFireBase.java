@@ -66,7 +66,8 @@ public class dbFireBase {
 
     public void NewPoserForCompany(PostForCompany postForCompany) {
         myRef.child("Post-Company")
-                .child(postForCompany.getCompany().getEmail()).addListenerForSingleValueEvent(new ValueEventListener() {
+                .child(postForCompany.getCompany().getEmail())
+                .addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
