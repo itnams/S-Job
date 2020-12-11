@@ -2,7 +2,6 @@ package com.example.s_job;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
@@ -11,7 +10,7 @@ import com.example.s_job.Datacode.Account;
 import com.example.s_job.Fragment.User_Home;
 import com.example.s_job.Fragment.User_Notification;
 import com.example.s_job.Fragment.User_Profile;
-import com.example.s_job.Interrface.FragmentInterface;
+
 
 import java.io.Serializable;
 
@@ -73,6 +72,7 @@ private Account account;
 //        sprDiaDiem.setAdapter(arrayAdapter);
 
     }
+
 
 
 //    private void init() {

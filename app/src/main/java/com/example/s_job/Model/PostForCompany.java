@@ -1,7 +1,9 @@
 package com.example.s_job.Model;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TimeZone;
 
 public class PostForCompany {
     Company company;
@@ -11,6 +13,7 @@ public class PostForCompany {
     String bangCap;
     String MucLuong;
     String diaChi;
+    String tinhThanh;
     String SoLuong;
     String Mota;
 
@@ -23,8 +26,23 @@ public class PostForCompany {
         data.put("bangCap", this.bangCap);
         data.put("MucLuong", this.MucLuong);
         data.put("diaChi", this.diaChi);
+        data.put("tinhThanh", this.tinhThanh);
         data.put("soLuongTuyen", this.SoLuong);
         data.put("Mota", this.Mota);
+        return data;
+    }
+
+    public Map ToMap_AllPost() {
+        Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
+
+        int currentYear = calendar.get(Calendar.YEAR);
+        int currentMonth = calendar.get(Calendar.MONTH) + 1;
+        int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
+        Map data = new HashMap();
+        data.put("emai", this.company.getEmail());
+        data.put("tinhThanh", this.tinhThanh);
+        data.put("ngayDang", "" + currentDay + "/" + currentMonth + "/" + currentYear);
+
         return data;
     }
 
@@ -36,8 +54,18 @@ public class PostForCompany {
         this.bangCap = "";
         this.MucLuong = "";
         this.diaChi = "";
+        this.tinhThanh = "";
         this.SoLuong = "";
         this.Mota = "";
+    }
+
+
+    public String getTinhThanh() {
+        return tinhThanh;
+    }
+
+    public void setTinhThanh(String tinhThanh) {
+        this.tinhThanh = tinhThanh;
     }
 
     public PostForCompany(Company company, String tieuDe, String deline, String nganhNghe, String bangCap, String mucLuong, String diaChi, String soLuong, String mota) {
@@ -46,10 +74,10 @@ public class PostForCompany {
         this.deLine = deline;
         this.nganhNghe = nganhNghe;
         this.bangCap = bangCap;
-        MucLuong = mucLuong;
+        this.MucLuong = mucLuong;
         this.diaChi = diaChi;
-        SoLuong = soLuong;
-        Mota = mota;
+        this.SoLuong = soLuong;
+        this.Mota = mota;
     }
 
     public Company getCompany() {

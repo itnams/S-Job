@@ -67,13 +67,17 @@ public class dbFireBase {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()){
+
                     myRef.child("Post-Company")
                             .child(postForCompany.getCompany().getEmail())
-                            .child( (snapshot.getChildrenCount())+"" ).setValue(postForCompany.toMapCompany());
+                            .child((snapshot.getChildrenCount()) + "").setValue(postForCompany.toMapCompany());
+                    sendToAll_post(postForCompany);
                 }else {
+
                     myRef.child("Post-Company")
                             .child(postForCompany.getCompany().getEmail())
-                            .child( ""+snapshot.getChildrenCount()).setValue(postForCompany.toMapCompany());
+                            .child("" + snapshot.getChildrenCount()).setValue(postForCompany.toMapCompany());
+                    sendToAll_post(postForCompany);
                 }
 
             }
@@ -87,5 +91,20 @@ public class dbFireBase {
 
     }
 
+    public void sendToAll_post(PostForCompany postForCompany) {
+
+        myRef = database.getReference("All-Post");
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                myRef.child(snapshot.getChildrenCount() + "").setValue(postForCompany.ToMap_AllPost());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 
 }

@@ -61,5 +61,6 @@
     <string name="trove">Trở Về</string>
     <string name="dsDangTin">Danh Sách Đăng Tin</string>
     <string name="ngoiSao">0</string>
+    <string name="khuVucTuyen">Khu Vực Tuyển</string>
     <!--    Nhan Custom String-->
 </resources>
