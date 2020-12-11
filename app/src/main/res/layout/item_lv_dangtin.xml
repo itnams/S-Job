@@ -28,6 +28,16 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageButton
+        android:id="@+id/imgbtn_remove"
+        android:background="@color/daApp"
+        android:src="@drawable/remove_n"
+        android:layout_width="50dp"
+        android:layout_height="50dp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -59,7 +69,7 @@
                         android:text="@string/diachi"
                         android:textSize="19dp" />
                 </LinearLayout>
-
+</LinearLayout>
                 <TextView
                     android:id="@+id/tv_mota"
                     android:layout_width="wrap_content"

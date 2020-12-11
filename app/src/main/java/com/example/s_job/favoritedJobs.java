@@ -61,41 +61,9 @@ public class favoritedJobs extends AppCompatActivity {
             }
         });
 
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                LinearLayout ln = view.findViewById(R.id.ln_selected_item);
-                Toast.makeText(favoritedJobs.this, "click", Toast.LENGTH_LONG).show();
-                return false;
-            }
-        });
 
-        listView.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                PostForCompany key = posts.get(i);
-                AlertDialog.Builder builder = new AlertDialog.Builder(favoritedJobs.this);
-                builder.setTitle("Thông Báo!!")
-                        .setMessage("Bạn Chắc Chắn Có Muốn Xoá " + key.getTieuDe() + " ?")
-                        .setNegativeButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                new dbFireBase().removePost(key);
-                            }
-                        })
-                        .setPositiveButton("CANCEL", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.dismiss();
-                            }
-                        }).create().show();
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
 
-            }
-        });
 
     }
 
