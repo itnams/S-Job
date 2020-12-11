@@ -10,6 +10,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+
 public class dbFireBase {
     public FirebaseDatabase database;
     public DatabaseReference myRef;
@@ -29,8 +31,9 @@ public class dbFireBase {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
                             for (DataSnapshot key : snapshot.getChildren()) {
-                                if (postForCompany.getTieuDe().equals(key.getValue(PostForCompany.class).getTieuDe())
-                                        && postForCompany.getDeline().equals(key.getValue(PostForCompany.class).getDeline())) {
+                                HashMap map = key.getValue(HashMap.class);
+                                if (postForCompany.getTieuDe().equals(map.get("tieuDe").toString())
+                                        && postForCompany.getDeline().equals(map.get("deLine").toString())) {
                                     myRef.child("Post-Company")
                                             .child(postForCompany.getCompany().getEmail()).child(key.getKey()).removeValue();
                                     break;
@@ -66,14 +69,18 @@ public class dbFireBase {
                 .child(postForCompany.getCompany().getEmail()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
+                if (snapshot.exists()) {
+
                     myRef.child("Post-Company")
                             .child(postForCompany.getCompany().getEmail())
-                            .child( (snapshot.getChildrenCount())+"" ).setValue(postForCompany.toMapCompany());
-                }else {
+                            .child((snapshot.getChildrenCount()) + "").setValue(postForCompany.toMapCompany());
+                    sendToAll_post(postForCompany);
+                } else {
+
                     myRef.child("Post-Company")
                             .child(postForCompany.getCompany().getEmail())
-                            .child( ""+snapshot.getChildrenCount()).setValue(postForCompany.toMapCompany());
+                            .child("" + snapshot.getChildrenCount()).setValue(postForCompany.toMapCompany());
+                    sendToAll_post(postForCompany);
                 }
 
             }
@@ -87,5 +94,20 @@ public class dbFireBase {
 
     }
 
+    public void sendToAll_post(PostForCompany postForCompany) {
+
+        myRef = database.getReference("All-Post");
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                myRef.child(snapshot.getChildrenCount() + "").setValue(postForCompany.ToMap_AllPost());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
 
 }
