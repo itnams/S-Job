@@ -68,15 +68,15 @@ public class dbFireBase {
         myRef.child("Post-Company")
                 .child(postForCompany.getCompany().getEmail())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
 
-                    myRef.child("Post-Company")
-                            .child(postForCompany.getCompany().getEmail())
-                            .child((snapshot.getChildrenCount()) + "").setValue(postForCompany.toMapCompany());
-                    sendToAll_post(postForCompany);
-                } else {
+                            myRef.child("Post-Company")
+                                    .child(postForCompany.getCompany().getEmail())
+                                    .child((snapshot.getChildrenCount()) + "").setValue(postForCompany.toMapCompany());
+                            sendToAll_post(postForCompany);
+                        } else {
 
                     myRef.child("Post-Company")
                             .child(postForCompany.getCompany().getEmail())
