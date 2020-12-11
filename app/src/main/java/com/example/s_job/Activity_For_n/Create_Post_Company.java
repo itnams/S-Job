@@ -159,7 +159,7 @@ public class Create_Post_Company extends AppCompatActivity {
     }
 
     private void SendToDataBase() {
-        //postForCompany.setCompany(Company_Profile.company);
+        postForCompany.setCompany(Company_Profile.company);
         postForCompany.setTieuDe(tieuDe.getText().toString());
         postForCompany.setDeline(deLine.getText().toString());
         postForCompany.setMucLuong(mucLuong.getText().toString());

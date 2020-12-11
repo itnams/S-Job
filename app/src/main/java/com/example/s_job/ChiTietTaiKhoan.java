@@ -101,20 +101,20 @@ public class ChiTietTaiKhoan extends AppCompatActivity {
             public void onClick(View v) {
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(ChiTietTaiKhoan.this);
                 builder1.setTitle("Vui lòng lựa chọn !");
-                builder1.setMessage("Ban muon khoa tai khoan " + giaoDienQLTK.emailkeyword);
+                builder1.setMessage("Bạn muốn xóa tài khoản này !" + giaoDienQLTK.emailkeyword);
                 builder1.setCancelable(true);
-                builder1.setPositiveButton("Refuse",
+                builder1.setPositiveButton("Từ Chối",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 dialog.cancel();
                             }
                         });
-                builder1.setNegativeButton("Accept",
+                builder1.setNegativeButton("Đồng ý",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 mData = FirebaseDatabase.getInstance().getReference();
                                 mData.child("User").child(giaoDienQLTK.emailkeyword).child("trangthai").setValue("Khoa");
-                                Toast.makeText(ChiTietTaiKhoan.this, "Khoa thanh cong", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ChiTietTaiKhoan.this, "Khóa thành công", Toast.LENGTH_SHORT).show();
                                 finish();
                             }
                         });

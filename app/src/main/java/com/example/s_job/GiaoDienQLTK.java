@@ -97,7 +97,10 @@ public class GiaoDienQLTK extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 mData.child("User").child(emailkey).removeValue();
+                                dstaikhoantk.remove(position);
+                                arrayAdapter.notifyDataSetChanged();
                                 Toast.makeText(GiaoDienQLTK.this, "Xóa thành công", Toast.LENGTH_SHORT).show();
+
                             }
                         });
                 AlertDialog alert11 = builder1.create();
