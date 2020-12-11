@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.s_job.DataBase.dbFireBase;
 import com.example.s_job.Datacode.Account;
 import com.example.s_job.activity.Login;
 import com.example.s_job.activity.SignUp;
@@ -46,9 +48,11 @@ public class GiaoDienQLTK extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Account account = dataSnapshot.getValue(Account.class);
-                String email = account.email;
-                if (account.position.equals("Company") || account.position.equals("User")) {
-                    dstaikhoantk.add(email);
+                    String email = account.email;
+                    String position = account.position;
+                    if (account.position.equals("Company") || account.position.equals("User")) {
+                        dstaikhoantk.add(email);
+
                 }
             }
 
@@ -78,6 +82,7 @@ public class GiaoDienQLTK extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 String emailkey = dstaikhoantk.get(position).replace("@gmail.com", "");
+
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(GiaoDienQLTK.this);
                 builder1.setTitle("Vui lòng lựa chọn !");
                 builder1.setMessage("Bạn muốn xóa tài khoản " + emailkey);
@@ -92,7 +97,10 @@ public class GiaoDienQLTK extends AppCompatActivity {
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 mData.child("User").child(emailkey).removeValue();
+                                dstaikhoantk.remove(position);
+                                arrayAdapter.notifyDataSetChanged();
                                 Toast.makeText(GiaoDienQLTK.this, "Xóa thành công", Toast.LENGTH_SHORT).show();
+
                             }
                         });
                 AlertDialog alert11 = builder1.create();

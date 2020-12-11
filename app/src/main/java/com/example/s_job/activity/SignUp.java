@@ -58,13 +58,13 @@ DatabaseReference mData;
                     {
                         if(account.email.equals("")||account.address.equals("")||account.douutien.equals("")||account.nameUser.equals("")||account.passWord.equals("")||account.phone.equals("")||account.position.equals(""))
                         {
-                            Toast.makeText(SignUp.this,"Sign Up Fail",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUp.this,"Vui lòng nhập đầy đủ thông tin !",Toast.LENGTH_SHORT).show();
 
                         }
                         else
                         {
                         mData.child("Pending").child(email.getText().toString().replace("@gmail.com","")).setValue(account);
-                            Toast.makeText(SignUp.this,"Sign Up OK",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUp.this,"Vui lòng chờ xét duyệt !",Toast.LENGTH_SHORT).show();
                             finish();
                         }
                     }
@@ -72,13 +72,13 @@ DatabaseReference mData;
                     {
                         if(account.email.equals("")||account.address.equals("")||account.douutien.equals("")||account.nameUser.equals("")||account.passWord.equals("")||account.phone.equals("")||account.position.equals(""))
                         {
-                            Toast.makeText(SignUp.this,"Sign Up Fail",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUp.this,"Vui lòng nhập đầy đủ thông tin !",Toast.LENGTH_SHORT).show();
 
                         }
                         else
                         {
                             mData.child("User").child(email.getText().toString().replace("@gmail.com","")).setValue(account);
-                            Toast.makeText(SignUp.this,"Sign Up OK",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUp.this,"Đăng ký thành công !",Toast.LENGTH_SHORT).show();
                             finish();
                         }
                     }
@@ -86,7 +86,7 @@ DatabaseReference mData;
                 }
                 else
                 {
-                    Toast.makeText(SignUp.this,"Sign Up fail",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this,"Đăng ký thất bại !",Toast.LENGTH_SHORT).show();
                 }
             }
         });

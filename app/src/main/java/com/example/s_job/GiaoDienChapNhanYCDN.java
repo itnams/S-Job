@@ -105,8 +105,9 @@ public class GiaoDienChapNhanYCDN extends AppCompatActivity {
                                             // ------------
                                             mData.child("User").child(email.toString().replace("@gmail.com", "")).setValue(account1);
                                             mData.child("Pending").child(email.toString().replace("@gmail.com", "")).removeValue();
+                                            dstaikhoanyc.remove(position1);
+                                            arrayAdapter.notifyDataSetChanged();
                                         }
-                                        ;
                                     }
 
                                     @Override
