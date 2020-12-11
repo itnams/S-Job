@@ -57,17 +57,18 @@ DatabaseReference mData;
                     if(chucvu.equals("Company"))
                     {
                         mData.child("Pending").child(email.getText().toString().replace("@gmail.com","")).setValue(account);
+                        Toast.makeText(SignUp.this,"Vui lòng chờ xét duyệt !",Toast.LENGTH_SHORT).show();
                     }
                     else
                     {
                         mData.child("User").child(email.getText().toString().replace("@gmail.com","")).setValue(account);
+                        Toast.makeText(SignUp.this,"Đăng ký thành công !",Toast.LENGTH_SHORT).show();
                     }
-                    Toast.makeText(SignUp.this,"Sign Up Success",Toast.LENGTH_SHORT).show();
                     finish();
                 }
                 else
                 {
-                    Toast.makeText(SignUp.this,"Sign Up fail",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this,"Đăng ký thất bại !",Toast.LENGTH_SHORT).show();
                 }
             }
         });
