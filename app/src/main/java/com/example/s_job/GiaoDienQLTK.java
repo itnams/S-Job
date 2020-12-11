@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.s_job.DataBase.dbFireBase;
 import com.example.s_job.Datacode.Account;
 import com.example.s_job.activity.Login;
 import com.example.s_job.activity.SignUp;
