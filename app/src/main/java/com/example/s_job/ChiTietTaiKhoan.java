@@ -72,7 +72,7 @@ public class ChiTietTaiKhoan extends AppCompatActivity {
             public void onClick(View v) {
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(ChiTietTaiKhoan.this);
                 builder1.setTitle("Vui lòng lựa chọn !");
-                builder1.setMessage("Ban muon luu");
+                builder1.setMessage("Bạn muốn lưu !");
                 builder1.setCancelable(true);
                 builder1.setPositiveButton("Refuse",
                         new DialogInterface.OnClickListener() {
