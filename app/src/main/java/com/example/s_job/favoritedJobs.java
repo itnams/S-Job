@@ -8,7 +8,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -44,10 +46,7 @@ public class favoritedJobs extends AppCompatActivity {
 
 
     private void setEvent() {
-
-
-
-
+        
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,46 +60,12 @@ public class favoritedJobs extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                PostForCompany key = posts.get(i);
-                AlertDialog.Builder builder = new AlertDialog.Builder(favoritedJobs.this);
-                builder.setTitle("Thông Báo!!")
-                        .setMessage("Bạn Chắc Chắn Có Muốn Xoá " + key.getTieuDe() + " ?")
-                        .setNegativeButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                new dbFireBase().removePost(key);
-                            }
-                        })
-                        .setPositiveButton("CANCEL", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.dismiss();
-                            }
-                        }).create().show();
-            }
-        });
+
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                PostForCompany key = posts.get(i);
-                AlertDialog.Builder builder = new AlertDialog.Builder(favoritedJobs.this);
-                builder.setTitle("Thông Báo!!")
-                        .setMessage("Bạn Chắc Chắn Có Muốn Xoá " + key.getTieuDe() + " ?")
-                        .setNegativeButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                new dbFireBase().removePost(key);
-                            }
-                        })
-                        .setPositiveButton("CANCEL", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.dismiss();
-                            }
-                        }).create().show();
+                LinearLayout ln = view.findViewById(R.id.ln_selected_item);
+                Toast.makeText(favoritedJobs.this, "click", Toast.LENGTH_LONG).show();
                 return false;
             }
         });
