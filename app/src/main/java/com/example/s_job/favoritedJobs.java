@@ -1,23 +1,19 @@
 package com.example.s_job;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.s_job.Activity_For_n.Create_Post_Company;
 import com.example.s_job.Custom.Custom_lv_DangTin;
+import com.example.s_job.Fragment.Company_Profile;
 import com.example.s_job.Model.PostForCompany;
 import com.example.s_job.db_firebase.dbFireBase;
 import com.google.firebase.database.DataSnapshot;
@@ -76,14 +72,19 @@ public class favoritedJobs extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
+                    posts.clear();
                     for (DataSnapshot key : snapshot.getChildren()) {
+
                         PostForCompany data = key.getValue(PostForCompany.class);
+                        data.setCompany(Company_Profile.company);
+                        data.setKey(key.getKey());
                         posts.add(data);
                     }
                     adapter = new Custom_lv_DangTin(favoritedJobs.this, posts);
-                    adapter.notifyDataSetChanged();
-                    listView.setAdapter(adapter);
 
+                    listView.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+                    return;
                 }
             }
 
@@ -128,6 +129,7 @@ public class favoritedJobs extends AppCompatActivity {
 
 
         super.onResume();
+
     }
 
     @Override
@@ -135,5 +137,6 @@ public class favoritedJobs extends AppCompatActivity {
         posts.clear();
         LoadData();
         super.onStop();
+
     }
 }

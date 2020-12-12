@@ -2,6 +2,7 @@ package com.example.s_job.Custom;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
+import com.example.s_job.Activity_For_n.Create_Post_Company;
 import com.example.s_job.Model.PostForCompany;
 import com.example.s_job.R;
 import com.example.s_job.db_firebase.dbFireBase;
@@ -25,7 +27,7 @@ public class Custom_lv_DangTin extends BaseAdapter {
 
     static class Hoder {
         TextView tieude, deline, diachi, mota;
-        ImageButton remove;
+        ImageButton remove,edit;
     }
 
 
@@ -50,7 +52,7 @@ public class Custom_lv_DangTin extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(int position, View view, ViewGroup viewGroup) {
         view = LayoutInflater.from(activity.getApplicationContext()).inflate(R.layout.item_lv_dangtin, viewGroup, false);
         Hoder hoder = new Hoder();
         hoder.tieude = view.findViewById(R.id.tv_tieude);
@@ -58,14 +60,17 @@ public class Custom_lv_DangTin extends BaseAdapter {
         hoder.diachi = view.findViewById(R.id.tv_diachi);
         hoder.mota = view.findViewById(R.id.tv_mota);
         hoder.remove = view.findViewById(R.id.imgbtn_remove);
+        hoder.edit = view.findViewById(R.id.btn_edit);
 
 
-        PostForCompany data = objects.get(i);
+        PostForCompany data = objects.get(position);
 
         hoder.tieude.setText(data.getTieuDe());
         hoder.deline.setText(data.getDeline());
         hoder.diachi.setText(data.getDiaChi());
-        hoder.mota.setText(data.getMota().substring(0, data.getMota().length() / 2) + " ...");
+        hoder.mota.setText(
+                data.getMota().length()>20?data.getMota().substring(0, data.getMota().length() / 2) + " ...":data.getMota()
+        );
 
 
         hoder.remove.setOnClickListener(new View.OnClickListener() {
@@ -80,6 +85,8 @@ public class Custom_lv_DangTin extends BaseAdapter {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 new dbFireBase().removePost(data, activity);
+                                objects.clear();
+                                notifyDataSetChanged();
                             }
                         })
                         .setPositiveButton("CANCEL", new DialogInterface.OnClickListener() {
@@ -88,10 +95,19 @@ public class Custom_lv_DangTin extends BaseAdapter {
                                 dialogInterface.dismiss();
                             }
                         }).create().show();
-                Toast.makeText(activity, "Click", Toast.LENGTH_SHORT).show();
+
             }
         });
-        
+
+        hoder.edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(activity, "Send Key And show data in create post", Toast.LENGTH_SHORT).show();
+//                Intent intent=new Intent(activity, Create_Post_Company.class);
+//                activity.startActivity(intent);
+            }
+        });
+
         hoder = (Hoder) view.getTag();
         view.setTag(hoder);
         return view;
