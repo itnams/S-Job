@@ -1,5 +1,7 @@
 package com.example.s_job.db_firebase;
 
+import android.app.Activity;
+
 import androidx.annotation.NonNull;
 
 import com.example.s_job.Model.Company;
@@ -23,23 +25,18 @@ public class dbFireBase {
 
     }
 
-    public void removePost(PostForCompany postForCompany) {
+    public void removePost(PostForCompany postForCompany, Activity activity) {
         myRef.child("Post-Company")
                 .child(postForCompany.getCompany().getEmail())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
-                            for (DataSnapshot key : snapshot.getChildren()) {
-                                HashMap map = key.getValue(HashMap.class);
-                                if (postForCompany.getTieuDe().equals(map.get("tieuDe").toString())
-                                        && postForCompany.getDeline().equals(map.get("deLine").toString())) {
-                                    myRef.child("Post-Company")
-                                            .child(postForCompany.getCompany().getEmail()).child(key.getKey()).removeValue();
-                                    break;
-                                }
-                            }
+
+                        HashMap map = (HashMap) snapshot.getValue();
+                        for (int i = 0; i < snapshot.getChildrenCount(); i++) {
+
                         }
+
                     }
 
                     @Override
@@ -71,16 +68,16 @@ public class dbFireBase {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
-
+                            postForCompany.setKey("" + snapshot.getChildrenCount());
                             myRef.child("Post-Company")
                                     .child(postForCompany.getCompany().getEmail())
                                     .child((snapshot.getChildrenCount()) + "").setValue(postForCompany.toMapCompany());
                             sendToAll_post(postForCompany);
                         } else {
-
-                    myRef.child("Post-Company")
-                            .child(postForCompany.getCompany().getEmail())
-                            .child("" + snapshot.getChildrenCount()).setValue(postForCompany.toMapCompany());
+                            postForCompany.setKey("" + snapshot.getChildrenCount());
+                            myRef.child("Post-Company")
+                                    .child(postForCompany.getCompany().getEmail())
+                                    .child("" + snapshot.getChildrenCount()).setValue(postForCompany.toMapCompany());
                     sendToAll_post(postForCompany);
                 }
 
