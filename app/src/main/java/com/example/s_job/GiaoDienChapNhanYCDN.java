@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,6 +21,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -61,6 +63,7 @@ public class GiaoDienChapNhanYCDN extends AppCompatActivity {
 
             }
 
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -71,14 +74,48 @@ public class GiaoDienChapNhanYCDN extends AppCompatActivity {
         listviewtk.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position1, long id) {
+                String item = dstaikhoanyc.get(position1);
+                String[] namevssdt=item.split(" ");
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(GiaoDienChapNhanYCDN.this);
                 builder1.setTitle("Vui lòng lựa chọn !");
                 builder1.setMessage("Click Đồng ý để chấp nhận yêu cầu, Click Từ chối để xóa yêu cầu");
-                builder1.setCancelable(true);
                 builder1.setPositiveButton("Từ chối",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
+                            mData.child("Pending").addChildEventListener(new ChildEventListener() {
+                                @Override
+                                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                                    Account ac = snapshot.getValue(Account.class);
+                                    if(namevssdt[0].equals(ac.nameUser)&&namevssdt[1].equals(ac.getPhone())){
+
+                                        mData.child("Pending").child(ac.getEmail().replace("@gmail.com", "")).removeValue();
+                                        dstaikhoanyc.remove(position1);
+                                        arrayAdapter.notifyDataSetChanged();
+                                        return;
+                                    }
+
+                                }
+
+                                @Override
+                                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                                }
+
+                                @Override
+                                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                                }
+
+                                @Override
+                                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
                             }
                         });
                 builder1.setNegativeButton("Đồng ý",
