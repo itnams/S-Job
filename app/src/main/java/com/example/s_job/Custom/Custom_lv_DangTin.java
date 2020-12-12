@@ -15,7 +15,6 @@ import androidx.appcompat.app.AlertDialog;
 import com.example.s_job.Model.PostForCompany;
 import com.example.s_job.R;
 import com.example.s_job.db_firebase.dbFireBase;
-import com.example.s_job.favoritedJobs;
 
 import java.util.ArrayList;
 
@@ -80,7 +79,7 @@ public class Custom_lv_DangTin extends BaseAdapter {
                         .setNegativeButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                new dbFireBase().removePost(data);
+                                new dbFireBase().removePost(data, activity);
                             }
                         })
                         .setPositiveButton("CANCEL", new DialogInterface.OnClickListener() {
