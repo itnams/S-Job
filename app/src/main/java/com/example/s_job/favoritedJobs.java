@@ -72,19 +72,16 @@ public class favoritedJobs extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    posts.clear();
                     for (DataSnapshot key : snapshot.getChildren()) {
-
                         PostForCompany data = key.getValue(PostForCompany.class);
                         data.setCompany(Company_Profile.company);
                         data.setKey(key.getKey());
                         posts.add(data);
                     }
                     adapter = new Custom_lv_DangTin(favoritedJobs.this, posts);
-
-                    listView.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
-                    return;
+                    listView.setAdapter(adapter);
+
                 }
             }
 
@@ -129,7 +126,6 @@ public class favoritedJobs extends AppCompatActivity {
 
 
         super.onResume();
-
     }
 
     @Override
@@ -137,6 +133,5 @@ public class favoritedJobs extends AppCompatActivity {
         posts.clear();
         LoadData();
         super.onStop();
-
     }
 }
