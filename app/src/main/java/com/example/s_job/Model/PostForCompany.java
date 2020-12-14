@@ -49,6 +49,8 @@ public class PostForCompany {
         int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
         Map data = new HashMap();
         data.put("emai", this.company.getEmail());
+        data.put("tieuDe", this.tieuDe);
+        data.put("Mota", this.Mota);
         data.put("tinhThanh", this.tinhThanh);
         data.put("key", this.Key);
         data.put("ngayDang", "" + currentDay + "/" + currentMonth + "/" + currentYear);
