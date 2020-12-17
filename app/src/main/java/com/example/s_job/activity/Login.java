@@ -92,7 +92,7 @@ public class Login extends AppCompatActivity {
                                 String nameUser = account.nameUser;
                                 String passWord = account.passWord;
                                 String position = account.position;
-                                String douutien = account.douutien;
+                                String trangThai1 = account.trangthai;
                                 String email = account.email;
                                 if (edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("Admin")) {
                                     Intent intent = new Intent(getApplicationContext(), GiaoDienAdmin.class);
@@ -104,7 +104,7 @@ public class Login extends AppCompatActivity {
 
                                 } else if (edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("User")) {
                                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                        if(trangThai.equals("Khoa"))
+                                        if(trangThai1.equals("Khoa"))
                                         {
                                             AlertDialog.Builder builder1 = new AlertDialog.Builder(Login.this);
                                             builder1.setTitle("---Thông Báo---");
@@ -133,7 +133,7 @@ public class Login extends AppCompatActivity {
 
                                 } else if (edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("Company")) {
                                     Intent intent = new Intent(getApplicationContext(), MainActivity1.class);
-                                    if(trangThai.equals("Khoa"))
+                                    if(trangThai1.equals("Khoa"))
                                     {
                                         AlertDialog.Builder builder1 = new AlertDialog.Builder(Login.this);
                                         builder1.setTitle("---Thông Báo---");
