@@ -73,6 +73,8 @@ public class favoritedJobs extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
+                    posts.clear();
+
                     for (DataSnapshot key : snapshot.getChildren()) {
                         PostForCompany data = key.getValue(PostForCompany.class);
                         data.setCompany(Company_Profile.company);
