@@ -16,7 +16,7 @@ public class PostForCompany {
     String tinhThanh;
     String SoLuong;
     String Mota;
-
+    String Key;
     public Map toMapCompany() {
         Map data = new HashMap();
         data.put("nameUser", this.company.nameCompany);
@@ -32,6 +32,15 @@ public class PostForCompany {
         return data;
     }
 
+
+    public String getKey() {
+        return Key;
+    }
+
+    public void setKey(String key) {
+        Key = key;
+    }
+
     public Map ToMap_AllPost() {
         Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
 
@@ -40,7 +49,10 @@ public class PostForCompany {
         int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
         Map data = new HashMap();
         data.put("emai", this.company.getEmail());
+        data.put("tieuDe", this.tieuDe);
+        data.put("Mota", this.Mota);
         data.put("tinhThanh", this.tinhThanh);
+        data.put("key", this.Key);
         data.put("ngayDang", "" + currentDay + "/" + currentMonth + "/" + currentYear);
 
         return data;
@@ -57,6 +69,7 @@ public class PostForCompany {
         this.tinhThanh = "";
         this.SoLuong = "";
         this.Mota = "";
+        this.Key = "";
     }
 
 

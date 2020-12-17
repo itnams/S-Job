@@ -8,14 +8,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
 import com.example.s_job.Model.PostForCompany;
 import com.example.s_job.R;
 import com.example.s_job.db_firebase.dbFireBase;
-import com.example.s_job.favoritedJobs;
 
 import java.util.ArrayList;
 
@@ -51,7 +49,7 @@ public class Custom_lv_DangTin extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(int position, View view, ViewGroup viewGroup) {
         view = LayoutInflater.from(activity.getApplicationContext()).inflate(R.layout.item_lv_dangtin, viewGroup, false);
         Hoder hoder = new Hoder();
         hoder.tieude = view.findViewById(R.id.tv_tieude);
@@ -61,7 +59,7 @@ public class Custom_lv_DangTin extends BaseAdapter {
         hoder.remove = view.findViewById(R.id.imgbtn_remove);
 
 
-        PostForCompany data = objects.get(i);
+        PostForCompany data = objects.get(position);
 
         hoder.tieude.setText(data.getTieuDe());
         hoder.deline.setText(data.getDeline());
@@ -80,7 +78,8 @@ public class Custom_lv_DangTin extends BaseAdapter {
                         .setNegativeButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                new dbFireBase().removePost(data);
+                                new dbFireBase().removePost(data, activity);
+
                             }
                         })
                         .setPositiveButton("CANCEL", new DialogInterface.OnClickListener() {
@@ -89,7 +88,7 @@ public class Custom_lv_DangTin extends BaseAdapter {
                                 dialogInterface.dismiss();
                             }
                         }).create().show();
-                Toast.makeText(activity, "Click", Toast.LENGTH_SHORT).show();
+
             }
         });
         
