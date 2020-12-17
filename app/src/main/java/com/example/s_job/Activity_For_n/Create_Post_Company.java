@@ -20,6 +20,7 @@ import com.example.s_job.Fragment.Company_Profile;
 import com.example.s_job.Model.PostForCompany;
 import com.example.s_job.R;
 import com.example.s_job.db_firebase.dbFireBase;
+import com.example.s_job.favoritedJobs;
 
 import java.util.Calendar;
 import java.util.TimeZone;
@@ -81,6 +82,27 @@ public class Create_Post_Company extends AppCompatActivity {
         int currentMonth = calendar.get(Calendar.MONTH) + 1;
         int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
         deLine.setText("" + currentDay + '/' + currentMonth + '/' + currentYear);
+
+        if (getIntent() != null && getIntent().getExtras().getBoolean("chitiet")) {
+            PostForCompany postForCompany = favoritedJobs.posts.get(getIntent().getExtras().getInt("vitri"));
+            tieuDe.setText(postForCompany.getTieuDe());
+            deLine.setText(postForCompany.getDeline());
+            mucLuong.setText(postForCompany.getMucLuong());
+            bangCap.setText(postForCompany.getBangCap());
+            nganhNghe.setText(postForCompany.getNganhNghe());
+            soLuongTuyen.setText(postForCompany.getSoLuongTuyen());
+            diaChi.setText(postForCompany.getDiaChi());
+            moTa.setText(postForCompany.getMota());
+            for (int i = 0; i < TinhThanhs.length; i++) {
+                if (TinhThanhs[i].equals(postForCompany.getTinhThanh())) {
+                    tinhThanh.setSelection(i);
+                    break;
+                }
+            }
+            // Toast.makeText(this, "" + postForCompany.getSoLuongTuyen(), Toast.LENGTH_LONG).show();
+            Luu.setEnabled(false);
+        }
+
         date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -137,6 +159,8 @@ public class Create_Post_Company extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+
     }
 
     boolean input() {
@@ -165,7 +189,7 @@ public class Create_Post_Company extends AppCompatActivity {
         postForCompany.setMucLuong(mucLuong.getText().toString());
         postForCompany.setBangCap(bangCap.getText().toString());
         postForCompany.setNganhNghe(nganhNghe.getText().toString());
-        postForCompany.setSoLuong(soLuongTuyen.getText().toString());
+        postForCompany.setSoLuongTuyen(soLuongTuyen.getText().toString());
         postForCompany.setDiaChi(diaChi.getText().toString());
         postForCompany.setMota(moTa.getText().toString());
         postForCompany.setTinhThanh(TinhThanhs[tinhThanh.getSelectedItemPosition()]);

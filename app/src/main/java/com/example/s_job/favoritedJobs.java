@@ -27,7 +27,7 @@ public class favoritedJobs extends AppCompatActivity {
     ListView listView;
     ImageButton back, create;
     Intent intent;
-    ArrayList<PostForCompany> posts = new ArrayList<>();
+    public static ArrayList<PostForCompany> posts = new ArrayList<>();
     Custom_lv_DangTin adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +53,7 @@ public class favoritedJobs extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(getApplicationContext(), Create_Post_Company.class);
+                intent.putExtra("chitiet", false);
                 startActivity(intent);
             }
         });
