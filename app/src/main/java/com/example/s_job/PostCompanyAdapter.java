@@ -45,7 +45,7 @@ public PostCompanyAdapter(Context context, int layout, List<PostCompany> postCom
         TextView txtTieuDe = (TextView) convertView.findViewById(R.id.txtTieuDe);
         TextView txtTinhThanh = (TextView) convertView.findViewById(R.id.txtTinhThanh);
         TextView txtNgayDang = (TextView) convertView.findViewById(R.id.txtNgayDangllllll);
-        txtTieuDe.setText(arrayPostCompany.get(position).key);
+        txtTieuDe.setText(arrayPostCompany.get(position).tieude);
         txtNgayDang.setText(arrayPostCompany.get(position).ngayDang);
         txtTinhThanh.setText(arrayPostCompany.get(position).tinhThanh);
         return convertView;

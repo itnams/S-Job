@@ -42,7 +42,6 @@ public class Login extends AppCompatActivity {
     DatabaseReference mData;
     int n = 0;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,7 +94,6 @@ public class Login extends AppCompatActivity {
                                 String position = account.position;
                                 String douutien = account.douutien;
                                 String email = account.email;
-                                trangThai = account.trangthai;
                                 if (edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("Admin")) {
                                     Intent intent = new Intent(getApplicationContext(), GiaoDienAdmin.class);
                                     Toast.makeText(Login.this, "Đăng Nhập Thành Công !", Toast.LENGTH_SHORT).show();
