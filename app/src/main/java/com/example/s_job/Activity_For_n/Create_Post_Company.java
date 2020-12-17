@@ -30,7 +30,7 @@ public class Create_Post_Company extends AppCompatActivity {
     Button troVe, Luu;
     Spinner tinhThanh;
     PostForCompany postForCompany = new PostForCompany();
-    String[] TinhThanhs = {"An Giang",
+    public static String[] TinhThanhs = {"An Giang",
             "Bà Rịa - Vũng Tàu", " Bắc Giang",
             " Bắc Kạn", " Bạc Liêu",
             "Bắc Ninh", " Bến Tre",
