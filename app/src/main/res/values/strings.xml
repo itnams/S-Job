@@ -15,7 +15,7 @@
     <string name="btnhuy">Hủy</string>
     <string name="btndongy">Đồng ý</string>
     <string name="btntuchoi">Từ chối</string>
-    <string name="urltrangwweb">Url trang web:</string>
+    <string name="urltrangwweb">URL trang web:</string>
     <string name="tentrangweb">Tên trang web:</string>
     <string name="api">API:</string>
     <string name="tentaikhoan">Tên tài khoản:</string>
@@ -34,6 +34,7 @@
     <string name="changepass">Thay đổi mật khẩu</string>
     <string name="ttchitiettaikhoan">Thông tin chi tiết tài khoản</string>
     <!--Custom String of Admin-->
+    <!--Custom String of Login Signup-->
     <string name="login">Đăng nhập</string>
     <string name="signup">Đăng ký</string>
     <string name="forgotpass">Quên mật khẩu ?</string>
@@ -47,8 +48,6 @@
     <string name="phone">Số điện thoại</string>
     <string name="diachidk">Địa chỉ</string>
     <!--Custom String of Login Signup-->
-
-    <!--Custom String of Admin-->
 
     <!--    Nhan Custom String-->
     <string name="tieuDe">Tiêu Đề</string>

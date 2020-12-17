@@ -1,6 +1,7 @@
 package com.example.s_job.db_firebase;
 
 import android.app.Activity;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -11,8 +12,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.HashMap;
 
 public class dbFireBase {
     public FirebaseDatabase database;
@@ -25,25 +24,15 @@ public class dbFireBase {
 
     }
 
+    public void remove_in_all_post(PostForCompany postForCompany) {
+        myRef = database.getReference("All-Post");
+        myRef.child(postForCompany.getKey()).removeValue();
+    }
+
     public void removePost(PostForCompany postForCompany, Activity activity) {
-        myRef.child("Post-Company")
-                .child(postForCompany.getCompany().getEmail())
-                .addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                        HashMap map = (HashMap) snapshot.getValue();
-                        for (int i = 0; i < snapshot.getChildrenCount(); i++) {
-
-                        }
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
+        myRef.child("Post-Company").child(postForCompany.getCompany().getEmail()).child(postForCompany.getKey()).removeValue();
+        remove_in_all_post(postForCompany);
+        Toast.makeText(activity, "Remove Success!!! ", Toast.LENGTH_LONG).show();
     }
 
     public void upDateCompanyFormUser(Company company) {
@@ -67,21 +56,16 @@ public class dbFireBase {
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if (snapshot.exists()) {
-                            postForCompany.setKey("" + snapshot.getChildrenCount());
-                            myRef.child("Post-Company")
-                                    .child(postForCompany.getCompany().getEmail())
-                                    .child((snapshot.getChildrenCount()) + "").setValue(postForCompany.toMapCompany());
-                            sendToAll_post(postForCompany);
-                        } else {
-                            postForCompany.setKey("" + snapshot.getChildrenCount());
-                            myRef.child("Post-Company")
-                                    .child(postForCompany.getCompany().getEmail())
-                                    .child("" + snapshot.getChildrenCount()).setValue(postForCompany.toMapCompany());
-                    sendToAll_post(postForCompany);
-                }
+                        String Key = myRef.push().getKey();
+                        postForCompany.setKey(Key);
 
-            }
+                        myRef.child("Post-Company")
+                                .child(postForCompany.getCompany().getEmail())
+                                .child(Key).setValue(postForCompany.toMapCompany());
+                        sendToAll_post(postForCompany);
+
+
+                    }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -98,7 +82,7 @@ public class dbFireBase {
         myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                myRef.child(snapshot.getChildrenCount() + "").setValue(postForCompany.ToMap_AllPost());
+                myRef.child(postForCompany.getKey()).setValue(postForCompany.ToMap_AllPost());
             }
 
             @Override
