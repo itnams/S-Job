@@ -153,8 +153,6 @@ public class Create_Post_Company extends AppCompatActivity {
         } else {
             return true;
         }
-
-
     }
 
     private void SendToDataBase() {

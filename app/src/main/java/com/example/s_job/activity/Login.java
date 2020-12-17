@@ -37,8 +37,6 @@ public class Login extends AppCompatActivity {
     private EditText edtuser, edtpass;
     public static String curentpass;
     public static String tentaikhoanAdmin;
-    public static String trangThai;
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference mData;
     int n = 0;
 
@@ -80,8 +78,6 @@ public class Login extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 mData.child("User").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
