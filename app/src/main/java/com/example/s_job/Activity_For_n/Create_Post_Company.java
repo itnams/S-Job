@@ -31,9 +31,9 @@ public class Create_Post_Company extends AppCompatActivity {
     Spinner tinhThanh;
     PostForCompany postForCompany = new PostForCompany();
     public static String[] TinhThanhs = {"An Giang",
-            "Bà Rịa - Vũng Tàu", " Bắc Giang",
-            " Bắc Kạn", " Bạc Liêu",
-            "Bắc Ninh", " Bến Tre",
+            "Bà Rịa - Vũng Tàu", "Bắc Giang",
+            "Bắc Kạn", "Bạc Liêu",
+            "Bắc Ninh", "Bến Tre",
             "Bình Định", "Bình Dương",
             "Bình Phước", "Bình Thuận",
             "Cà Mau", "Cao Bằng",

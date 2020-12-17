@@ -64,7 +64,7 @@ public class Custom_lv_DangTin extends BaseAdapter {
         hoder.tieude.setText(data.getTieuDe());
         hoder.deline.setText(data.getDeline());
         hoder.diachi.setText(data.getDiaChi());
-        hoder.mota.setText(data.getMota().substring(0, data.getMota().length() / 2) + " ...");
+        hoder.mota.setText(data.getMota().length() > 20 ? data.getMota().substring(0, 20) + " ..." : data.getMota());
 
 
         hoder.remove.setOnClickListener(new View.OnClickListener() {
