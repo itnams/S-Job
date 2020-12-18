@@ -7,4 +7,7 @@ public class Comment {
         this.user = user;
         this.comment = comment;
     }
+
+    public Comment() {
+    }
 }
