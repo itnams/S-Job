@@ -32,6 +32,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Login extends AppCompatActivity {
     private TextView fogotPW;
+    public static  String userLogin;
     private TextView Signup;
     private Button btnLogin;
     private EditText edtuser, edtpass;
@@ -90,6 +91,7 @@ public class Login extends AppCompatActivity {
                             for (DataSnapshot key : snapshot.getChildren()) {
                                 Account account = key.getValue(Account.class);
                                 String nameUser = account.nameUser;
+                                userLogin = account.nameUser;
                                 String passWord = account.passWord;
                                 String position = account.position;
                                 String trangThai1 = account.trangthai;

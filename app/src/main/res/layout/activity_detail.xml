@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.User_Home">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/linerlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <TextView
+                android:layout_width="match_parent"
+                android:padding="10dp"
+                android:gravity="center"
+                android:textSize="30dp"
+                android:id="@+id/txtTieuDePost"
+                android:layout_height="wrap_content"
+                android:text="Tiêu đề"
+                android:textStyle="bold"
+                />
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/txtHanNop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:paddingLeft="10dp"
+                        android:text="Hạn nộp"
+                        ></TextView>
+                    <TextView
+                        android:gravity="end"
+                        android:paddingRight="10dp"
+                        android:layout_toRightOf="@id/txtHanNop"
+                        android:id="@+id/txtTinhThanhDetail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20dp"
+                        android:text="Tỉnh thành"
+                        ></TextView>
+                    <TextView
+                        android:paddingLeft="10dp"
+                        android:textSize="20dp"
+                        android:id="@+id/txtMucLuong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtHanNop"
+                        android:text="Mức lương"
+                        ></TextView>
+                    <TextView
+                        android:paddingLeft="10dp"
+                        android:textSize="20dp"
+                        android:id="@+id/txtBangCap"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtMucLuong"
+                        android:text="Bằng cấp"
+                        ></TextView>
+                    <TextView
+                        android:paddingLeft="10dp"
+                        android:textSize="20dp"
+                        android:id="@+id/txtNganhNghe"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/txtBangCap"
+                        android:text="Ngành nghề"
+                        ></TextView>
+                    <TextView
+                        android:paddingLeft="10dp"
+                        android:textSize="20dp"
+                        android:id="@+id/txtSoLuongTuyen"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:paddingEnd="10dp"
+                        android:layout_below="@id/txtHanNop"
+                        android:layout_toRightOf="@id/txtMucLuong"
+                        android:text="So luong tuyen"
+                        ></TextView>
+                    <TextView
+                        android:paddingLeft="10dp"
+                        android:textSize="20dp"
+                        android:id="@+id/txtDiaChi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="10dp"
+                        android:layout_below="@id/txtNganhNghe"
+                        android:text="Dia Chi"
+                        ></TextView>
+                    <TextView
+                        android:paddingLeft="10dp"
+                        android:textSize="20dp"
+                        android:id="@+id/txtDetail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingEnd="10dp"
+                        android:layout_below="@id/txtDiaChi"
+                        android:text="Mô tả"
+                        ></TextView>
+                    <ListView
+                        android:id="@+id/listviewComment"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_below="@id/txtDetail"
+                        android:layout_height="240dp"/>
+                    <EditText
+                        android:paddingTop="30dp"
+                        android:id="@+id/edtComment"
+                        android:hint="Nhập nhận xét về công việc.."
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/listviewComment"
+                        ></EditText>
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/edtComment"
+                        android:padding="10dp"
+                        android:id="@+id/btnNhanXet"
+                        android:layout_marginStart="10dp"
+                        android:text="Nhận xét"
+                        ></Button>
+                </RelativeLayout>
+            </ScrollView>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</FrameLayout>
