@@ -100,10 +100,10 @@ public class Login extends AppCompatActivity {
 
                                 } else if (edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("User")) {
                                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                        if(trangThai1.equals("Khoa"))
+                                        if(trangThai1.equals("Khóa"))
                                         {
                                             AlertDialog.Builder builder1 = new AlertDialog.Builder(Login.this);
-                                            builder1.setTitle("---Thông Báo---");
+                                            builder1.setTitle("-------Thông Báo-------");
                                             builder1.setMessage("Tài khoản của bạn đang bị khóa vui lòng liên hệ Admin với số điện thoại 0332175559 để biết thêm chi tiết và hỗ trợ !");
                                             builder1.setCancelable(true);
                                             builder1.setPositiveButton("Quay về",
@@ -129,7 +129,7 @@ public class Login extends AppCompatActivity {
 
                                 } else if (edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("Company")) {
                                     Intent intent = new Intent(getApplicationContext(), MainActivity1.class);
-                                    if(trangThai1.equals("Khoa"))
+                                    if(trangThai1.equals("Khóa"))
                                     {
                                         AlertDialog.Builder builder1 = new AlertDialog.Builder(Login.this);
                                         builder1.setTitle("---Thông Báo---");
@@ -158,7 +158,7 @@ public class Login extends AppCompatActivity {
                                     return;
                                 }
                             }
-                            Toast.makeText(Login.this, "Đăng Nhập Không Thành Công !", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, "Đăng Nhập Không Thất bại !", Toast.LENGTH_SHORT).show();
                         }
                         //---------
                     }
