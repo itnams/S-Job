@@ -157,6 +157,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="15dp"
             android:text="@string/khuVucTuyen"
+            android:padding="5dp"
             android:background="@color/lucApp"
             android:layout_width="wrap_content"
             android:textSize="20dp" />
@@ -173,6 +174,7 @@
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:ems="10"
+        android:padding="5dp"
         android:gravity="left|top"
         android:hint="@string/moTa"
         android:inputType="textMultiLine"

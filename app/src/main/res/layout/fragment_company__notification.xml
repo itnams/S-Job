@@ -3,13 +3,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="8dp"
     tools:context=".Fragment.Company_Notification">
-<Button
-    android:id="@+id/test"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:text="test data" />
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:layout_marginTop="10dp"
+        android:padding="8dp">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center"
+            android:text="@string/ngonNgu"
+            android:textColor="@color/cam"
+            android:textSize="22dp" />
+
+        <ImageView
+            android:id="@+id/imgV_language"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:src="@drawable/icon_vn" />
+
+        <Switch
+            android:id="@+id/sw_changeLanguage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center"
+            android:thumbTint="@color/cam"
+            android:trackTint="@color/cam" />
+    </FrameLayout>
+
+    <FrameLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|center"
+        android:layout_marginTop="70dp"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center"
+            android:text="@string/hoTro"
+            android:textColor="@color/cam"
+            android:textSize="22dp" />
+
+        <ImageButton
+            android:id="@+id/imgBtn_hotro"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="right|center"
+            android:background="@color/white"
+            android:src="@drawable/chat_n" />
+    </FrameLayout>
 </FrameLayout>
