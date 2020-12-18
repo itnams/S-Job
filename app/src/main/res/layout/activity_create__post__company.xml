@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="8dp"
+    android:background="@color/xanhnhat"
     tools:context=".Activity_For_n.Create_Post_Company">
 
 
@@ -15,43 +16,58 @@
 
         <EditText
             android:id="@+id/et_tieuDe"
+            android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
             android:gravity="center"
+            android:background="@color/lucApp"
+            android:padding="5dp"
+            android:textSize="18dp"
             android:hint="@string/tieuDe" />
 
         <LinearLayout
+            android:layout_marginBottom="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal">
 
             <EditText
+
                 android:id="@+id/et_deLine"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="12"
+                android:background="@color/lucApp"
+                android:gravity="center"
+                android:textSize="13dp"
                 android:enabled="false"
                 android:text="@string/timeDemo" />
 
             <ImageButton
                 android:id="@+id/imgBtn_date"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_marginRight="15dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/date_range"
-
-                />
+                android:layout_weight="12"
+                android:background="@drawable/custom_button"
+                android:padding="10dp" />
 
             <EditText
                 android:id="@+id/et_mucLuong"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
+                android:layout_height="match_parent"
+                android:layout_weight="7"
+                android:background="@color/lucApp"
                 android:gravity="center"
                 android:hint="@string/mucLuong"
                 android:inputType="number" />
         </LinearLayout>
 
         <LinearLayout
+            android:layout_marginBottom="15dp"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -59,24 +75,36 @@
 
             <EditText
                 android:id="@+id/et_bangCap"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="5"
 
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="15dp"
+                android:layout_weight="6"
+                android:background="@color/lucApp"
+                android:gravity="center"
                 android:hint="@string/bangCap" />
 
 
             <EditText
                 android:id="@+id/et_nganhNghe"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_weight="5"
+                android:layout_height="match_parent"
+                android:layout_weight="8"
+                android:background="@color/lucApp"
                 android:gravity="center"
                 android:hint="@string/nganhNghe" />
+
+            <ImageButton
+
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:src="@drawable/location_n" />
         </LinearLayout>
 
         <LinearLayout
+            android:layout_marginBottom="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -85,8 +113,11 @@
             <EditText
                 android:id="@+id/et_soLuongTuyen"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_marginRight="15dp"
+                android:layout_weight="3"
+                android:background="@color/lucApp"
+                android:gravity="center"
                 android:hint="@string/soLuongTuyen"
                 android:inputType="number" />
 
@@ -94,9 +125,10 @@
             <EditText
                 android:id="@+id/et_diaChi"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                android:layout_weight="115"
+                android:layout_height="match_parent"
+                android:layout_weight="6"
+                android:background="@color/lucApp"
+
                 android:enabled="false"
                 android:gravity="center"
                 android:hint="@string/diachi"
@@ -104,8 +136,11 @@
 
             <ImageButton
                 android:id="@+id/imgBtn_vitri"
+                android:layout_weight="2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/custom_button"
+                android:padding="10dp"
                 android:src="@drawable/location_n" />
 
         </LinearLayout>
@@ -115,19 +150,22 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp">
+
         <TextView
-            android:textSize="18dp"
+            android:layout_height="wrap_content"
             android:layout_marginRight="15dp"
             android:text="@string/khuVucTuyen"
+            android:background="@color/lucApp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:textSize="20dp" />
 
         <Spinner
             android:id="@+id/spn_tinhThanh"
-            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/daApp"
+            android:layout_width="match_parent"
             android:popupBackground="@color/daApp" />
     </LinearLayout>
     <EditText
@@ -138,6 +176,7 @@
         android:gravity="left|top"
         android:hint="@string/moTa"
         android:inputType="textMultiLine"
+        android:background="@color/lucApp"
         android:textSize="15sp">
 
     </EditText>
@@ -148,22 +187,25 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/btn_trove"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="20dp"
-            android:text="@string/trove"
-            android:textAllCaps="false" />
-
-        <Button
             android:id="@+id/btn_luu"
             android:layout_width="wrap_content"
 
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+
             android:padding="20dp"
             android:text="@string/luu"
             android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_trove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:padding="20dp"
+            android:text="@string/trove"
+            android:textAllCaps="false" />
+
+
     </LinearLayout>
 
 </LinearLayout>
