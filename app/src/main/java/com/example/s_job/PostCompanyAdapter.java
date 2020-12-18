@@ -1,11 +1,14 @@
 package com.example.s_job;
 
+import android.app.Application;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.s_job.Fragment.User_Home;
 
@@ -13,7 +16,7 @@ import org.w3c.dom.Text;
 
 import java.util.List;
 
-public class PostCompanyAdapter extends BaseAdapter {
+public class PostCompanyAdapter extends BaseAdapter{
     Context myContext;
     int myLayout;
     List<PostCompany> arrayPostCompany;
@@ -35,7 +38,7 @@ public PostCompanyAdapter(Context context, int layout, List<PostCompany> postCom
 
     @Override
     public long getItemId(int position) {
-        return 0;
+    return 0;
     }
 
     @Override
