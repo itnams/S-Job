@@ -1,6 +1,6 @@
 package com.example.s_job.DataBase;
 
-import com.example.s_job.model.DoanhNghiep;
+import com.example.s_job.Model.DoanhNghiep;
 
 import java.util.ArrayList;
 

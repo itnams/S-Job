@@ -33,10 +33,11 @@
                     android:layout_weight="1"
                     app:cardCornerRadius="50dp">
                     <ImageView
+                        android:id="@+id/image_company"
                         android:scaleType="fitXY"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:src="@drawable/tx2_logo_1" />
+                        android:src="@drawable/chamhoi_n" />
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
 
@@ -48,6 +49,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tv_NameCompany"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="2dp"
@@ -70,6 +72,7 @@
                         android:src="@drawable/mail" />
 
                     <TextView
+                        android:id="@+id/tv_Email_Company"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="tx2.company@gmail.com"
@@ -90,6 +93,7 @@
                         android:src="@drawable/phonel" />
 
                     <TextView
+                        android:id="@+id/tv_std_Company"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="096969696969"
@@ -111,6 +115,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/tv_diaChi_Company"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Q. Thủ Đức, TP. HCM"
@@ -145,47 +150,7 @@
                     android:textSize="18sp" />
             </LinearLayout>
 
-            <!--        <LinearLayout-->
-            <!--            android:layout_width="match_parent"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            android:layout_marginVertical='16dp'-->
-            <!--            android:layout_marginStart="4dp"-->
-            <!--            android:orientation="horizontal"-->
-            <!--            android:id="@+id/yourJobs">-->
 
-            <!--            <ImageView-->
-            <!--                android:layout_width="30dp"-->
-            <!--                android:layout_height="30dp"-->
-            <!--                android:layout_marginHorizontal="6dp"-->
-            <!--                android:src="@drawable/suitcase" />-->
-
-            <!--            <TextView-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="Your Jobs"-->
-            <!--                android:textSize="18sp" />-->
-            <!--        </LinearLayout>-->
-
-            <!--        <LinearLayout-->
-            <!--            android:layout_width="match_parent"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            android:layout_marginVertical='16dp'-->
-            <!--            android:layout_marginStart="4dp"-->
-            <!--            android:orientation="horizontal"-->
-            <!--            android:id="@+id/your_Posts">-->
-
-            <!--            <ImageView-->
-            <!--                android:layout_width="30dp"-->
-            <!--                android:layout_height="30dp"-->
-            <!--                android:layout_marginHorizontal="6dp"-->
-            <!--                android:src="@drawable/post" />-->
-
-            <!--            <TextView-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="Your Posts"-->
-            <!--                android:textSize="18sp" />-->
-            <!--        </LinearLayout>-->
 
             <LinearLayout
 

@@ -48,6 +48,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tvUser_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="2dp"
@@ -70,6 +71,7 @@
                         android:src="@drawable/mail" />
 
                     <TextView
+                        android:id="@+id/tvEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="tranquangtuan0120@gmail.com"
@@ -90,6 +92,7 @@
                         android:src="@drawable/phonel" />
 
                     <TextView
+                        android:id="@+id/tvPhone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="0967435076"
@@ -111,6 +114,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/tvAddress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Q. Thủ Đức, TP. HCM"
@@ -146,49 +150,6 @@
                     android:text="Your Favorited"
                     android:textSize="18sp" />
             </LinearLayout>
-
-            <!--        <LinearLayout-->
-            <!--            android:layout_width="match_parent"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            android:layout_marginVertical='16dp'-->
-            <!--            android:layout_marginStart="4dp"-->
-            <!--            android:orientation="horizontal"-->
-            <!--            android:id="@+id/yourJobs">-->
-
-            <!--            <ImageView-->
-            <!--                android:layout_width="30dp"-->
-            <!--                android:layout_height="30dp"-->
-            <!--                android:layout_marginHorizontal="6dp"-->
-            <!--                android:src="@drawable/suitcase" />-->
-
-            <!--            <TextView-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="Your Jobs"-->
-            <!--                android:textSize="18sp" />-->
-            <!--        </LinearLayout>-->
-
-            <!--        <LinearLayout-->
-            <!--            android:layout_width="match_parent"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            android:layout_marginVertical='16dp'-->
-            <!--            android:layout_marginStart="4dp"-->
-            <!--            android:orientation="horizontal"-->
-            <!--            android:id="@+id/your_Posts">-->
-
-            <!--            <ImageView-->
-            <!--                android:layout_width="30dp"-->
-            <!--                android:layout_height="30dp"-->
-            <!--                android:layout_marginHorizontal="6dp"-->
-            <!--                android:src="@drawable/post" />-->
-
-            <!--            <TextView-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="Your Posts"-->
-            <!--                android:textSize="18sp" />-->
-            <!--        </LinearLayout>-->
-
             <LinearLayout
 
                 android:layout_width="match_parent"

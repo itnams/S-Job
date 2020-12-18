@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">S-Job</string>
+    <!--Custom String of Admin-->
     <string name="qlttd">Quản lý trang tuyển dụng</string>
     <string name="qltk">Quản lý tài khoản</string>
-    <string name="logout">Logout</string>
+    <string name="logout">Đăng xuất</string>
     <string name="cnyc">Chấp nhận yêu cầu doanh nghiệp</string>
     <string name="dstuyendung">Danh sách trang web tuyển dụng</string>
     <string name="dstaikhoan">Danh sách tài khoản</string>
@@ -14,7 +15,7 @@
     <string name="btnhuy">Hủy</string>
     <string name="btndongy">Đồng ý</string>
     <string name="btntuchoi">Từ chối</string>
-    <string name="urltrangwweb">Url trang web:</string>
+    <string name="urltrangwweb">URL trang web:</string>
     <string name="tentrangweb">Tên trang web:</string>
     <string name="api">API:</string>
     <string name="tentaikhoan">Tên tài khoản:</string>
@@ -23,5 +24,43 @@
     <string name="trangthai">Trạng thái:</string>
     <string name="khoa">Khóa</string>
     <string name="luu">Lưu</string>
+    <string name="tvchangepass">Thay đổi mật khẩu</string>
+    <string name="tvcurrentpass">Mật khẩu hiện tại:</string>
+    <string name="tvnewpass">Mật khẩu mới:</string>
+    <string name="tvcomfirmpass">Xác nhận mật khẩu:</string>
+    <string name="btnsave">Lưu</string>
+    <string name="btncancel">Quay lại</string>
+    <string name="mokhoatk">Mở Khóa</string>
+    <string name="changepass">Thay đổi mật khẩu</string>
     <string name="ttchitiettaikhoan">Thông tin chi tiết tài khoản</string>
+    <!--Custom String of Admin-->
+    <!--Custom String of Login Signup-->
+    <string name="login">Đăng nhập</string>
+    <string name="signup">Đăng ký</string>
+    <string name="forgotpass">Quên mật khẩu ?</string>
+    <string name="donthaveaccount"> Bạn chưa có tài khoản ?</string>
+    <string name="company">Doanh nghiệp</string>
+    <string name="User">Người dùng</string>
+    <string name="name">Tên tài khoản</string>
+    <string name="email">Email</string>
+    <string name="pass">Mật khẩu</string>
+    <string name="comfirmpass">Xác nhận mật khẩu</string>
+    <string name="phone">Số điện thoại</string>
+    <string name="diachidk">Địa chỉ</string>
+    <!--Custom String of Login Signup-->
+
+    <!--    Nhan Custom String-->
+    <string name="tieuDe">Tiêu Đề</string>
+    <string name="timeDemo">Deline</string>
+    <string name="mucLuong">Mức Lương</string>
+    <string name="bangCap">Bằng Cấp</string>
+    <string name="nganhNghe">Ngành Nghề</string>
+    <string name="soLuongTuyen">Số Lượng Tuyển</string>
+    <string name="diachi">Địa Chỉ</string>
+    <string name="moTa">Mô Tả</string>
+    <string name="trove">Trở Về</string>
+    <string name="dsDangTin">Danh Sách Đăng Tin</string>
+    <string name="ngoiSao">0</string>
+    <string name="khuVucTuyen">Khu Vực Tuyển</string>
+    <!--    Nhan Custom String-->
 </resources>

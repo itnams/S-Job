@@ -1,53 +1,74 @@
 package com.example.s_job;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.os.Bundle;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.example.s_job.Fragment.Company_Notification;
 import com.example.s_job.Fragment.Company_Profile;
-import com.example.s_job.Fragment.User_Home;
-import com.example.s_job.Fragment.User_Notification;
-import com.example.s_job.Fragment.User_Profile;
 
+import me.ibrahimsn.lib.OnItemSelectedListener;
 import me.ibrahimsn.lib.SmoothBottomBar;
 
 public class MainActivity1 extends AppCompatActivity {
     private FragmentTransaction fragmentTransaction;
     private SmoothBottomBar smoothBottomBar;
+    static public String User = "";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conpany_home);
-        smoothBottomBar = findViewById(R.id.bottomBar1);
+        //login thanh cong, chuyển intent qua màng hình inten có 1 dữ liệu , intent -> username
+        if (getIntent() != null) {
+            User = getIntent().getStringExtra("email");
+        } else {
+            Toast.makeText(this, "Is Not Data!!!", Toast.LENGTH_SHORT).show();
+        }
+        setControl();
+        setEvent();
 
 
+    }
+    //Custom event
+    void ChuyenMangHinhFrament(int idSoure, Fragment fragment) {
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
-        fragmentTransaction.replace(R.id.fr_main1, new Company_Profile());
+        fragmentTransaction.replace(idSoure, fragment);
         fragmentTransaction.commit();
+    }
+    //set Event for Main
+    private void setEvent() {
 
-        smoothBottomBar.setOnItemSelectedListener(i->{
-            switch (i){
-                case 0:
-                    fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
-                    fragmentTransaction.replace(R.id.fr_main1, new Company_Profile());
-                    fragmentTransaction.commit();
+        ChuyenMangHinhFrament(R.id.fr_main1, new Company_Profile());
 
-                    break;
-                case 1:
-                    //Toast.makeText(this, "fffffff", Toast.LENGTH_SHORT).show();
-                    fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        smoothBottomBar.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public void onItemSelect(int i) {
+                switch (i) {
+                    case 0:
+                        ChuyenMangHinhFrament(R.id.fr_main1, new Company_Profile());
 
-                    fragmentTransaction.replace(R.id.fr_main1, new Company_Notification());
-                   fragmentTransaction.commit();
 
-                    break;
+                        break;
+                    case 1:
+                        ChuyenMangHinhFrament(R.id.fr_main1, new Company_Notification());
 
+
+                        break;
+
+                }
             }
         });
+
+    }
+
+    private void setControl() {
+        smoothBottomBar = findViewById(R.id.bottomBar1);
     }
 }

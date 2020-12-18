@@ -17,6 +17,7 @@ public class GiaoDienTrangTuyenDung extends AppCompatActivity {
     ListView listViewweb;
     ArrayList<String> arrayList;
     Button btnthemweb;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +27,7 @@ public class GiaoDienTrangTuyenDung extends AppCompatActivity {
         btnthemweb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(GiaoDienTrangTuyenDung.this,ThemWebTuyenDung.class);
+                Intent intent = new Intent(GiaoDienTrangTuyenDung.this, ThemWebTuyenDung.class);
                 startActivity(intent);
             }
         });
@@ -36,12 +37,12 @@ public class GiaoDienTrangTuyenDung extends AppCompatActivity {
         arrayList.add("CongViecHome.com");
         arrayList.add("TimViecNhanh24h.vn");
         arrayList.add("TimViecNhanh24h.vn");
-        ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item,arrayList);
+        ArrayAdapter arrayAdapter = new ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, arrayList);
         listViewweb.setAdapter(arrayAdapter);
         listViewweb.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(GiaoDienTrangTuyenDung.this,arrayList.get(position),Toast.LENGTH_SHORT).show();
+                Toast.makeText(GiaoDienTrangTuyenDung.this, arrayList.get(position), Toast.LENGTH_SHORT).show();
             }
         });
     }

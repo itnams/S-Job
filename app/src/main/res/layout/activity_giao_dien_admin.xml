@@ -44,12 +44,13 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tenAdmin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="2dp"
+                android:layout_marginLeft="8dp"
                 android:textColor="@color/black"
                 android:fontFamily="serif-monospace"
-                android:text="Admin 007"
                 android:textSize="24dp"
                 android:textStyle="bold" />
 
@@ -67,10 +68,10 @@
                     android:src="@drawable/mail" />
 
                 <TextView
+                    android:id="@+id/emailAdmin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:text="dinhlong151020@gmail.com"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -90,9 +91,9 @@
                     android:src="@drawable/phonel" />
 
                 <TextView
+                    android:id="@+id/sdtAdmin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="0332175559"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -113,9 +114,9 @@
                     android:src="@drawable/location" />
 
                 <TextView
+                    android:id="@+id/diaChiAdmin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Quận 9, TP. HCM"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -176,6 +177,7 @@
         <!--                android:textSize="18sp" />-->
         <!--        </LinearLayout>-->
 
+
         <LinearLayout
             android:id="@+id/your_Posts"
             android:layout_width="match_parent"
@@ -210,6 +212,8 @@
             android:layout_marginLeft="4dp"
             android:orientation="horizontal">
 
+
+
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
@@ -226,6 +230,29 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/change_Password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical='16dp'
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginHorizontal="6dp"
+                android:src="@drawable/pin" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="@string/changepass"
+                android:textSize="18sp" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/logout"
