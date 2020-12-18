@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,17 +44,96 @@ public class GiaoDienQLTK extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_giao_dien_q_l_t_k);
         listviewtk = findViewById(R.id.lstviewtk);
+        ImageView imgtim = findViewById(R.id.imgtim);
+        EditText edttim = findViewById(R.id.edttim);
         dstaikhoantk = new ArrayList<String>();
+        ImageView imgload = findViewById(R.id.load);
         mData = FirebaseDatabase.getInstance().getReference();
+        imgload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mData.child("User").addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String previousChildName) {
+                        Account account = dataSnapshot.getValue(Account.class);
+                        String email = account.email;
+                        if (account.position.equals("Company") || account.position.equals("User")) {
+                            edttim.setText("");
+                            dstaikhoantk.clear();
+                            dstaikhoantk.add(email);
+                            arrayAdapter.notifyDataSetChanged();
+                        }
+                    }
+
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
+        imgtim.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mData.child("User").addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String previousChildName) {
+                        Account account = dataSnapshot.getValue(Account.class);
+                        String email = account.email;
+                        if (email.equals(edttim.getText().toString()) || edttim.getText().toString().equals(email.replace("@gmail.com",""))) {
+                            if (account.position.equals("Company") || account.position.equals("User")) {
+                                dstaikhoantk.clear();
+                                dstaikhoantk.add(email);
+                                arrayAdapter.notifyDataSetChanged();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
         mData.child("User").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Account account = dataSnapshot.getValue(Account.class);
-                    String email = account.email;
-                    String position = account.position;
-                    if (account.position.equals("Company") || account.position.equals("User")) {
-                        dstaikhoantk.add(email);
-
+                String email = account.email;
+                String position = account.position;
+                if (account.position.equals("Company") || account.position.equals("User")) {
+                    dstaikhoantk.add(email);
                 }
             }
 
