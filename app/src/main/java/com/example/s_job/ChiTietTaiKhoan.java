@@ -4,8 +4,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,13 +30,13 @@ public class ChiTietTaiKhoan extends AppCompatActivity {
     EditText edttentaikhoan, edtmatkhau, edtdouutien, edttrangthai;
     Button btnKhoa, btnluu, btnmokhoa;
     DatabaseReference mData;
+    String douutienrdo = "Thấp";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chi_tiet_tai_khoan);
         edttentaikhoan = findViewById(R.id.edttentaikhoan);
         edtmatkhau = findViewById(R.id.edtmatkhau);
-        edtdouutien = findViewById(R.id.edtdouutien);
         edttrangthai = findViewById(R.id.edttrangthai);
         btnKhoa = findViewById(R.id.btnkhoa);
         btnluu = findViewById(R.id.btnluu);
@@ -39,8 +44,19 @@ public class ChiTietTaiKhoan extends AppCompatActivity {
         edttrangthai.setEnabled(false);
         edttentaikhoan.setText(giaoDienQLTK.nameTK1);
         edtmatkhau.setText(giaoDienQLTK.passwordtk1);
-        edtdouutien.setText(giaoDienQLTK.douutien1);
         edttrangthai.setText(giaoDienQLTK.trangthai1);
+        RadioGroup radioGroup = findViewById(R.id.rdoGroup);
+        RadioButton radioButton1 = findViewById(R.id.rdothap);
+        RadioButton radioButton2 = findViewById(R.id.rdocao);
+        //-----Long
+        if(giaoDienQLTK.douutien1.equals("Thấp"))
+        {
+            radioButton1.setChecked(true);
+        }else {
+            radioButton2.setChecked(true);
+        }
+
+        //-----Long
         btnmokhoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,10 +99,18 @@ public class ChiTietTaiKhoan extends AppCompatActivity {
                 builder1.setNegativeButton("Accept",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
+                                if(radioButton1.isChecked())
+                                {
+                                    douutienrdo ="Thấp";
+                                }
+                                else
+                                {
+                                    douutienrdo = "Cao";
+                                }
                                 mData = FirebaseDatabase.getInstance().getReference();
                                 mData.child("User").child(giaoDienQLTK.emailkeyword).child("nameUser").setValue(edttentaikhoan.getText().toString());
                                 mData.child("User").child(giaoDienQLTK.emailkeyword).child("passWord").setValue(edtmatkhau.getText().toString());
-                                mData.child("User").child(giaoDienQLTK.emailkeyword).child("douutien").setValue(edtdouutien.getText().toString());
+                                mData.child("User").child(giaoDienQLTK.emailkeyword).child("douutien").setValue(douutienrdo);
                                 Toast.makeText(ChiTietTaiKhoan.this, "Luu thanh cong", Toast.LENGTH_SHORT).show();
                                 finish();
                             }

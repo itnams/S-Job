@@ -14,7 +14,7 @@ public class PostForCompany {
     String MucLuong;
     String diaChi;
     String tinhThanh;
-    String SoLuong;
+    String soLuongTuyen;
     String Mota;
     String Key;
     public Map toMapCompany() {
@@ -27,7 +27,7 @@ public class PostForCompany {
         data.put("MucLuong", this.MucLuong);
         data.put("diaChi", this.diaChi);
         data.put("tinhThanh", this.tinhThanh);
-        data.put("soLuongTuyen", this.SoLuong);
+        data.put("soLuongTuyen", this.soLuongTuyen);
         data.put("Mota", this.Mota);
         return data;
     }
@@ -67,7 +67,7 @@ public class PostForCompany {
         this.MucLuong = "";
         this.diaChi = "";
         this.tinhThanh = "";
-        this.SoLuong = "";
+        this.soLuongTuyen = "";
         this.Mota = "";
         this.Key = "";
     }
@@ -81,7 +81,7 @@ public class PostForCompany {
         this.tinhThanh = tinhThanh;
     }
 
-    public PostForCompany(Company company, String tieuDe, String deline, String nganhNghe, String bangCap, String mucLuong, String diaChi, String soLuong, String mota) {
+    public PostForCompany(Company company, String tieuDe, String deline, String nganhNghe, String bangCap, String mucLuong, String diaChi, String soLuongTuyen, String mota) {
         this.company = company;
         this.tieuDe = tieuDe;
         this.deLine = deline;
@@ -89,7 +89,7 @@ public class PostForCompany {
         this.bangCap = bangCap;
         this.MucLuong = mucLuong;
         this.diaChi = diaChi;
-        this.SoLuong = soLuong;
+        this.soLuongTuyen = soLuongTuyen;
         this.Mota = mota;
     }
 
@@ -149,12 +149,12 @@ public class PostForCompany {
         this.diaChi = diaChi;
     }
 
-    public String getSoLuong() {
-        return SoLuong;
+    public String getSoLuongTuyen() {
+        return soLuongTuyen;
     }
 
-    public void setSoLuong(String soLuong) {
-        SoLuong = soLuong;
+    public void setSoLuongTuyen(String soLuongTuyen) {
+        this.soLuongTuyen = soLuongTuyen;
     }
 
     public String getMota() {
