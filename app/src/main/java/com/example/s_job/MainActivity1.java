@@ -27,7 +27,7 @@ public class MainActivity1 extends AppCompatActivity {
         if (getIntent() != null) {
             User = getIntent().getStringExtra("email");
         } else {
-            Toast.makeText(this, "Is Not Data!!!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.dulieu), Toast.LENGTH_SHORT).show();
         }
         setControl();
         setEvent();
