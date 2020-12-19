@@ -14,22 +14,21 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.SJob">
-        <activity android:name=".Activity_For_n.Goole_map"></activity>
+        <activity android:name=".DetailActivity"></activity>
+        <activity android:name=".Activity_For_n.Goole_map" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_key" /> <!-- <activity android:name=".post" /> -->
         <activity android:name=".favoritedJobs" />
-        <activity android:name=".MainActivity1">
-
-        </activity>
+        <activity android:name=".MainActivity1"></activity>
         <activity android:name=".ThemWebTuyenDung" />
         <activity android:name=".Activity_For_n.Create_Post_Company" />
         <activity android:name=".ChiTietTaiKhoan" />
         <activity android:name=".GiaoDienTrangTuyenDung" />
         <activity android:name=".GiaoDienChapNhanYCDN" />
         <activity android:name=".GiaoDienQLTK" />
-        <activity android:name=".GiaoDienAdmin"></activity>
+        <activity android:name=".GiaoDienAdmin" />
         <activity android:name=".activity.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,11 +38,9 @@
         </activity>
         <activity android:name=".activity.SignUp" />
         <activity
+            android:name=".MainActivity"
             android:windowSoftInputMode="adjustPan"
-        android:name=".MainActivity"
-            tools:ignore="DuplicateActivity">
-
-        </activity>
+            tools:ignore="DuplicateActivity"></activity>
     </application>
 
 </manifest>

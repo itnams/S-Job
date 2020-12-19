@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="8dp"
         android:layout_weight="2"
-        android:background="@drawable/header_bg">
+        android:background="@android:color/holo_orange_dark">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -156,28 +156,6 @@
                 android:textSize="18sp" />
         </LinearLayout>
 
-        <!--        <LinearLayout-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginVertical='16dp'-->
-        <!--            android:layout_marginStart="4dp"-->
-        <!--            android:orientation="horizontal"-->
-        <!--            android:id="@+id/yourJobs">-->
-
-        <!--            <ImageView-->
-        <!--                android:layout_width="30dp"-->
-        <!--                android:layout_height="30dp"-->
-        <!--                android:layout_marginHorizontal="6dp"-->
-        <!--                android:src="@drawable/suitcase" />-->
-
-        <!--            <TextView-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:text="Your Jobs"-->
-        <!--                android:textSize="18sp" />-->
-        <!--        </LinearLayout>-->
-
-
         <LinearLayout
             android:id="@+id/your_Posts"
             android:layout_width="match_parent"
@@ -211,8 +189,6 @@
             android:layout_marginStart="4dp"
             android:layout_marginLeft="4dp"
             android:orientation="horizontal">
-
-
 
             <ImageView
                 android:layout_width="30dp"
@@ -280,5 +256,15 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <me.ibrahimsn.lib.SmoothBottomBar
+        android:id="@+id/bottomBar1"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        app:backgroundColor="@android:color/holo_orange_dark"
+        app:iconSize="24dp"
+        app:menu="@menu/bottom_nav_menu2"
+        app:textSize="14sp" />
 
 </LinearLayout>

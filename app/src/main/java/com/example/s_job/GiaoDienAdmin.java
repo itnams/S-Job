@@ -12,8 +12,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.s_job.Datacode.Account;
+import com.example.s_job.Fragment.User_Home;
+import com.example.s_job.Fragment.User_Notification;
+import com.example.s_job.Fragment.User_Profile;
 import com.example.s_job.activity.Login;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.database.ChildEventListener;
@@ -23,6 +27,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import me.ibrahimsn.lib.SmoothBottomBar;
+
 public class GiaoDienAdmin extends AppCompatActivity {
     TextView tvqltk;
     TextView tvcnyc;
@@ -30,7 +36,8 @@ public class GiaoDienAdmin extends AppCompatActivity {
     Login login;
     LinearLayout changePassword;
     DatabaseReference mData;
-
+    private FragmentTransaction fragmentTransaction;
+    private SmoothBottomBar smoothBottomBar;
     TextView tenAdmin, emailAdmin, sdtAdmin, diaChiAmdin;
     TextView tvlogout;
     public static String usernamekey;
@@ -46,6 +53,7 @@ public class GiaoDienAdmin extends AppCompatActivity {
         tvqltk = findViewById(R.id.tvqltk);
         tvlogout = findViewById(R.id.tvlogout);
         tvcnyc = findViewById(R.id.tvcnyc);
+        smoothBottomBar = findViewById(R.id.bottomBar);
         tvweb = findViewById(R.id.tvweb);
         tenAdmin = findViewById(R.id.tenAdmin);
         emailAdmin = findViewById(R.id.emailAdmin);
@@ -53,7 +61,6 @@ public class GiaoDienAdmin extends AppCompatActivity {
         sdtAdmin = findViewById(R.id.sdtAdmin);
         diaChiAmdin = findViewById(R.id.diaChiAdmin);
         mData = FirebaseDatabase.getInstance().getReference();
-
         mData.child("User").child(Login.tentaikhoanAdmin).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
