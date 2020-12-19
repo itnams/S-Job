@@ -62,5 +62,17 @@
     <string name="dsDangTin">Danh Sách Đăng Tin</string>
     <string name="ngoiSao">0</string>
     <string name="khuVucTuyen">Khu Vực Tuyển</string>
+    <string name="inputText">Nhập Thiếu Thông Tin!!!</string>
+    <string name="thongBao">Thông Báo !</string>
+    <string name="taoBai">Tạo Bài Thành Công !</string>
+    <string name="dulieu">Không Có Dữ Liệu !</string>
+    <string name="ngonNgu">Ngôn Ngữ</string>
+    <string name="hoTro">Hỗ Trợ</string>
+    <string name="moKhoa">Mở Khoá Tài Khoản</string>
+    <string name="quenMatKhau">Quên Mật Khẩu</string>
+    <string name="khac">Khác</string>
+    <string name="gui">Gữi</string>
+    <string name="khong">Không</string>
+    <string name="khoataikhoan">Bạn Đã Bị Khoá Tài Khoản!</string>
     <!--    Nhan Custom String-->
 </resources>

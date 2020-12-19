@@ -74,10 +74,11 @@
 
                 <TextView
                     android:id="@+id/tv_mota"
+                    android:textColor="@color/timApp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/moTa"
-                    android:textSize="14dp" />
+                    android:textSize="15dp" />
             </LinearLayout>
 
             <LinearLayout

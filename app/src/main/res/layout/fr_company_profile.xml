@@ -111,8 +111,7 @@
                         android:layout_marginHorizontal="6dp"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/location"
-                        />
+                        android:src="@drawable/location" />
 
                     <TextView
                         android:id="@+id/tv_diaChi_Company"
@@ -121,6 +120,17 @@
                         android:text="Q. Thủ Đức, TP. HCM"
                         android:textSize="14sp" />
                 </LinearLayout>
+
+                <TextView
+                    android:id="@+id/show_khoa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:text="@string/khoataikhoan"
+                    android:textColor="@color/doApp"
+                    android:textSize="20dp"
+                    android:visibility="gone" />
             </LinearLayout>
         </LinearLayout>
 

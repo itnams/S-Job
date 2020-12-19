@@ -135,7 +135,7 @@ public class Create_Post_Company extends AppCompatActivity {
                     onBackPressed();
                 } else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(Create_Post_Company.this);
-                    builder.setTitle("Thong Bao").setMessage("Have Input Is Empty!!!").setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    builder.setTitle(getString(R.string.thongBao)).setMessage(getResources().getString(R.string.inputText)).setPositiveButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             dialogInterface.dismiss();
@@ -164,16 +164,17 @@ public class Create_Post_Company extends AppCompatActivity {
     }
 
     boolean input() {
-        if (tieuDe.getText().toString().isEmpty()
-                && deLine.getText().toString().isEmpty()
-                && mucLuong.getText().toString().isEmpty()
-                && bangCap.getText().toString().isEmpty()
-                && nganhNghe.getText().toString().isEmpty()
-                && soLuongTuyen.getText().toString().isEmpty()
-                && diaChi.getText().toString().isEmpty()
-                && moTa.getText().toString().isEmpty()) {
-
-
+        if (tieuDe.getText().toString().isEmpty()) {
+            return false;
+        } else if (mucLuong.getText().toString().isEmpty()) {
+            return false;
+        } else if (bangCap.getText().toString().isEmpty()) {
+            return false;
+        } else if (nganhNghe.getText().toString().isEmpty()) {
+            return false;
+        } else if (soLuongTuyen.getText().toString().isEmpty()) {
+            return false;
+        } else if (moTa.getText().toString().isEmpty()) {
             return false;
         } else {
             return true;
@@ -194,7 +195,7 @@ public class Create_Post_Company extends AppCompatActivity {
         postForCompany.setMota(moTa.getText().toString());
         postForCompany.setTinhThanh(TinhThanhs[tinhThanh.getSelectedItemPosition()]);
         new dbFireBase().NewPoserForCompany(postForCompany);
-        Toast.makeText(this, "New Post Is Success!!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.taoBai), Toast.LENGTH_SHORT).show();
     }
 
     private void setControl() {
