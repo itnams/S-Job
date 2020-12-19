@@ -1,7 +1,6 @@
 package com.example.s_job.Fragment;
 
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +11,6 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Switch;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -38,7 +36,7 @@ public class Company_Notification extends Fragment {
     }
 
     private void setEvent(View view) {
-        listHotro.add(getString(R.string.mokhoatk));
+        listHotro.add(getString(R.string.hoTro));
         listHotro.add(getString(R.string.quenMatKhau));
         listHotro.add(getString(R.string.khac));
         sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -59,26 +57,20 @@ public class Company_Notification extends Fragment {
                 builder.setTitle(getString(R.string.hoTro));
                 View v = LayoutInflater.from(getActivity()).inflate(R.layout.item_in_dialog, null);
                 Spinner spr = v.findViewById(R.id.spr_hotro);
-                TextView dia_mota = v.findViewById(R.id.tv_dialog_mota);
-                dia_mota.setVisibility(View.GONE);
                 spr.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, listHotro));
                 spr.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                         switch (i) {
                             case 0:
-                                dia_mota.setVisibility(View.GONE);
-
+                                Toast.makeText(getActivity(), "dau", Toast.LENGTH_SHORT).show();
                                 break;
                             case 1:
-                                dia_mota.setVisibility(View.GONE);
-
+                                Toast.makeText(getActivity(), "giua", Toast.LENGTH_SHORT).show();
 
                                 break;
                             case 2:
-
-                                dia_mota.setVisibility(View.VISIBLE);
-
+                                Toast.makeText(getActivity(), "cuoi cung", Toast.LENGTH_SHORT).show();
                                 break;
                         }
 
@@ -87,17 +79,6 @@ public class Company_Notification extends Fragment {
                     @Override
                     public void onNothingSelected(AdapterView<?> adapterView) {
 
-                    }
-                });
-                builder.setPositiveButton(getString(R.string.gui), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getActivity(), "" + i, Toast.LENGTH_SHORT).show();
-                    }
-                }).setNegativeButton(getString(R.string.khong), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getActivity(), "" + i, Toast.LENGTH_SHORT).show();
                     }
                 });
                 builder.setView(v);
