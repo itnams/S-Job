@@ -19,9 +19,10 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class SignUp extends AppCompatActivity {
-    Account account;
+    Account account1;
     EditText name, email, pass, confirmPass, phone, address;
     RadioGroup rdoGroup;
     RadioButton rdoCompany, rdoUser;
@@ -55,46 +56,37 @@ public class SignUp extends AppCompatActivity {
                 if (confirmPass.getText().toString().equals(pass.getText().toString())) {
                     String douutien = "Cao";
                     String trangthai = "Bình thường";
-                    account = new Account(name.getText().toString(), email.getText().toString(), pass.getText().toString(), phone.getText().toString(), address.getText().toString(), chucvu.toString(), douutien, trangthai);
                     if (chucvu.equals("Company")) {
                         if (email.getText().toString().isEmpty() || name.getText().toString().isEmpty() || pass.getText().toString().isEmpty()
                                 || confirmPass.getText().toString().isEmpty() || phone.getText().toString().isEmpty() || address.getText().toString().isEmpty()) {
                             Toast.makeText(SignUp.this, "Vui lòng nhập đầy đủ thông tin !", Toast.LENGTH_SHORT).show();
 
                         } else {
-                            mData.child("User").addChildEventListener(new ChildEventListener() {
+                            mData.child("User").addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
-                                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                                    Account account = snapshot.getValue(Account.class);
-                                    String emailkt = account.email;
-                                    String userkt = account.nameUser;
-                                    String emailPattern = "[a-zA-Z0-9._-]+@gmail.com+";
-                                    if (email.getText().toString().matches(emailPattern)) {
-                                        if (email.getText().toString().equals(emailkt) || name.getText().toString().equals(userkt)) {
-                                            Toast.makeText(SignUp.this, "Tài khoản đã có người đăng ký", Toast.LENGTH_SHORT).show();
-                                        } else {
-                                            mData.child("Pending").child(email.getText().toString().replace("@gmail.com", "")).setValue(account);
-                                            Toast.makeText(SignUp.this, "Vui lòng chờ xét duyệt !", Toast.LENGTH_SHORT).show();
-                                            finish();
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    if(snapshot.exists())
+                                    {
+                                        for(DataSnapshot key : snapshot.getChildren())
+                                        {
+                                            Account account = key.getValue(Account.class);
+                                            String emailkt = account.email;
+                                            String userkt = account.nameUser;
+                                            String emailPattern = "[a-zA-Z0-9._-]+@gmail.com+";
+                                            if (email.getText().toString().matches(emailPattern)) {
+                                                if (userkt.equals(name.getText().toString()) || emailkt.equals(email.getText().toString())) {
+                                                    Toast.makeText(SignUp.this, "Tài khoản đã có người đăng ký", Toast.LENGTH_SHORT).show();
+                                                } else {
+                                                    account1 = new Account(name.getText().toString(), email.getText().toString(), pass.getText().toString(), phone.getText().toString(), address.getText().toString(), chucvu.toString(), douutien, trangthai);
+                                                    mData.child("Pending").child(email.getText().toString().replace("@gmail.com", "")).setValue(account1);
+                                                    Toast.makeText(SignUp.this, "Vui lòng chờ xét duyệt !", Toast.LENGTH_SHORT).show();
+                                                    finish();
+                                                }
+                                            } else {
+                                                Toast.makeText(SignUp.this, "Email không hợp lệ !", Toast.LENGTH_SHORT).show();
+                                            }
                                         }
-                                    } else {
-                                        Toast.makeText(SignUp.this, "Email không hợp lệ !", Toast.LENGTH_SHORT).show();
                                     }
-                                }
-
-                                @Override
-                                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                                }
-
-                                @Override
-                                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-                                }
-
-                                @Override
-                                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
                                 }
 
                                 @Override
@@ -120,7 +112,7 @@ public class SignUp extends AppCompatActivity {
                                         if (emailkt.equals(email.getText().toString()) || userkt.equals(name.getText().toString())) {
                                             Toast.makeText(SignUp.this, "Tài khoản đã có người đăng ký", Toast.LENGTH_SHORT).show();
                                         } else {
-                                            mData.child("User").child(email.getText().toString().replace("@gmail.com", "")).setValue(account);
+                                            mData.child("User").child(email.getText().toString().replace("@gmail.com", "")).setValue(account1);
                                             Toast.makeText(SignUp.this, "Đăng ký thành công !", Toast.LENGTH_SHORT).show();
                                             finish();
                                         }
