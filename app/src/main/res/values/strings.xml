@@ -72,4 +72,11 @@
     <string name="quenMatKhau">Quên Mật Khẩu</string>
     <string name="khac">Khác</string>
     <!--    Nhan Custom String-->
+    <!-- String of resetpass -->
+    <string name="titlers">Reset Password</string>
+    <string name="mailrs">Email</string>
+    <string name="passrs">New Pass</string>
+    <string name="comfirmrs">Comfirm</string>
+    <string name="reset">Reset</string>
+    <string name="cancel">Cancel</string>
 </resources>
