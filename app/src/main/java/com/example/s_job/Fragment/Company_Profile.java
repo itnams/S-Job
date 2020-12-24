@@ -32,8 +32,6 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 import java.util.HashMap;
 
@@ -51,9 +49,7 @@ public class Company_Profile extends Fragment {
     ImageView imageView_sheet;
     Button btnUpLoad_sheet;
     Uri linkImage;
-    // instance for firebase storage and StorageReference
-    FirebaseStorage storage;
-    StorageReference storageReference;
+
 
     //---------------------
     @Override

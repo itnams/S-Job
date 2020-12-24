@@ -12,8 +12,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,8 +23,6 @@ import com.example.s_job.DetailActivity;
 import com.example.s_job.PostCompany;
 import com.example.s_job.PostCompanyAdapter;
 import com.example.s_job.R;
-import com.example.s_job.activity.Login;
-import com.example.s_job.activity.SignUp;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
