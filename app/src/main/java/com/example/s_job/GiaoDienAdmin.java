@@ -84,22 +84,6 @@ public class GiaoDienAdmin extends AppCompatActivity {
                 String emailAdmin1 = account.email;
                 String sdtAdmin1 = account.phone;
                 String diaChiAdmin1 = account.address;
-//                if(login.trangThai == "Khóa")
-//                {
-//                    AlertDialog.Builder builder1 = new AlertDialog.Builder(GiaoDienAdmin.this);
-//                    builder1.setTitle("Thông báo !");
-//                    builder1.setMessage("Tài khoản của bạn đang bị khoá vui lòng liên hệ Admin để biết thêm chi tiết ! Click Đồng ý để quay lại yrang đăng nhập ! ");
-//                    builder1.setCancelable(true);
-//                    builder1.setPositiveButton("Đồng ý",
-//                            new DialogInterface.OnClickListener() {
-//                                public void onClick(DialogInterface dialog, int id) {
-//                                    Intent intent = new Intent(GiaoDienAdmin.this,Login.class);
-//                                    startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-//                                }
-//                            });
-//                    AlertDialog alert11 = builder1.create();
-//                    alert11.show();
-//                }
                 if (login.tentaikhoanAdmin.equals(tenAdmin1)) {
                     tenAdmin.setText(tenAdmin1);
                     emailAdmin.setText(emailAdmin1);
