@@ -71,6 +71,10 @@
     <string name="moKhoa">Mở Khoá Tài Khoản</string>
     <string name="quenMatKhau">Quên Mật Khẩu</string>
     <string name="khac">Khác</string>
+    <string name="gui">Gữi</string>
+    <string name="khong">Không</string>
+    <string name="khoataikhoan">Bạn Đã Bị Khoá Tài Khoản!</string>
+    <string name="thuvien">Thư Viện</string>
     <!--    Nhan Custom String-->
     <!-- String of resetpass -->
     <string name="titlers">Reset Password</string>

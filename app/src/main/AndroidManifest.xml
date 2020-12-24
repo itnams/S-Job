@@ -6,7 +6,8 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
@@ -14,14 +15,14 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.SJob">
-        <activity android:name=".DetailActivity" />
+        <activity android:name=".DetailActivity"></activity>
         <activity android:name=".Activity_For_n.Goole_map" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_key" /> <!-- <activity android:name=".post" /> -->
         <activity android:name=".favoritedJobs" />
-        <activity android:name=".MainActivity1" />
+        <activity android:name=".MainActivity1"></activity>
         <activity android:name=".ThemWebTuyenDung" />
         <activity android:name=".Activity_For_n.Create_Post_Company" />
         <activity android:name=".ChiTietTaiKhoan" />
@@ -40,7 +41,7 @@
         <activity
             android:name=".MainActivity"
             android:windowSoftInputMode="adjustPan"
-            tools:ignore="DuplicateActivity" />
+            tools:ignore="DuplicateActivity"></activity>
     </application>
 
 </manifest>
