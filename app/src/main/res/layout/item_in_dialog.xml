@@ -14,8 +14,8 @@
         android:popupBackground="@color/daApp"
         android:textAlignment="center" />
 
-    <TextView
-        android:id="@+id/tv_dialog_mota"
+    <EditText
+        android:id="@+id/et_dialog_mota"
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:background="@color/lucApp"
@@ -25,5 +25,6 @@
         android:inputType="textMultiLine"
         android:padding="5dp"
         android:textSize="15sp"
-        android:visibility="gone" />
+
+        />
 </LinearLayout>

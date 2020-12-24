@@ -72,7 +72,6 @@ public class Create_Post_Company extends AppCompatActivity {
         setEvent();
     }
 
-
     private void setEvent() {
         tinhThanh.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, TinhThanhs));
         tinhThanh.setSelection(0);

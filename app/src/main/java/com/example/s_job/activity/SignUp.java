@@ -8,10 +8,15 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.s_job.Datacode.Account;
 import com.example.s_job.R;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -63,9 +68,43 @@ DatabaseReference mData;
                         }
                         else
                         {
-                        mData.child("Pending").child(email.getText().toString().replace("@gmail.com","")).setValue(account);
-                            Toast.makeText(SignUp.this,"Vui lòng chờ xét duyệt !",Toast.LENGTH_SHORT).show();
-                            finish();
+                            mData.child("User").addChildEventListener(new ChildEventListener() {
+                                @Override
+                                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                                    Account account = snapshot.getValue(Account.class);
+                                    String emailkt = account.email;
+                                    String userkt = account.nameUser;
+                                    if(account.email.equals(emailkt) || account.nameUser.equals(userkt))
+                                    {
+                                        Toast.makeText(SignUp.this,"Tài khoản đã có người đăng ký",Toast.LENGTH_SHORT).show();
+                                    }else {
+                                        mData.child("Pending").child(email.getText().toString().replace("@gmail.com","")).setValue(account);
+                                        Toast.makeText(SignUp.this,"Vui lòng chờ xét duyệt !",Toast.LENGTH_SHORT).show();
+                                        finish();
+                                    }
+                                }
+
+                                @Override
+                                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                                }
+
+                                @Override
+                                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                                }
+
+                                @Override
+                                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+
                         }
                     }
                     else
@@ -77,12 +116,44 @@ DatabaseReference mData;
                         }
                         else
                         {
-                            mData.child("User").child(email.getText().toString().replace("@gmail.com","")).setValue(account);
-                            Toast.makeText(SignUp.this,"Đăng ký thành công !",Toast.LENGTH_SHORT).show();
-                            finish();
+                            mData.child("User").addChildEventListener(new ChildEventListener() {
+                                @Override
+                                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                                    Account account = snapshot.getValue(Account.class);
+                                    String emailkt = account.email;
+                                    String userkt = account.nameUser;
+                                    if(account.email.equals(emailkt) || account.nameUser.equals(userkt))
+                                    {
+                                        Toast.makeText(SignUp.this,"Tài khoản đã có người đăng ký",Toast.LENGTH_SHORT).show();
+                                    }else {
+                                        mData.child("User").child(email.getText().toString().replace("@gmail.com","")).setValue(account);
+                                        Toast.makeText(SignUp.this,"Đăng ký thành công !",Toast.LENGTH_SHORT).show();
+                                        finish();
+                                    }
+                                }
+
+                                @Override
+                                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                                }
+
+                                @Override
+                                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                                }
+
+                                @Override
+                                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
                         }
                     }
-
                 }
                 else
                 {

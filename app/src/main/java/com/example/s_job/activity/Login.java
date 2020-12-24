@@ -1,5 +1,6 @@
 package com.example.s_job.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,8 +13,10 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.s_job.ChiTietTaiKhoan;
 import com.example.s_job.Datacode.Account;
 import com.example.s_job.GiaoDienAdmin;
 import com.example.s_job.MainActivity;
@@ -29,16 +32,14 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Login extends AppCompatActivity {
     private TextView fogotPW;
+    public static  String userLogin;
     private TextView Signup;
     private Button btnLogin;
     private EditText edtuser, edtpass;
     public static String curentpass;
     public static String tentaikhoanAdmin;
-    public static String trangThai;
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference mData;
     int n = 0;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,8 +79,6 @@ public class Login extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 mData.child("User").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -88,10 +87,11 @@ public class Login extends AppCompatActivity {
                             for (DataSnapshot key : snapshot.getChildren()) {
                                 Account account = key.getValue(Account.class);
                                 String nameUser = account.nameUser;
+                                userLogin = account.nameUser;
                                 String passWord = account.passWord;
                                 String position = account.position;
+                                String trangThai1 = account.trangthai;
                                 String email = account.email;
-                                trangThai = account.trangthai;
                                 if (edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("Admin")) {
                                     Intent intent = new Intent(getApplicationContext(), GiaoDienAdmin.class);
                                     Toast.makeText(Login.this, "Đăng Nhập Thành Công !", Toast.LENGTH_SHORT).show();
@@ -101,22 +101,66 @@ public class Login extends AppCompatActivity {
                                     return;
 
                                 } else if (edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("User")) {
-                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                    Toast.makeText(Login.this, "Đăng Nhập Thành Công !", Toast.LENGTH_SHORT).show();
-                                    startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                                    return;
+                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                        if(trangThai1.equals("Khóa"))
+                                        {
+                                            AlertDialog.Builder builder1 = new AlertDialog.Builder(Login.this);
+                                            builder1.setTitle("-------Thông Báo-------");
+                                            builder1.setMessage("Tài khoản của bạn đang bị khóa vui lòng liên hệ Admin với số điện thoại 0332175559 để biết thêm chi tiết và hỗ trợ !");
+                                            builder1.setCancelable(true);
+                                            builder1.setPositiveButton("Quay về",
+                                                    new DialogInterface.OnClickListener() {
+                                                        public void onClick(DialogInterface dialog, int id) {
+                                                            dialog.cancel();
+                                                        }
+                                                    });
+                                            builder1.setNegativeButton("Thoát Login",
+                                                    new DialogInterface.OnClickListener() {
+                                                        public void onClick(DialogInterface dialog, int id) {
+                                                            finish();
+                                                        }
+                                                    });
+                                            AlertDialog alert11 = builder1.create();
+                                            alert11.show();
+                                        }
+                                        else {
+                                            Toast.makeText(Login.this, "Đăng Nhập Thành Công !", Toast.LENGTH_SHORT).show();
+                                            startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                        }
+                                        return;
 
                                 } else if (edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("Company")) {
                                     Intent intent = new Intent(getApplicationContext(), MainActivity1.class);
-                                    Toast.makeText(Login.this, "Đăng Nhập Thành Công !", Toast.LENGTH_SHORT).show();
-                                    intent.putExtra("email", email.replace("@gmail.com", ""));
-                                    startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                    if(trangThai1.equals("Khóa"))
+                                    {
+                                        AlertDialog.Builder builder1 = new AlertDialog.Builder(Login.this);
+                                        builder1.setTitle("---Thông Báo---");
+                                        builder1.setMessage("Tài khoản của bạn đang bị khóa vui lòng liên hệ Admin với số điện thoại 0332175559 để biết thêm chi tiết và hỗ trợ !");
+                                        builder1.setCancelable(true);
+                                        builder1.setPositiveButton("Quay về",
+                                                new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int id) {
+                                                        dialog.cancel();
+                                                    }
+                                                });
+                                        builder1.setNegativeButton("Thoát Login",
+                                                new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int id) {
+                                                        finish();
+                                                    }
+                                                });
+                                        AlertDialog alert11 = builder1.create();
+                                        alert11.show();
+                                    }
+                                    else {
+                                        Toast.makeText(Login.this, "Đăng Nhập Thành Công !", Toast.LENGTH_SHORT).show();
+                                        intent.putExtra("email", email.replace("@gmail.com", ""));
+                                        startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                    }
                                     return;
-
                                 }
-
                             }
-                            Toast.makeText(Login.this, "Đăng Nhập Không Thành Công !", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, "Đăng Nhập Không Thất bại !", Toast.LENGTH_SHORT).show();
                         }
                         //---------
                     }

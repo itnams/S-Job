@@ -1,7 +1,13 @@
 package com.example.s_job.Fragment;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.s_job.Datacode.Account;
@@ -25,6 +32,10 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.util.HashMap;
 
 
 public class Company_Profile extends Fragment {
@@ -33,12 +44,16 @@ public class Company_Profile extends Fragment {
     ImageView img_company;
 
 
-  static public Company company = new Company();
+    static public Company company = new Company();
 
     //For bottomsheetView
     EditText fullname, mail, phone, address;
     ImageView imageView_sheet;
     Button btnUpLoad_sheet;
+    Uri linkImage;
+    // instance for firebase storage and StorageReference
+    FirebaseStorage storage;
+    StorageReference storageReference;
 
     //---------------------
     @Override
@@ -63,23 +78,6 @@ public class Company_Profile extends Fragment {
     private void changeTextView() {
         dbFireBase db = new dbFireBase();
         db.myRef = db.database.getReference("User");
-     db.myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-         @Override
-         public void onDataChange(@NonNull DataSnapshot snapshot) {
-             if (snapshot.exists()){
-                 Company b = snapshot.getValue(Company.class);
-for (DataSnapshot a : snapshot.getChildren()){
-
-}
-             }
-
-         }
-
-         @Override
-         public void onCancelled(@NonNull DatabaseError error) {
-
-         }
-     });
 
         db.myRef.child(MainActivity1.User).addValueEventListener(new ValueEventListener() {
             @Override
@@ -128,6 +126,9 @@ for (DataSnapshot a : snapshot.getChildren()){
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dbFireBase db = new dbFireBase();
+                db.myRef = db.database.getReference("Company");
+
                 BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
                         view.getContext(), R.style.BottomSheetDialogTheme
                 );
@@ -154,12 +155,27 @@ for (DataSnapshot a : snapshot.getChildren()){
                 mail.setText(company.getEmail());
                 phone.setText(company.getSdt());
                 address.setText(company.getDiaChi());
-                fullname.setText(company.getFullName());
+
+                db.myRef.child("Additional-Company").child(company.getEmail()).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        company.setFullName(((HashMap) snapshot.getValue()).get("fullName").toString());
+                        return;
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
 
                 btnUpLoad_sheet.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(getContext(), "Go To The Gallary, Libary, Picture!!", Toast.LENGTH_SHORT).show();
+                        Intent takePicture = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                        startActivityForResult(takePicture, 0);
+                        Toast.makeText(getActivity(), getString(R.string.thuvien), Toast.LENGTH_LONG).show();
                     }
                 });
 
@@ -167,6 +183,9 @@ for (DataSnapshot a : snapshot.getChildren()){
                     @Override
                     public void onClick(View view) {
                         UpLoadData();
+//Fix Send image to firebase
+
+
                         Toast.makeText(getContext(), "Change Infomation Success!!", Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -252,6 +271,44 @@ for (DataSnapshot a : snapshot.getChildren()){
 
             }
         });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode != Activity.RESULT_CANCELED) {
+            switch (requestCode) {
+                case 0:
+                    if (resultCode == Activity.RESULT_OK && data != null) {
+                        linkImage = data.getData();
+                        Bitmap selectedImage = (Bitmap) data.getExtras().get("data");
+                        imageView_sheet.setImageBitmap(selectedImage);
+                    }
+
+                    break;
+                case 1:
+                    if (resultCode == Activity.RESULT_OK && data != null) {
+                        linkImage = data.getData();
+                        Uri selectedImage = data.getData();
+                        String[] filePathColumn = {MediaStore.Images.Media.DATA};
+                        if (selectedImage != null) {
+                            Cursor cursor = getContext().getContentResolver().query(selectedImage,
+                                    filePathColumn, null, null, null);
+                            if (cursor != null) {
+                                cursor.moveToFirst();
+
+                                int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+                                String picturePath = cursor.getString(columnIndex);
+                                imageView_sheet.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+                                cursor.close();
+                            }
+                        }
+
+                    }
+                    break;
+            }
+
+        }
     }
 
     //Click Save Profile in sheet
