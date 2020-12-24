@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class SignUp extends AppCompatActivity {
     Account account1;
-    EditText name, email, pass, confirmPass, phone, address;
+    EditText name, email1, pass, confirmPass, phone, address;
     RadioGroup rdoGroup;
     RadioButton rdoCompany, rdoUser;
     Button btnSignUp;
@@ -35,7 +35,7 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         mData = FirebaseDatabase.getInstance().getReference();
         name = findViewById(R.id.name);
-        email = findViewById(R.id.email);
+        email1 = findViewById(R.id.email);
         pass = findViewById(R.id.password);
         confirmPass = findViewById(R.id.confirmPassword);
         phone = findViewById(R.id.phone);
@@ -57,7 +57,7 @@ public class SignUp extends AppCompatActivity {
                     String douutien = "Cao";
                     String trangthai = "Bình thường";
                     if (chucvu.equals("Company")) {
-                        if (email.getText().toString().isEmpty() || name.getText().toString().isEmpty() || pass.getText().toString().isEmpty()
+                        if (email1.getText().toString().isEmpty() || name.getText().toString().isEmpty() || pass.getText().toString().isEmpty()
                                 || confirmPass.getText().toString().isEmpty() || phone.getText().toString().isEmpty() || address.getText().toString().isEmpty()) {
                             Toast.makeText(SignUp.this, "Vui lòng nhập đầy đủ thông tin !", Toast.LENGTH_SHORT).show();
 
@@ -73,12 +73,12 @@ public class SignUp extends AppCompatActivity {
                                             String emailkt = account.email;
                                             String userkt = account.nameUser;
                                             String emailPattern = "[a-zA-Z0-9._-]+@gmail.com+";
-                                            if (email.getText().toString().matches(emailPattern)) {
-                                                if (userkt.equals(name.getText().toString()) || emailkt.equals(email.getText().toString())) {
+                                            if (email1.getText().toString().matches(emailPattern)) {
+                                                if (email1.getText().toString().equals(emailkt.replace("@gmail.com",""))) {
                                                     Toast.makeText(SignUp.this, "Tài khoản đã có người đăng ký", Toast.LENGTH_SHORT).show();
                                                 } else {
-                                                    account1 = new Account(name.getText().toString(), email.getText().toString(), pass.getText().toString(), phone.getText().toString(), address.getText().toString(), chucvu.toString(), douutien, trangthai);
-                                                    mData.child("Pending").child(email.getText().toString().replace("@gmail.com", "")).setValue(account1);
+                                                    account1 = new Account(name.getText().toString(), email1.getText().toString(), pass.getText().toString(), phone.getText().toString(), address.getText().toString(), chucvu.toString(), douutien, trangthai);
+                                                    mData.child("Pending").child(email1.getText().toString().replace("@gmail.com", "")).setValue(account1);
                                                     Toast.makeText(SignUp.this, "Vui lòng chờ xét duyệt !", Toast.LENGTH_SHORT).show();
                                                     finish();
                                                 }
@@ -97,7 +97,7 @@ public class SignUp extends AppCompatActivity {
 
                         }
                     } else {
-                        if (email.getText().toString().isEmpty() || name.getText().toString().isEmpty() || pass.getText().toString().isEmpty() || confirmPass.getText().toString().isEmpty() || phone.getText().toString().isEmpty() || address.getText().toString().isEmpty()) {
+                        if (email1.getText().toString().isEmpty() || name.getText().toString().isEmpty() || pass.getText().toString().isEmpty() || confirmPass.getText().toString().isEmpty() || phone.getText().toString().isEmpty() || address.getText().toString().isEmpty()) {
                             Toast.makeText(SignUp.this, "Vui lòng nhập đầy đủ thông tin !", Toast.LENGTH_SHORT).show();
 
                         } else {
@@ -108,11 +108,14 @@ public class SignUp extends AppCompatActivity {
                                     String emailkt = account.email;
                                     String userkt = account.nameUser;
                                     String emailPattern = "[a-zA-Z0-9._-]+@gmail.com+";
-                                    if (email.getText().toString().matches(emailPattern)) {
-                                        if (emailkt.equals(email.getText().toString()) || userkt.equals(name.getText().toString())) {
+                                    if (email1.getText().toString().matches(emailPattern)) {
+                                        if (email1.getText().toString().equals(emailkt) || name.getText().toString().equals(userkt))
+                                        {
                                             Toast.makeText(SignUp.this, "Tài khoản đã có người đăng ký", Toast.LENGTH_SHORT).show();
-                                        } else {
-                                            mData.child("User").child(email.getText().toString().replace("@gmail.com", "")).setValue(account1);
+                                        }
+                                        else {
+                                            account1 = new Account(name.getText().toString(), email1.getText().toString(), pass.getText().toString(), phone.getText().toString(), address.getText().toString(), chucvu.toString(), douutien, trangthai);
+                                            mData.child("User").child(email1.getText().toString().replace("@gmail.com", "")).setValue(account1);
                                             Toast.makeText(SignUp.this, "Đăng ký thành công !", Toast.LENGTH_SHORT).show();
                                             finish();
                                         }
