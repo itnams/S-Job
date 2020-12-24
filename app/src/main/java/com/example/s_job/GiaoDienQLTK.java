@@ -52,6 +52,7 @@ public class GiaoDienQLTK extends AppCompatActivity {
         imgload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dstaikhoantk.clear();
                 mData.child("User").addChildEventListener(new ChildEventListener() {
                     @Override
                     public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String previousChildName) {
@@ -59,7 +60,6 @@ public class GiaoDienQLTK extends AppCompatActivity {
                         String email = account.email;
                         if (account.position.equals("Company") || account.position.equals("User")) {
                             edttim.setText("");
-                            dstaikhoantk.clear();
                             dstaikhoantk.add(email);
                             arrayAdapter.notifyDataSetChanged();
                         }
