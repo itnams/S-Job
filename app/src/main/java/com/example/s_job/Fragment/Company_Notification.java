@@ -1,6 +1,7 @@
 package com.example.s_job.Fragment;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Switch;
@@ -36,7 +38,7 @@ public class Company_Notification extends Fragment {
     }
 
     private void setEvent(View view) {
-        listHotro.add(getString(R.string.hoTro));
+        listHotro.add(getString(R.string.moKhoa));
         listHotro.add(getString(R.string.quenMatKhau));
         listHotro.add(getString(R.string.khac));
         sw.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -57,20 +59,25 @@ public class Company_Notification extends Fragment {
                 builder.setTitle(getString(R.string.hoTro));
                 View v = LayoutInflater.from(getActivity()).inflate(R.layout.item_in_dialog, null);
                 Spinner spr = v.findViewById(R.id.spr_hotro);
+                EditText et = v.findViewById(R.id.et_dialog_mota);
+                et.setVisibility(View.GONE);
                 spr.setAdapter(new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, listHotro));
                 spr.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                         switch (i) {
                             case 0:
-                                Toast.makeText(getActivity(), "dau", Toast.LENGTH_SHORT).show();
+                                et.setVisibility(View.GONE);
+
                                 break;
                             case 1:
-                                Toast.makeText(getActivity(), "giua", Toast.LENGTH_SHORT).show();
+                                et.setVisibility(View.GONE);
+
 
                                 break;
                             case 2:
-                                Toast.makeText(getActivity(), "cuoi cung", Toast.LENGTH_SHORT).show();
+                                et.setVisibility(View.VISIBLE);
+
                                 break;
                         }
 
@@ -81,6 +88,19 @@ public class Company_Notification extends Fragment {
 
                     }
                 });
+
+                builder.setNegativeButton(getString(R.string.gui), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), "" + i, Toast.LENGTH_SHORT).show();
+                    }
+                }).setPositiveButton(getString(R.string.khong), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(getActivity(), "" + i, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
                 builder.setView(v);
 
                 builder.create().show();

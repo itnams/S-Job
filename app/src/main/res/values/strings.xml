@@ -74,5 +74,6 @@
     <string name="gui">Gữi</string>
     <string name="khong">Không</string>
     <string name="khoataikhoan">Bạn Đã Bị Khoá Tài Khoản!</string>
+    <string name="thuvien">Thư Viện</string>
     <!--    Nhan Custom String-->
 </resources>
