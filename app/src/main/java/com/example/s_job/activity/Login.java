@@ -209,7 +209,7 @@ public class Login extends AppCompatActivity {
                                     return;
                                 }
                             }
-                            Toast.makeText(Login.this, "Đăng Nhập Không Thất bại !", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Login.this, "Đăng Nhập Thất bại !", Toast.LENGTH_SHORT).show();
                         }
                         //---------
                     }

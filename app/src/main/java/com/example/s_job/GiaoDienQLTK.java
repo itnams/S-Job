@@ -131,7 +131,6 @@ public class GiaoDienQLTK extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Account account = dataSnapshot.getValue(Account.class);
                 String email = account.email;
-                String position = account.position;
                 if (account.position.equals("Company") || account.position.equals("User")) {
                     dstaikhoantk.add(email);
                 }
