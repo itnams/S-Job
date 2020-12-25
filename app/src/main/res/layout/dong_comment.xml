@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="@drawable/duongvien_goctron"
+    android:orientation="vertical">
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="User"
+    android:id="@+id/txtUserComment"
+    android:textColor="@color/black"
+    android:textSize="15dp"
+    />
+
+    <TextView
+        android:id="@+id/txtcomment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Comment"
+        android:textColor="@color/black"
+        android:textSize="10dp"
+    />
+</LinearLayout>

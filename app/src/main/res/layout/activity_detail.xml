@@ -11,7 +11,7 @@
         <LinearLayout
             android:id="@+id/linerlayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_weight="1">
             <TextView
@@ -19,6 +19,7 @@
                 android:padding="10dp"
                 android:gravity="center"
                 android:textSize="30dp"
+                android:background="@color/cam"
                 android:id="@+id/txtTieuDePost"
                 android:layout_height="wrap_content"
                 android:text="Tiêu đề"
@@ -26,7 +27,8 @@
                 />
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:fillViewport="true">
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -100,6 +102,7 @@
                     <TextView
                         android:paddingLeft="10dp"
                         android:textSize="20dp"
+                        android:paddingTop="20dp"
                         android:id="@+id/txtDetail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -107,20 +110,14 @@
                         android:layout_below="@id/txtDiaChi"
                         android:text="Mô tả"
                         ></TextView>
-                    <ListView
-                        android:id="@+id/listviewComment"
-                        android:paddingTop="20dp"
-                        android:paddingBottom="20dp"
-                        android:layout_width="match_parent"
-                        android:layout_below="@id/txtDetail"
-                        android:layout_height="240dp"/>
+
                     <EditText
                         android:paddingTop="30dp"
                         android:id="@+id/edtComment"
                         android:hint="Nhập nhận xét về công việc.."
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/listviewComment"
+                        android:layout_below="@id/txtDetail"
                         ></EditText>
                     <Button
                         android:layout_width="wrap_content"
@@ -131,10 +128,18 @@
                         android:layout_marginStart="10dp"
                         android:text="Nhận xét"
                         ></Button>
+
+                    <ListView
+                        android:id="@+id/listviewComment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@id/btnNhanXet"
+                        android:layout_marginTop="-3dp"
+                        android:layout_gravity="top"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp" />
                 </RelativeLayout>
             </ScrollView>
-
         </LinearLayout>
     </RelativeLayout>
-
 </FrameLayout>

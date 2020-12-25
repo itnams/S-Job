@@ -1,9 +1,11 @@
 package com.example.s_job;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,11 +15,14 @@ import android.widget.Toast;
 
 import com.example.s_job.Fragment.User_Home;
 import com.example.s_job.activity.Login;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class DetailActivity extends AppCompatActivity {
 TextView txtTieuDePost,txtHanNop,txtTinhThanhDetail,txtMucLuong,txtSoLuongTuyen,
@@ -28,6 +33,7 @@ EditText edtComment;
 ListView listviewComment;
 Login login;
 DatabaseReference mData;
+ArrayList<Comment>commentArrayList;
 User_Home user_home;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,14 +53,14 @@ User_Home user_home;
         edtComment = findViewById(R.id.edtComment);
         listviewComment = findViewById(R.id.listviewComment);
         txtTieuDePost.setText(user_home.tieude);
-        txtHanNop.setText(user_home.ngayDang);
+        txtHanNop.setText("Ngày đăng:"+user_home.ngayDang);
         txtTinhThanhDetail.setText(user_home.tinhThanh);
         mData = FirebaseDatabase.getInstance().getReference();
 
         mData.child("Company").child("Post-Company").child(user_home.emai).child(key).child("MucLuong").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                txtMucLuong.setText(snapshot.getValue().toString());
+                txtMucLuong.setText("Mức lương:"+snapshot.getValue().toString() + "VNĐ");
             }
 
             @Override
@@ -66,7 +72,7 @@ User_Home user_home;
         mData.child("Company").child("Post-Company").child(user_home.emai).child(key).child("soLuongTuyen").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                txtSoLuongTuyen.setText(snapshot.getValue().toString());
+                txtSoLuongTuyen.setText("Số lượng:"+snapshot.getValue().toString());
             }
 
             @Override
@@ -77,7 +83,7 @@ User_Home user_home;
         mData.child("Company").child("Post-Company").child(user_home.emai).child(key).child("bangCap").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                txtBangCap.setText(snapshot.getValue().toString());
+                txtBangCap.setText("Bằng cấp:"+snapshot.getValue().toString());
             }
 
             @Override
@@ -88,7 +94,7 @@ User_Home user_home;
         mData.child("Company").child("Post-Company").child(user_home.emai).child(key).child("nganhNghe").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                txtNganhNghe.setText(snapshot.getValue().toString());
+                txtNganhNghe.setText("Ngành nghề:"+snapshot.getValue().toString());
             }
 
             @Override
@@ -99,7 +105,7 @@ User_Home user_home;
         mData.child("Company").child("Post-Company").child(user_home.emai).child(key).child("diaChi").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                txtDiaChi.setText(snapshot.getValue().toString());
+                txtDiaChi.setText("Địa chỉ:"+snapshot.getValue().toString());
             }
 
             @Override
@@ -123,6 +129,58 @@ User_Home user_home;
             public void onClick(View v) {
                 Comment comment = new Comment(login.userLogin,edtComment.getText().toString());
                 mData.child("Company").child("Post-Company").child(user_home.emai).child(key).child("Comment").push().setValue(comment);
+            }
+        });
+        commentArrayList = new ArrayList<>();
+        mData.child("Company").child("Post-Company").child(user_home.emai).child(key).child("Comment").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                Comment comment = snapshot.getValue(Comment.class);
+                commentArrayList.add(new Comment(comment.user,comment.comment));
+                commentAdapter commentAdapter = new commentAdapter(DetailActivity.this,R.layout.dong_comment,commentArrayList);
+                listviewComment.setAdapter(commentAdapter);
+                commentAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        listviewComment.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int action = event.getAction();
+                switch (action) {
+                    case MotionEvent.ACTION_DOWN:
+                        // Disallow ScrollView to intercept touch events.
+                        v.getParent().requestDisallowInterceptTouchEvent(true);
+                        break;
+
+                    case MotionEvent.ACTION_UP:
+                        // Allow ScrollView to intercept touch events.
+                        v.getParent().requestDisallowInterceptTouchEvent(false);
+                        break;
+                }
+
+                // Handle ListView touch events.
+                v.onTouchEvent(event);
+                return true;
             }
         });
     }
