@@ -132,6 +132,7 @@ User_Home user_home;
             public void onClick(View v) {
                 Comment comment = new Comment(login.userLogin,edtComment.getText().toString(),String.valueOf(ratingPos.getRating()).replace(".0",""));
                 mData.child("Company").child("Post-Company").child(user_home.emai).child(key).child("Comment").push().setValue(comment);
+                edtComment.setText("");
             }
         });
         commentArrayList = new ArrayList<>();
