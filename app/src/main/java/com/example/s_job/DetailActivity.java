@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ TextView txtTieuDePost,txtHanNop,txtTinhThanhDetail,txtMucLuong,txtSoLuongTuyen,
         txtBangCap,txtNganhNghe,txtDiaChi,txtDetail;
 Button btnNhanXet;
 String key;
+RatingBar ratingPos;
 EditText edtComment;
 ListView listviewComment;
 Login login;
@@ -50,6 +52,7 @@ User_Home user_home;
         txtNganhNghe = findViewById(R.id.txtNganhNghe);
         txtDiaChi = findViewById(R.id.txtDiaChi);
         txtDetail = findViewById(R.id.txtDetail);
+        ratingPos = findViewById(R.id.ratingPos);
         edtComment = findViewById(R.id.edtComment);
         listviewComment = findViewById(R.id.listviewComment);
         txtTieuDePost.setText(user_home.tieude);
@@ -127,7 +130,7 @@ User_Home user_home;
         btnNhanXet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Comment comment = new Comment(login.userLogin,edtComment.getText().toString());
+                Comment comment = new Comment(login.userLogin,edtComment.getText().toString(),ratingPos.getRating()+"");
                 mData.child("Company").child("Post-Company").child(user_home.emai).child(key).child("Comment").push().setValue(comment);
             }
         });
@@ -136,7 +139,7 @@ User_Home user_home;
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Comment comment = snapshot.getValue(Comment.class);
-                commentArrayList.add(new Comment(comment.user,comment.comment));
+                commentArrayList.add(new Comment(comment.user,comment.comment,comment.ratting));
                 commentAdapter commentAdapter = new commentAdapter(DetailActivity.this,R.layout.dong_comment,commentArrayList);
                 listviewComment.setAdapter(commentAdapter);
                 commentAdapter.notifyDataSetChanged();

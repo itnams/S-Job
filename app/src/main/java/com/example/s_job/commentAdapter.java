@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.List;
@@ -41,8 +42,11 @@ public class commentAdapter extends BaseAdapter {
         convertView = inflater.inflate(myLayout,null);
         TextView txtUserComment = convertView.findViewById(R.id.txtUserComment);
         TextView txtcomment = convertView.findViewById(R.id.txtcomment);
+        RatingBar ratingComment = convertView.findViewById(R.id.ratingComment);
         txtUserComment.setText(arrayComment.get(position).user);
+        ratingComment.setEnabled(false);
         txtcomment.setText(arrayComment.get(position).comment);
+        ratingComment.setRating(4);
         return convertView;
     }
 }
