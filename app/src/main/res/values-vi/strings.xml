@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">S-Job</string>
     <!--Custom String of Admin-->
@@ -79,7 +80,6 @@
     <string name="caiDatThongTin">Cài Đặt Thông Tin</string>
     <string name="doimatKhau">Đổi Mật Khẩu</string>
     <string name="thoat">Thoát</string>
-
     <!--    Nhan Custom String-->
     <!-- String of resetpass -->
     <string name="titlers">Reset Password</string>
@@ -88,6 +88,4 @@
     <string name="comfirmrs">Comfirm</string>
     <string name="reset">Reset</string>
     <string name="cancel">Cancel</string>
-    <string name="minimum_password">Mật khẩu phải > 6 ký tự</string>
-    <string name="auth_failed">Đăng nhập thất bại !</string>
 </resources>

@@ -50,7 +50,6 @@ public class Company_Profile extends Fragment {
     Button btnUpLoad_sheet;
     Uri linkImage;
 
-
     //---------------------
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
