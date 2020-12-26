@@ -20,6 +20,7 @@ import com.example.s_job.Fragment.User_Notification;
 import com.example.s_job.Fragment.User_Profile;
 import com.example.s_job.activity.Login;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -61,57 +62,57 @@ public class GiaoDienAdmin extends AppCompatActivity {
         sdtAdmin = findViewById(R.id.sdtAdmin);
         diaChiAmdin = findViewById(R.id.diaChiAdmin);
         mData = FirebaseDatabase.getInstance().getReference();
-        mData.child("User").child(Login.tentaikhoanAdmin).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    account = snapshot.getValue(Account.class);
-
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-        mData.child("User").addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                Account account = dataSnapshot.getValue(Account.class);
-                String tenAdmin1 = account.nameUser;
-                String emailAdmin1 = account.email;
-                String sdtAdmin1 = account.phone;
-                String diaChiAdmin1 = account.address;
-                if (login.tentaikhoanAdmin.equals(tenAdmin1)) {
-                    tenAdmin.setText(tenAdmin1);
-                    emailAdmin.setText(emailAdmin1);
-                    sdtAdmin.setText(sdtAdmin1);
-                    diaChiAmdin.setText(diaChiAdmin1);
-                }
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+//        mData.child("User").child(Login.tentaikhoanAdmin).addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if (snapshot.exists()) {
+//                    account = snapshot.getValue(Account.class);
+//
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//        mData.child("User").addChildEventListener(new ChildEventListener() {
+//            @Override
+//            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//                Account account = dataSnapshot.getValue(Account.class);
+//                String tenAdmin1 = account.nameUser;
+//                String emailAdmin1 = account.email;
+//                String sdtAdmin1 = account.phone;
+//                String diaChiAdmin1 = account.address;
+//                if (login.tentaikhoanAdmin.equals(tenAdmin1)) {
+//                    tenAdmin.setText(tenAdmin1);
+//                    emailAdmin.setText(emailAdmin1);
+//                    sdtAdmin.setText(sdtAdmin1);
+//                    diaChiAmdin.setText(diaChiAdmin1);
+//                }
+//            }
+//
+//            @Override
+//            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//
+//            }
+//
+//            @Override
+//            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+//
+//            }
+//
+//            @Override
+//            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//            }
+//        });
         changePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -169,27 +170,29 @@ public class GiaoDienAdmin extends AppCompatActivity {
                 usernamekey = emailAdmin.getText().toString().replace("@gmail.com", "");
 
                 Intent intent = new Intent(GiaoDienAdmin.this, GiaoDienQLTK.class);
-                startActivity(intent);
+                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             }
         });
         tvcnyc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(GiaoDienAdmin.this, GiaoDienChapNhanYCDN.class);
-                startActivity(intent);
+                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             }
         });
         tvlogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(GiaoDienAdmin.this, Login.class);
+                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             }
         });
         tvweb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(GiaoDienAdmin.this, GiaoDienTrangTuyenDung.class);
-                startActivity(intent);
+                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             }
         });
 
