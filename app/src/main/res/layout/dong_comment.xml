@@ -11,12 +11,12 @@
     android:text="User"
     android:id="@+id/txtUserComment"
     android:textColor="@color/black"
-    android:textSize="15dp"
+    android:textSize="20dp"
     />
 <RatingBar
     android:layout_width="wrap_content"
+    style="?android:attr/ratingBarStyleSmall"
     android:id="@+id/ratingComment"
-    
     android:layout_height="wrap_content"></RatingBar>
     <TextView
         android:id="@+id/txtcomment"
@@ -24,6 +24,6 @@
         android:layout_height="wrap_content"
         android:text="Comment"
         android:textColor="@color/black"
-        android:textSize="10dp"
+        android:textSize="15dp"
     />
 </LinearLayout>

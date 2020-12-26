@@ -46,7 +46,7 @@ public class commentAdapter extends BaseAdapter {
         txtUserComment.setText(arrayComment.get(position).user);
         ratingComment.setEnabled(false);
         txtcomment.setText(arrayComment.get(position).comment);
-        ratingComment.setRating(4);
+        ratingComment.setRating(Integer.parseInt(arrayComment.get(position).ratting));
         return convertView;
     }
 }
