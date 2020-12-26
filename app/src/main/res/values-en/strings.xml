@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">S-Job</string>
+    <!--Custom String of Admin-->
+    <string name="qlttd">Manage job search website</string>
+    <string name="qltk">Account management</string>
+    <string name="logout">Log Out</string>
+    <string name="cnyc">Accept the corporate account requirements</string>
+    <string name="dstuyendung">Job listing website listing</string>
+    <string name="dstaikhoan">List of accounts</string>
+    <string name="themtrang">Add a recruitment website</string>
+    <string name="dsyeucau">Business inquiry list</string>
+    <string name="btnthemweb">Add a recruitment website</string>
+    <string name="btnthem">Add</string>
+    <string name="btnxoa">Remove</string>
+    <string name="btnhuy">Cancel</string>
+    <string name="btndongy">Agree</string>
+    <string name="btntuchoi">Deny</string>
+    <string name="urltrangwweb">URL Web:</string>
+    <string name="tentrangweb">Name Web:</string>
+    <string name="api">API:</string>
+    <string name="tentaikhoan">Account Name:</string>
+    <string name="matkhau">Password:</string>
+    <string name="douutien">Priority:</string>
+    <string name="trangthai">Status:</string>
+    <string name="khoa">Lock</string>
+    <string name="luu">Save</string>
+    <string name="tvchangepass">Change the password</string>
+    <string name="tvcurrentpass">Current password:</string>
+    <string name="tvnewpass">A new password:</string>
+    <string name="tvcomfirmpass">Confirm password:</string>
+    <string name="btnsave">Save</string>
+    <string name="btncancel">Back</string>
+    <string name="mokhoatk">Unlock</string>
+    <string name="changepass">Change the password</string>
+    <string name="ttchitiettaikhoan">Account details</string>
+    <!--Custom String of Admin-->
+    <!--Custom String of Login Signup-->
+    <string name="login">Log in</string>
+    <string name="signup">Registration</string>
+    <string name="forgotpass">Forgot password ?</string>
+    <string name="donthaveaccount"> Do not have an account ?</string>
+    <string name="company">Company</string>
+    <string name="User">User</string>
+    <string name="name">Account Name</string>
+    <string name="email">Email</string>
+    <string name="pass">Password</string>
+    <string name="comfirmpass">Confirm password</string>
+    <string name="phone">Phone number</string>
+    <string name="diachidk">Address</string>
+    <!--Custom String of Login Signup-->
+
+    <!--    Nhan Custom String-->
+    <string name="tieuDe">Title</string>
+    <string name="timeDemo">Deline</string>
+    <string name="mucLuong">Wage</string>
+    <string name="bangCap">Diploma</string>
+    <string name="nganhNghe">Career</string>
+    <string name="soLuongTuyen">Number of recruitment</string>
+    <string name="diachi">Address</string>
+    <string name="moTa">Description</string>
+    <string name="trove">Back</string>
+    <string name="dsDangTin">Posting List</string>
+    <string name="ngoiSao">0</string>
+    <string name="khuVucTuyen">Recruitment Area</string>
+    <string name="inputText">Enter Missing Information!!!</string>
+    <string name="thongBao">Notification !</string>
+    <string name="taoBai">Create Successful Posts !</string>
+    <string name="dulieu">No data !</string>
+    <string name="ngonNgu">Language</string>
+    <string name="hoTro">Support</string>
+    <string name="moKhoa">Account Unlocking</string>
+    <string name="quenMatKhau">Forgot password</string>
+    <string name="khac">Other</string>
+    <string name="gui">Send</string>
+    <string name="khong">No</string>
+    <string name="khoataikhoan">Your Account Has Been Locked!</string>
+    <string name="thuvien">Library</string>
+    <!--    Nhan Custom String-->
+    <!-- String of resetpass -->
+    <string name="titlers">Reset Password</string>
+    <string name="mailrs">Email</string>
+    <string name="passrs">New Pass</string>
+    <string name="comfirmrs">Comfirm</string>
+    <string name="reset">Reset</string>
+    <string name="cancel">Cancel</string>
+</resources>
