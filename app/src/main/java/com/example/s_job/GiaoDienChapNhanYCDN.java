@@ -87,13 +87,11 @@ public class GiaoDienChapNhanYCDN extends AppCompatActivity {
                                 public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                                     Account ac = snapshot.getValue(Account.class);
                                     if(namevssdt[0].equals(ac.nameUser)&&namevssdt[1].equals(ac.getPhone())){
-
                                         mData.child("Pending").child(ac.getEmail().replace("@gmail.com", "")).removeValue();
                                         dstaikhoanyc.remove(position1);
                                         arrayAdapter.notifyDataSetChanged();
                                         return;
                                     }
-
                                 }
 
                                 @Override

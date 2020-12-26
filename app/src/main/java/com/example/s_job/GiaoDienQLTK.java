@@ -3,6 +3,8 @@ package com.example.s_job;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -44,94 +46,14 @@ public class GiaoDienQLTK extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_giao_dien_q_l_t_k);
         listviewtk = findViewById(R.id.lstviewtk);
-        ImageView imgtim = findViewById(R.id.imgtim);
         EditText edttim = findViewById(R.id.edttim);
         dstaikhoantk = new ArrayList<String>();
-        ImageView imgload = findViewById(R.id.load);
         mData = FirebaseDatabase.getInstance().getReference();
-        imgload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dstaikhoantk.clear();
-                mData.child("User").addChildEventListener(new ChildEventListener() {
-                    @Override
-                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String previousChildName) {
-                        Account account = dataSnapshot.getValue(Account.class);
-                        String email = account.email;
-                        if (account.position.equals("Company") || account.position.equals("User")) {
-                            edttim.setText("");
-                            dstaikhoantk.add(email);
-                            arrayAdapter.notifyDataSetChanged();
-                        }
-                    }
-
-                    @Override
-                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                    }
-
-                    @Override
-                    public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-                    }
-
-                    @Override
-                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-            }
-        });
-        imgtim.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mData.child("User").addChildEventListener(new ChildEventListener() {
-                    @Override
-                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String previousChildName) {
-                        Account account = dataSnapshot.getValue(Account.class);
-                        String email = account.email;
-                        if (email.equals(edttim.getText().toString()) || edttim.getText().toString().equals(email.replace("@gmail.com",""))) {
-                            if (account.position.equals("Company") || account.position.equals("User")) {
-                                dstaikhoantk.clear();
-                                dstaikhoantk.add(email);
-                                arrayAdapter.notifyDataSetChanged();
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                    }
-
-                    @Override
-                    public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-                    }
-
-                    @Override
-                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-            }
-        });
         mData.child("User").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Account account = dataSnapshot.getValue(Account.class);
                 String email = account.email;
-                String position = account.position;
                 if (account.position.equals("Company") || account.position.equals("User")) {
                     dstaikhoantk.add(email);
                 }
@@ -154,6 +76,56 @@ public class GiaoDienQLTK extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        edttim.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                arrayAdapter.clear();
+                mData.child("User").addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                        Account account = dataSnapshot.getValue(Account.class);
+                        String email = account.email;
+                        if (email.contains(edttim.getText().toString())) {
+                            if (account.position.equals("Company") || account.position.equals("User")) {
+                                dstaikhoantk.add(email);
+                                arrayAdapter = new ArrayAdapter(GiaoDienQLTK.this, R.layout.support_simple_spinner_dropdown_item, dstaikhoantk);
+                                listviewtk.setAdapter(arrayAdapter);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
 
             }
         });
