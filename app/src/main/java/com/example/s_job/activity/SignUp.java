@@ -73,7 +73,6 @@ public class SignUp extends AppCompatActivity {
                                             if (email.getText().toString().trim().matches(emailPattern)) {
                                                 if (emailkt.equals(email.getText().toString()) || userkt.equals(name.getText().toString())) {
                                                     Toast.makeText(SignUp.this, "Tài khoản đã có người đăng ký", Toast.LENGTH_SHORT).show();
-                                                    break;
                                                 } else {
                                                     account = new Account(name.getText().toString(), email.getText().toString(), pass.getText().toString(), phone.getText().toString(), address.getText().toString(), chucvu, douutien, trangthai);
                                                     mData.child("Pending").child(email.getText().toString().replace("@gmail.com", "")).setValue(account);
@@ -82,6 +81,7 @@ public class SignUp extends AppCompatActivity {
                                                 }
                                             } else {
                                                 Toast.makeText(SignUp.this, "Địa chỉ email không hợp lệ ([a-zA-Z0-9._-]+@gmail.com)", Toast.LENGTH_SHORT).show();
+                                                return;
                                             }
                                         }
                                     }

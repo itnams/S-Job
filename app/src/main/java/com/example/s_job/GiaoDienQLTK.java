@@ -91,6 +91,8 @@ public class GiaoDienQLTK extends AppCompatActivity {
                         if (email.contains(edttim.getText().toString())) {
                             if (account.position.equals("Company") || account.position.equals("User")) {
                                 dstaikhoantk.add(email);
+                                arrayAdapter = new ArrayAdapter(GiaoDienQLTK.this, R.layout.support_simple_spinner_dropdown_item, dstaikhoantk);
+                                listviewtk.setAdapter(arrayAdapter);
                             }
                         }
                     }
