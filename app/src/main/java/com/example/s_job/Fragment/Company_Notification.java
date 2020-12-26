@@ -2,6 +2,7 @@ package com.example.s_job.Fragment;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ import androidx.fragment.app.Fragment;
 import com.example.s_job.R;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 
 public class Company_Notification extends Fragment {
@@ -37,7 +39,25 @@ public class Company_Notification extends Fragment {
         return view;
     }
 
+    public void setLocale(String lang) {
+        Locale myLocale = new Locale(lang);
+        Locale.setDefault(myLocale);
+        Configuration config = new Configuration();
+        config.locale = myLocale;
+
+
+        getActivity().getBaseContext().getResources().updateConfiguration(config, getActivity().getBaseContext().getResources().getDisplayMetrics());
+        //getActivity().finish();
+
+
+    }
+
     private void setEvent(View view) {
+        if (Locale.getDefault().getDisplayLanguage().equals("English")) {
+            sw.setChecked(true);
+        }
+
+
         listHotro.add(getString(R.string.moKhoa));
         listHotro.add(getString(R.string.quenMatKhau));
         listHotro.add(getString(R.string.khac));
@@ -46,8 +66,10 @@ public class Company_Notification extends Fragment {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
                     imgLaguage.setImageResource(R.drawable.icon_en);
+                    setLocale("en");
                 } else {
                     imgLaguage.setImageResource(R.drawable.icon_vn);
+                    setLocale("vi");
                 }
             }
         });

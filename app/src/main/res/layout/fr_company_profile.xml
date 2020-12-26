@@ -156,7 +156,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Your Post"
+                    android:text="@string/listBaiDang"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -180,7 +180,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Settings"
+                    android:text="@string/caiDatThongTin"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -202,7 +202,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Change Password"
+                    android:text="@string/doimatKhau"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -223,7 +223,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Logout"
+                    android:text="@string/thoat"
                     android:textSize="18sp" />
 
             </LinearLayout>
