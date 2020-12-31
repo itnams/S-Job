@@ -43,6 +43,7 @@ public class Login extends AppCompatActivity {
     private TextView Signup;
     private Button btnLogin;
     private EditText edtuser, edtpass;
+    public static String passadmin;
     DatabaseReference mData;
     int n = 0;
 
@@ -165,6 +166,7 @@ public class Login extends AppCompatActivity {
                                 } else {
                                     Intent intent = new Intent(Login.this, GiaoDienAdmin.class);
                                     startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                    passadmin = edtpass.getText().toString();
                                     finish();
                                 }
                             }

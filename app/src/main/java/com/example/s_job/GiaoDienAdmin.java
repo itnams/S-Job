@@ -13,6 +13,7 @@ import com.example.s_job.Datacode.Account;
 import com.example.s_job.activity.Login;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -25,9 +26,10 @@ public class GiaoDienAdmin extends AppCompatActivity {
     DatabaseReference mData;
     TextView tenAdmin, emailAdmin;
     TextView tvlogout;
+    Login login;
     public static String usernamekey;
     Account account = new Account();
-    EditText newPass;
+    EditText newPass,currentpass;
     //-------------------
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,12 +69,18 @@ public class GiaoDienAdmin extends AppCompatActivity {
                             Toast.makeText(GiaoDienAdmin.this, "Vui lòng nhập thông tin !", Toast.LENGTH_SHORT).show();
 
                         } else {
-                            mAuth.getCurrentUser().updatePassword(newPass.getText().toString());
-                            Toast.makeText(GiaoDienAdmin.this, "Đổi Mật Khẩu Thành Công !", Toast.LENGTH_SHORT).show();
-                            bottomSheetDialog.dismiss();
-                            FirebaseAuth.getInstance().signOut();
-                            Intent intent = new Intent(GiaoDienAdmin.this, Login.class);
-                            startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                            if(currentpass.getText().toString().equals(login.passadmin))
+                            {
+                                mAuth.getCurrentUser().updatePassword(newPass.getText().toString());
+                                Toast.makeText(GiaoDienAdmin.this, "Đổi Mật Khẩu Thành Công !", Toast.LENGTH_SHORT).show();
+                                bottomSheetDialog.dismiss();
+                                FirebaseAuth.getInstance().signOut();
+                                Intent intent = new Intent(GiaoDienAdmin.this, Login.class);
+                                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                            }
+                            else {
+                               currentpass.setError("Mật khẩu cũ không đúng");
+                            }
                         }
                     }
                 });
@@ -85,7 +93,6 @@ public class GiaoDienAdmin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 usernamekey = emailAdmin.getText().toString().replace("@gmail.com", "");
-
                 Intent intent = new Intent(GiaoDienAdmin.this, GiaoDienQLTK.class);
                 startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             }
