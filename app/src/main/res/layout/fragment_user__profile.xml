@@ -204,6 +204,7 @@
 
                 <ImageView
                     android:layout_width="30dp"
+                    android:id="@+id/imageLogout"
                     android:layout_height="30dp"
                     android:layout_marginHorizontal="6dp"
                     android:src="@drawable/logout" />
