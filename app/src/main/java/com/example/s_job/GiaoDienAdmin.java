@@ -65,7 +65,8 @@ public class GiaoDienAdmin extends AppCompatActivity {
                 bottomSheetView.findViewById(R.id.luupass).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (newPass.getText().toString().isEmpty()) {
+                        currentpass = bottomSheetView.findViewById(R.id.currentpass);
+                        if (newPass.getText().toString().isEmpty() && currentpass.getText().toString().isEmpty()) {
                             Toast.makeText(GiaoDienAdmin.this, "Vui lòng nhập thông tin !", Toast.LENGTH_SHORT).show();
 
                         } else {

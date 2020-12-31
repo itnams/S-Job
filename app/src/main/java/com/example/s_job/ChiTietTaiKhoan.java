@@ -48,12 +48,19 @@ public class ChiTietTaiKhoan extends AppCompatActivity {
         RadioGroup radioGroup = findViewById(R.id.rdoGroup);
         RadioButton radioButton1 = findViewById(R.id.rdothap);
         RadioButton radioButton2 = findViewById(R.id.rdocao);
+        RadioButton radioButton3 = findViewById(R.id.rdotrungbinh);
         //-----Long
         if(giaoDienQLTK.douutien1.equals("Thấp"))
         {
             radioButton1.setChecked(true);
-        }else {
+        }
+        if(giaoDienQLTK.douutien1.equals("Cao"))
+        {
             radioButton2.setChecked(true);
+        }
+        if(giaoDienQLTK.douutien1.equals("Trung bình"))
+        {
+            radioButton3.setChecked(true);
         }
 
         //-----Long
@@ -101,11 +108,15 @@ public class ChiTietTaiKhoan extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int id) {
                                 if(radioButton1.isChecked())
                                 {
-                                    douutienrdo ="Thấp";
+                                    douutienrdo = "Thấp";
                                 }
-                                else
+                                if(radioButton2.isChecked())
                                 {
                                     douutienrdo = "Cao";
+                                }
+                                if(radioButton3.isChecked())
+                                {
+                                    douutienrdo = "Trung bình";
                                 }
                                 mData = FirebaseDatabase.getInstance().getReference();
                                 mData.child("User").child(giaoDienQLTK.emailkeyword).child("nameUser").setValue(edttentaikhoan.getText().toString());
