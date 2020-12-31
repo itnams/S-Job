@@ -47,14 +47,20 @@ public class Company_Notification extends Fragment {
 
 
         getActivity().getBaseContext().getResources().updateConfiguration(config, getActivity().getBaseContext().getResources().getDisplayMetrics());
-        //getActivity().finish();
+        getActivity().finish();
+        getActivity().startActivity(getActivity().getIntent());
 
 
     }
 
     private void setEvent(View view) {
-        if (Locale.getDefault().getDisplayLanguage().equals("English")) {
+        if (Company_Profile.ngonNgu) {
+
+            imgLaguage.setImageResource(R.drawable.icon_en);
             sw.setChecked(true);
+        } else {
+            imgLaguage.setImageResource(R.drawable.icon_vn);
+            sw.setChecked(false);
         }
 
 
@@ -65,9 +71,11 @@ public class Company_Notification extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
+                    Company_Profile.ngonNgu=true;
                     imgLaguage.setImageResource(R.drawable.icon_en);
                     setLocale("en");
                 } else {
+                    Company_Profile.ngonNgu=false;
                     imgLaguage.setImageResource(R.drawable.icon_vn);
                     setLocale("vi");
                 }
