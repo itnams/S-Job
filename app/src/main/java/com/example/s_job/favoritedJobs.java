@@ -79,6 +79,7 @@ public class favoritedJobs extends AppCompatActivity {
                         PostForCompany data = key.getValue(PostForCompany.class);
                         data.setCompany(Company_Profile.company);
                         data.setKey(key.getKey());
+
                         posts.add(data);
                     }
                     adapter = new Custom_lv_DangTin(favoritedJobs.this, posts);
