@@ -30,8 +30,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.jetbrains.annotations.NotNull;
-
 public class Login extends AppCompatActivity {
     private TextView fogotPW;
     public static  String userLogin;
@@ -65,53 +63,6 @@ public class Login extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         bottomSheetDialog.dismiss();
-                    }
-                });
-                EditText edtmailrs = bottomSheetView.findViewById(R.id.edtmailrs);
-                EditText passrs = bottomSheetView.findViewById(R.id.edtnewpassrs);
-                EditText comfirmrs = bottomSheetView.findViewById(R.id.edtcomfimpassrs);
-                bottomSheetView.findViewById(R.id.btnreset).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mData.child("User").addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                                if(snapshot.exists())
-                                {
-                                    for(DataSnapshot key : snapshot.getChildren())
-                                    {
-                                        Account account = key.getValue(Account.class);
-                                        String mail = account.email;
-                                        if(edtmailrs.getText().toString().isEmpty() || passrs.getText().toString().isEmpty() || comfirmrs.getText().toString().isEmpty())
-                                        {
-                                            Toast.makeText(Login.this, "Vui lòng nhập thông tin !", Toast.LENGTH_SHORT).show();
-                                        }
-                                        else {
-                                            if(mail.equals(edtmailrs.getText().toString()))
-                                            {
-                                                if(passrs.getText().toString().equals(comfirmrs.getText().toString()))
-                                                {
-                                                    account.setPassWord(passrs.getText().toString());
-                                                    mData.child("User").child(account.email.replace("@gmail.com","")).setValue(account);
-                                                    Toast.makeText(Login.this, "Đổi Mật Khẩu Thành Công !", Toast.LENGTH_SHORT).show();
-                                                    bottomSheetDialog.dismiss();
-                                                }else {
-                                                    Toast.makeText(Login.this, "Mật khẩu không khớp !", Toast.LENGTH_SHORT).show();
-                                                }
-                                            }
-                                            else {
-                                                Toast.makeText(Login.this, "Không tìm thấy tài khoản !", Toast.LENGTH_SHORT).show();
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
-                            }
-                        });
                     }
                 });
                 bottomSheetDialog.setContentView(bottomSheetView);
