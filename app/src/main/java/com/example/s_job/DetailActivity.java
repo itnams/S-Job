@@ -29,6 +29,7 @@ public class DetailActivity extends AppCompatActivity {
 TextView txtTieuDePost,txtHanNop,txtTinhThanhDetail,txtMucLuong,txtSoLuongTuyen,
         txtBangCap,txtNganhNghe,txtDiaChi,txtDetail;
 Button btnNhanXet;
+Button btnLuuTin;
 String key;
 RatingBar ratingPos;
 EditText edtComment;
@@ -41,6 +42,7 @@ User_Home user_home;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        btnLuuTin = findViewById(R.id.btnLuuTin);
         txtTieuDePost = findViewById(R.id.txtTieuDePost);
         btnNhanXet = findViewById(R.id.btnNhanXet);
         txtHanNop = findViewById(R.id.txtHanNop);
@@ -59,7 +61,51 @@ User_Home user_home;
         txtHanNop.setText("Hạn nộp:"+user_home.ngayDang);
         txtTinhThanhDetail.setText(user_home.tinhThanh);
         mData = FirebaseDatabase.getInstance().getReference();
+        mData.child("All-Post").child(key).child("Luu-tin").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                Luutin luutin = snapshot.getValue(Luutin.class);
+                if (luutin.username.equals(login.userLogin))
+                {
+                    btnLuuTin.setText("Bỏ lưu tin");
+                }
+            }
 
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        btnLuuTin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (btnLuuTin.getText().toString().equals("Lưu tin"))
+                {
+                    mData.child("All-Post").child(key).child("Luu-tin").child(login.userLogin).child("username").setValue(login.userLogin);
+                    btnLuuTin.setText("Bỏ lưu tin");
+                }
+               else
+                {
+                    mData.child("All-Post").child(key).child("Luu-tin").child(login.userLogin).removeValue();
+                    btnLuuTin.setText("Lưu tin");
+                }
+            }
+        });
         mData.child("Company").child("Post-Company").child(user_home.emai).child(key).child("MucLuong").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
