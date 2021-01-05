@@ -52,6 +52,7 @@ public class GiaoDienAdmin extends AppCompatActivity {
                 BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
                         GiaoDienAdmin.this, R.style.BottomSheetDialogTheme
                 );
+
                 View bottomSheetView = LayoutInflater.from(GiaoDienAdmin.this)
                         .inflate(R.layout.bs_change_passwordadmin, (LinearLayout) findViewById(R.id.bs_change_password));
                 //code o day

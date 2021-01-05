@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +29,9 @@ public class DetailActivity extends AppCompatActivity {
 TextView txtTieuDePost,txtHanNop,txtTinhThanhDetail,txtMucLuong,txtSoLuongTuyen,
         txtBangCap,txtNganhNghe,txtDiaChi,txtDetail;
 Button btnNhanXet;
+Button btnLuuTin;
 String key;
+RatingBar ratingPos;
 EditText edtComment;
 ListView listviewComment;
 Login login;
@@ -39,6 +42,7 @@ User_Home user_home;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        btnLuuTin = findViewById(R.id.btnLuuTin);
         txtTieuDePost = findViewById(R.id.txtTieuDePost);
         btnNhanXet = findViewById(R.id.btnNhanXet);
         txtHanNop = findViewById(R.id.txtHanNop);
@@ -50,13 +54,58 @@ User_Home user_home;
         txtNganhNghe = findViewById(R.id.txtNganhNghe);
         txtDiaChi = findViewById(R.id.txtDiaChi);
         txtDetail = findViewById(R.id.txtDetail);
+        ratingPos = findViewById(R.id.ratingPos);
         edtComment = findViewById(R.id.edtComment);
         listviewComment = findViewById(R.id.listviewComment);
         txtTieuDePost.setText(user_home.tieude);
-        txtHanNop.setText("Ngày đăng:"+user_home.ngayDang);
+        txtHanNop.setText("Hạn nộp:"+user_home.ngayDang);
         txtTinhThanhDetail.setText(user_home.tinhThanh);
         mData = FirebaseDatabase.getInstance().getReference();
+        mData.child("All-Post").child(key).child("Luu-tin").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                Luutin luutin = snapshot.getValue(Luutin.class);
+                if (luutin.username.equals(login.userLogin))
+                {
+                    btnLuuTin.setText("Bỏ lưu tin");
+                }
+            }
 
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        btnLuuTin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (btnLuuTin.getText().toString().equals("Lưu tin"))
+                {
+                    mData.child("All-Post").child(key).child("Luu-tin").child(login.userLogin).child("username").setValue(login.userLogin);
+                    btnLuuTin.setText("Bỏ lưu tin");
+                }
+               else
+                {
+                    mData.child("All-Post").child(key).child("Luu-tin").child(login.userLogin).removeValue();
+                    btnLuuTin.setText("Lưu tin");
+                }
+            }
+        });
         mData.child("Company").child("Post-Company").child(user_home.emai).child(key).child("MucLuong").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -127,8 +176,9 @@ User_Home user_home;
         btnNhanXet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Comment comment = new Comment(login.userLogin,edtComment.getText().toString());
+                Comment comment = new Comment(login.userLogin,edtComment.getText().toString(),String.valueOf(ratingPos.getRating()).replace(".0",""));
                 mData.child("Company").child("Post-Company").child(user_home.emai).child(key).child("Comment").push().setValue(comment);
+                edtComment.setText("");
             }
         });
         commentArrayList = new ArrayList<>();
@@ -136,7 +186,7 @@ User_Home user_home;
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 Comment comment = snapshot.getValue(Comment.class);
-                commentArrayList.add(new Comment(comment.user,comment.comment));
+                commentArrayList.add(new Comment(comment.user,comment.comment,comment.ratting));
                 commentAdapter commentAdapter = new commentAdapter(DetailActivity.this,R.layout.dong_comment,commentArrayList);
                 listviewComment.setAdapter(commentAdapter);
                 commentAdapter.notifyDataSetChanged();
