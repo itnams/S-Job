@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.s_job.Fragment.Company_Profile;
@@ -26,7 +27,9 @@ import java.util.Calendar;
 import java.util.TimeZone;
 
 public class Create_Post_Company extends AppCompatActivity {
-    EditText tieuDe, deLine, mucLuong, bangCap, nganhNghe, soLuongTuyen, diaChi, moTa;
+
+    EditText tieuDe, deLine, mucLuong, bangCap, nganhNghe, soLuongTuyen, moTa;
+    public static EditText diaChi;
     ImageButton date, vitri;
     Button troVe, Luu;
     Spinner tinhThanh;
@@ -63,6 +66,23 @@ public class Create_Post_Company extends AppCompatActivity {
             "Phú Yên", "Cần Thơ",
             "Đà Nẵng", "Hải Phòng",
             "Hà Nội", "TP HCM"};
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1 || requestCode == 100 || requestCode == resultCode) {
+            if (resultCode == RESULT_OK) {
+                String result = data.getStringExtra("address");
+                Toast.makeText(this, "" + result, Toast.LENGTH_SHORT).show();
+                diaChi.setText(result);
+            }
+        }
+
+
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,6 +168,7 @@ public class Create_Post_Company extends AppCompatActivity {
         vitri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent(Create_Post_Company.this, Goole_map.class);
                 startActivity(intent);
             }
@@ -174,6 +195,8 @@ public class Create_Post_Company extends AppCompatActivity {
         } else if (soLuongTuyen.getText().toString().isEmpty()) {
             return false;
         } else if (moTa.getText().toString().isEmpty()) {
+            return false;
+        } else if (diaChi.getText().toString().equals("NOT")) {
             return false;
         } else {
             return true;
@@ -214,6 +237,6 @@ public class Create_Post_Company extends AppCompatActivity {
         tinhThanh = findViewById(R.id.spn_tinhThanh);
 
         //Sau nay remove
-        diaChi.setText("123 Company");
+        diaChi.setText("NOT");
     }
 }
