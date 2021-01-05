@@ -3,6 +3,7 @@ package com.example.s_job.activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +23,10 @@ import com.example.s_job.GiaoDienAdmin;
 import com.example.s_job.MainActivity;
 import com.example.s_job.MainActivity1;
 import com.example.s_job.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -30,6 +34,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.annotations.NotNull;
 
 public class Login extends AppCompatActivity {
     private TextView fogotPW;
@@ -50,12 +55,20 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        mAuth = FirebaseAuth.getInstance();
         fogotPW = findViewById(R.id.resetpw);
         Signup = findViewById(R.id.sigup);
         btnLogin = findViewById(R.id.btnLogin);
         edtuser = findViewById(R.id.edtuser);
         edtpass = findViewById(R.id.edtpass);
         mData = FirebaseDatabase.getInstance().getReference();
+        if (mAuth.getCurrentUser() != null) {
+            startActivity(new Intent(Login.this, GiaoDienAdmin.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+            finish();
+        }
+        if (mAuth.getCurrentUser() == null) {
+            getIntent().addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        }
         fogotPW.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,10 +83,58 @@ public class Login extends AppCompatActivity {
                         bottomSheetDialog.dismiss();
                     }
                 });
+                EditText edtmailrs = bottomSheetView.findViewById(R.id.edtmailrs);
+                EditText passrs = bottomSheetView.findViewById(R.id.edtnewpassrs);
+                EditText comfirmrs = bottomSheetView.findViewById(R.id.edtcomfimpassrs);
+                bottomSheetView.findViewById(R.id.btnreset).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        mData.child("User").addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
+                                if(snapshot.exists())
+                                {
+                                    for(DataSnapshot key : snapshot.getChildren())
+                                    {
+                                        Account account = key.getValue(Account.class);
+                                        String mail = account.email;
+                                        if(edtmailrs.getText().toString().isEmpty() || passrs.getText().toString().isEmpty() || comfirmrs.getText().toString().isEmpty())
+                                        {
+                                            Toast.makeText(Login.this, "Vui lòng nhập thông tin !", Toast.LENGTH_SHORT).show();
+                                        }
+                                        else {
+                                            if(mail.equals(edtmailrs.getText().toString()))
+                                            {
+                                                if(passrs.getText().toString().equals(comfirmrs.getText().toString()))
+                                                {
+                                                    account.setPassWord(passrs.getText().toString());
+                                                    mData.child("User").child(account.email.replace("@gmail.com","")).setValue(account);
+                                                    Toast.makeText(Login.this, "Đổi Mật Khẩu Thành Công !", Toast.LENGTH_SHORT).show();
+                                                    bottomSheetDialog.dismiss();
+                                                }else {
+                                                    Toast.makeText(Login.this, "Mật khẩu không khớp !", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                            else {
+                                                Toast.makeText(Login.this, "Không tìm thấy tài khoản !", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull @NotNull DatabaseError error) {
+
+                            }
+                        });
+                    }
+                });
                 bottomSheetDialog.setContentView(bottomSheetView);
                 bottomSheetDialog.show();
             }
         });
+
         Signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,7 +145,40 @@ public class Login extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                String email = edtuser.getText().toString();
+                final String password = edtpass.getText().toString();
+                if (TextUtils.isEmpty(email)) {
+                    edtuser.setError("Vui lòng nhập Email !");
+                    return;
+                }
+                if (TextUtils.isEmpty(password)) {
+                    edtpass.setError("Vui lòng nhập Password !");
+                    return;
+                }
+                //authenticate user
+                mAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                // If sign in fails, display a message to the user. If sign in succeeds
+                                // the auth state listener will be notified and logic to handle the
+                                // signed in user can be handled in the listener.
+                                if (!task.isSuccessful()) {
+                                    // there was an error
+                                    if (password.length() < 6) {
+                                        edtpass.setError(getString(R.string.minimum_password));
+                                    } else {
+                                        Toast.makeText(Login.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
+                                    }
+                                } else {
+                                    Intent intent = new Intent(Login.this, GiaoDienAdmin.class);
+                                    startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                    Toast.makeText(Login.this, "Đăng nhập thành công !", Toast.LENGTH_SHORT).show();
+                                    passadmin = edtpass.getText().toString();
+                                    finish();
+                                }
+                            }
+                        });
 
                 mData.child("User").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -100,47 +194,9 @@ public class Login extends AppCompatActivity {
                                 String position = account.position;
                                 String trangThai1 = account.trangthai;
                                 String email = account.email;
-                                if (edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("Admin")) {
-                                    Intent intent = new Intent(getApplicationContext(), GiaoDienAdmin.class);
-                                    Toast.makeText(Login.this, "Đăng Nhập Thành Công !", Toast.LENGTH_SHORT).show();
-                                    startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                                    tentaikhoanAdmin = edtuser.getText().toString();
-                                    curentpass = passWord;
-                                    return;
-
-                                } else if (edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("User")) {
-                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                        if(trangThai1.equals("Khoa"))
-                                        {
-                                            AlertDialog.Builder builder1 = new AlertDialog.Builder(Login.this);
-                                            builder1.setTitle("---Thông Báo---");
-                                            builder1.setMessage("Tài khoản của bạn đang bị khóa vui lòng liên hệ Admin với số điện thoại 0332175559 để biết thêm chi tiết và hỗ trợ !");
-                                            builder1.setCancelable(true);
-                                            builder1.setPositiveButton("Quay về",
-                                                    new DialogInterface.OnClickListener() {
-                                                        public void onClick(DialogInterface dialog, int id) {
-                                                            dialog.cancel();
-                                                        }
-                                                    });
-                                            builder1.setNegativeButton("Thoát Login",
-                                                    new DialogInterface.OnClickListener() {
-                                                        public void onClick(DialogInterface dialog, int id) {
-                                                            finish();
-                                                        }
-                                                    });
-                                            AlertDialog alert11 = builder1.create();
-                                            alert11.show();
-                                        }
-                                        else {
-                                            Toast.makeText(Login.this, "Đăng Nhập Thành Công !", Toast.LENGTH_SHORT).show();
-                                            startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                                        }
-                                        return;
-
-                                } else if (edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("Company")) {
-                                    Intent intent = new Intent(getApplicationContext(), MainActivity1.class);
-                                    if(trangThai1.equals("Khoa"))
-                                    {
+                                if (edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("User")) {
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    if (trangThai1.equals("Khoa")) {
                                         AlertDialog.Builder builder1 = new AlertDialog.Builder(Login.this);
                                         builder1.setTitle("---Thông Báo---");
                                         builder1.setMessage("Tài khoản của bạn đang bị khóa vui lòng liên hệ Admin với số điện thoại 0332175559 để biết thêm chi tiết và hỗ trợ !");
@@ -159,18 +215,41 @@ public class Login extends AppCompatActivity {
                                                 });
                                         AlertDialog alert11 = builder1.create();
                                         alert11.show();
+                                    } else {
+                                        Toast.makeText(Login.this, "Đăng Nhập Thành Công !", Toast.LENGTH_SHORT).show();
+                                        startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                                     }
-                                    else {
+                                    return;
+
+                                } else if (edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("Company")) {
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity1.class);
+                                    if (trangThai1.equals("Khoa")) {
+                                        AlertDialog.Builder builder1 = new AlertDialog.Builder(Login.this);
+                                        builder1.setTitle("---Thông Báo---");
+                                        builder1.setMessage("Tài khoản của bạn đang bị khóa vui lòng liên hệ Admin với số điện thoại 0332175559 để biết thêm chi tiết và hỗ trợ !");
+                                        builder1.setCancelable(true);
+                                        builder1.setPositiveButton("Quay về",
+                                                new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int id) {
+                                                        dialog.cancel();
+                                                    }
+                                                });
+                                        builder1.setNegativeButton("Thoát Login",
+                                                new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int id) {
+                                                        finish();
+                                                    }
+                                                });
+                                        AlertDialog alert11 = builder1.create();
+                                        alert11.show();
+                                    } else {
                                         Toast.makeText(Login.this, "Đăng Nhập Thành Công !", Toast.LENGTH_SHORT).show();
                                         intent.putExtra("email", email.replace("@gmail.com", ""));
                                         startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                                     }
-                                    return;
                                 }
                             }
-                            Toast.makeText(Login.this, "Đăng Nhập Không Thành Công !", Toast.LENGTH_SHORT).show();
                         }
-                        //---------
                     }
 
                     @Override

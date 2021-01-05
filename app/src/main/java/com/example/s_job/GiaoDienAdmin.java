@@ -109,9 +109,11 @@ public class GiaoDienAdmin extends AppCompatActivity {
         tvlogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
+
                 Intent intent = new Intent(GiaoDienAdmin.this, Login.class);
+                FirebaseAuth.getInstance().signOut();
                 startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+
             }
         });
         tvweb.setOnClickListener(new View.OnClickListener() {
