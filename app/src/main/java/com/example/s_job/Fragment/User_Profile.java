@@ -20,6 +20,7 @@ import androidx.fragment.app.Fragment;
 import com.example.s_job.Datacode.Account;
 import com.example.s_job.GiaoDienAdmin;
 import com.example.s_job.R;
+import com.example.s_job.YourFavorited;
 import com.example.s_job.activity.Login;
 import com.example.s_job.favoritedJobs;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -35,7 +36,7 @@ public class User_Profile extends Fragment {
     private TextView tvUserName, tvEmail, tvPhone, tvAddress;
     private DatabaseReference databaseRef;
     TextView tvlogout;
-    ImageView imageLogout,imangeChangepass;
+    ImageView imageLogout,imangeChangepass,yourFavorited;
     Login login;
     DatabaseReference mData;
     private Account account;
@@ -54,12 +55,20 @@ public class User_Profile extends Fragment {
         tvUserName = view.findViewById(R.id.tvUser_name);
         imageLogout = view.findViewById(R.id.imageLogout);
         tvUserName.setText(login.userLogin);
+        yourFavorited = view.findViewById(R.id.yourFavorited);
         tvlogout = view.findViewById(R.id.tvlogout);
         imangeChangepass = view.findViewById(R.id.imangeChangepass);
         imangeChangepass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                  
+            }
+        });
+        yourFavorited.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext().getApplicationContext(), YourFavorited.class);
+                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             }
         });
        imageLogout.setOnClickListener(new View.OnClickListener() {
