@@ -85,7 +85,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="end"
                         android:paddingEnd="10dp"
-                        android:layout_below="@id/txtMucLuong"
+                        android:layout_below="@id/txtBangCap"
                         android:text="So luong tuyen"
                         ></TextView>
                     <TextView

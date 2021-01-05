@@ -56,7 +56,7 @@ User_Home user_home;
         edtComment = findViewById(R.id.edtComment);
         listviewComment = findViewById(R.id.listviewComment);
         txtTieuDePost.setText(user_home.tieude);
-        txtHanNop.setText("Ngày đăng:"+user_home.ngayDang);
+        txtHanNop.setText("Hạn nộp:"+user_home.ngayDang);
         txtTinhThanhDetail.setText(user_home.tinhThanh);
         mData = FirebaseDatabase.getInstance().getReference();
 

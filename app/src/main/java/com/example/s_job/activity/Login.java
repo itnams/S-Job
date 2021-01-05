@@ -37,6 +37,7 @@ public class Login extends AppCompatActivity {
     private Button btnLogin;
     private EditText edtuser, edtpass;
     public static String curentpass;
+    public static String passUser;
     public static String tentaikhoanAdmin;
     public static String trangThai;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -92,6 +93,7 @@ public class Login extends AppCompatActivity {
                                 Account account = key.getValue(Account.class);
                                 String nameUser = account.nameUser;
                                 userLogin = account.nameUser;
+                                passUser = account.passWord;
                                 String passWord = account.passWord;
                                 String position = account.position;
                                 String trangThai1 = account.trangthai;
