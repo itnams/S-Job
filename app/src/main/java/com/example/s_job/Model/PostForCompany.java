@@ -17,6 +17,10 @@ public class PostForCompany {
     String soLuongTuyen;
     String Mota;
     String Key;
+    HashMap Comment;
+
+
+
     public Map toMapCompany() {
         Map data = new HashMap();
         data.put("nameUser", this.company.nameCompany);
@@ -70,6 +74,7 @@ public class PostForCompany {
         this.soLuongTuyen = "";
         this.Mota = "";
         this.Key = "";
+
     }
 
 

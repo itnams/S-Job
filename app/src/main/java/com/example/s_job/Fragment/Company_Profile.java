@@ -40,7 +40,7 @@ public class Company_Profile extends Fragment {
     private LinearLayout editProfile, changePassword, favoritedJob, posts, logout;
     TextView name, email, sdt, diachi;
     ImageView img_company;
-
+    static public   boolean ngonNgu = true;
 
     static public Company company = new Company();
 

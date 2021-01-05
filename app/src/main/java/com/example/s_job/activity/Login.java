@@ -186,34 +186,34 @@ public class Login extends AppCompatActivity {
                                 String position = account.position;
                                 String trangThai1 = account.trangthai;
                                 String email = account.email;
-                                 if (edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("User")) {
-                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                        if(trangThai1.equals("Khóa"))
-                                        {
-                                            AlertDialog.Builder builder1 = new AlertDialog.Builder(Login.this);
-                                            builder1.setTitle("-------Thông Báo-------");
-                                            builder1.setMessage("Tài khoản của bạn đang bị khóa vui lòng liên hệ Admin với số điện thoại 0332175559 để biết thêm chi tiết và hỗ trợ !");
-                                            builder1.setCancelable(true);
-                                            builder1.setPositiveButton("Quay về",
-                                                    new DialogInterface.OnClickListener() {
-                                                        public void onClick(DialogInterface dialog, int id) {
-                                                            dialog.cancel();
-                                                        }
-                                                    });
-                                            builder1.setNegativeButton("Thoát Login",
-                                                    new DialogInterface.OnClickListener() {
-                                                        public void onClick(DialogInterface dialog, int id) {
-                                                            finish();
-                                                        }
-                                                    });
-                                            AlertDialog alert11 = builder1.create();
-                                            alert11.show();
-                                        }
-                                        else {
-                                            Toast.makeText(Login.this, "Đăng Nhập Thành Công !", Toast.LENGTH_SHORT).show();
-                                            startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                                        }
-                                        return;
+                                if (edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("User")) {
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    if(trangThai1.equals("Khóa"))
+                                    {
+                                        AlertDialog.Builder builder1 = new AlertDialog.Builder(Login.this);
+                                        builder1.setTitle("-------Thông Báo-------");
+                                        builder1.setMessage("Tài khoản của bạn đang bị khóa vui lòng liên hệ Admin với số điện thoại 0332175559 để biết thêm chi tiết và hỗ trợ !");
+                                        builder1.setCancelable(true);
+                                        builder1.setPositiveButton("Quay về",
+                                                new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int id) {
+                                                        dialog.cancel();
+                                                    }
+                                                });
+                                        builder1.setNegativeButton("Thoát Login",
+                                                new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int id) {
+                                                        finish();
+                                                    }
+                                                });
+                                        AlertDialog alert11 = builder1.create();
+                                        alert11.show();
+                                    }
+                                    else {
+                                        Toast.makeText(Login.this, "Đăng Nhập Thành Công !", Toast.LENGTH_SHORT).show();
+                                        startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                                    }
+                                    return;
 
                                 } else if (edtuser.getText().toString().equals(nameUser) && edtpass.getText().toString().equals(passWord) && position.equals("Company")) {
                                     Intent intent = new Intent(getApplicationContext(), MainActivity1.class);

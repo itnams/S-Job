@@ -101,6 +101,7 @@
                         android:src="@drawable/star_rating" />
 
                     <TextView
+                        android:id="@+id/tv_rating"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/ngoiSao"
@@ -119,6 +120,7 @@
                         android:src="@drawable/write_rate" />
 
                     <TextView
+                        android:id="@+id/tv_comment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/ngoiSao"

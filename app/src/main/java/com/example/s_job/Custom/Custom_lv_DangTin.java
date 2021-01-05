@@ -1,6 +1,7 @@
 package com.example.s_job.Custom;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -10,14 +11,20 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AlertDialog;
+import androidx.annotation.NonNull;
+
 
 import com.example.s_job.Activity_For_n.Create_Post_Company;
+import com.example.s_job.MainActivity1;
 import com.example.s_job.Model.PostForCompany;
 import com.example.s_job.R;
 import com.example.s_job.db_firebase.dbFireBase;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Custom_lv_DangTin extends BaseAdapter {
     Activity activity;
@@ -25,7 +32,7 @@ public class Custom_lv_DangTin extends BaseAdapter {
 
 
     static class Hoder {
-        TextView tieude, deline, diachi, mota;
+        TextView tieude, deline, diachi, mota, rating, commnet;
         ImageButton remove, detail;
     }
 
@@ -58,12 +65,41 @@ public class Custom_lv_DangTin extends BaseAdapter {
         hoder.deline = view.findViewById(R.id.tv_deline);
         hoder.diachi = view.findViewById(R.id.tv_diachi);
         hoder.mota = view.findViewById(R.id.tv_mota);
+        hoder.rating = view.findViewById(R.id.tv_rating);
+        hoder.commnet = view.findViewById(R.id.tv_comment);
         hoder.remove = view.findViewById(R.id.imgbtn_remove);
         hoder.detail = view.findViewById(R.id.btn_edit);
 
 
         PostForCompany data = objects.get(position);
 
+        dbFireBase db = new dbFireBase();
+
+        Hoder finalHoder = hoder;
+        db.myRef.child("Post-Company")
+                .child(MainActivity1.User)
+                .child(data.getKey())
+                .child("Comment")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        int ratingH = 0;
+                        int comment = 0;
+                        if (snapshot.exists()) {
+                            finalHoder.commnet.setText("" + snapshot.getChildrenCount());
+                            for (DataSnapshot el : snapshot.getChildren()) {
+                                ratingH += Integer.parseInt(((HashMap) el.getValue()).get("ratting").toString());
+                            }
+                            comment = Integer.parseInt("" + snapshot.getChildrenCount());
+                            finalHoder.rating.setText("" + (ratingH / comment));
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
         hoder.tieude.setText(data.getTieuDe());
         hoder.deline.setText(data.getDeline());
         hoder.diachi.setText(data.getDiaChi());
