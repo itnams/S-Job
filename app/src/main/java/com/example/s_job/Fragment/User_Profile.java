@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -34,6 +35,8 @@ import com.google.firebase.database.ValueEventListener;
 public class User_Profile extends Fragment {
     private LinearLayout editProfile, changePassword, favoritedJob, posts, logout;
     private TextView tvUserName, tvEmail, tvPhone, tvAddress;
+    EditText et_current_pass_com,et_new_pass_com,et_confirm_pass_com;
+    Button btn_save_company,cancel_button;
     private DatabaseReference databaseRef;
     TextView tvlogout;
     ImageView imageLogout,imangeChangepass,yourFavorited;
@@ -58,10 +61,54 @@ public class User_Profile extends Fragment {
         yourFavorited = view.findViewById(R.id.yourFavorited);
         tvlogout = view.findViewById(R.id.tvlogout);
         imangeChangepass = view.findViewById(R.id.imangeChangepass);
+
         imangeChangepass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 
+                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
+                        getContext(), R.style.BottomSheetDialogTheme
+                );
+
+                View bottomSheetView = LayoutInflater.from(getContext())
+                        .inflate(R.layout.bs_change_password, (LinearLayout) view.findViewById(R.id.bs_change_password));
+//code o day
+                et_current_pass_com = bottomSheetView.findViewById(R.id.et_current_pass_com);
+                et_confirm_pass_com = bottomSheetView.findViewById(R.id.et_confirm_pass_com);
+                et_new_pass_com = bottomSheetView.findViewById(R.id.et_new_pass_com);
+                bottomSheetView.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bottomSheetDialog.dismiss();
+                    }
+                });
+                bottomSheetView.findViewById(R.id.btn_save_company).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                      if (et_current_pass_com.getText().toString().equals("")||et_confirm_pass_com.getText().toString().equals("")||et_new_pass_com.getText().toString().equals(""))
+                        {
+                            Toast.makeText(getContext(), "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                        }
+                      else
+                      {
+                          if (et_current_pass_com.getText().toString().equals(login.passUser))
+                          {
+                            if (et_new_pass_com.getText().toString().equals(et_confirm_pass_com.getText().toString()))
+                            {
+                                mData.child("User").child(login.keyUser).child("passWord").setValue(et_new_pass_com.getText().toString());
+                                Toast.makeText(getContext(), "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getContext().getApplicationContext(),Login.class);
+                                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                            }
+                          }
+                          else
+                          {
+                              Toast.makeText(getContext(), "Nhập sai mật khẩu", Toast.LENGTH_SHORT).show();
+                          }
+                      }
+                    }
+                });
+                bottomSheetDialog.setContentView(bottomSheetView);
+                bottomSheetDialog.show();
             }
         });
         yourFavorited.setOnClickListener(new View.OnClickListener() {
