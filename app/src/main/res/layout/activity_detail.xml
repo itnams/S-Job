@@ -83,9 +83,8 @@
                         android:id="@+id/txtSoLuongTuyen"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="end"
                         android:paddingEnd="10dp"
-                        android:layout_below="@id/txtBangCap"
+                        android:layout_below="@id/txtNganhNghe"
                         android:text="So luong tuyen"
                         ></TextView>
                     <TextView
@@ -95,7 +94,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingEnd="10dp"
-                        android:layout_below="@id/txtNganhNghe"
+                        android:layout_below="@id/txtSoLuongTuyen"
                         android:text="Dia Chi"
                         ></TextView>
                     <TextView
