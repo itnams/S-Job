@@ -43,7 +43,7 @@ public class Login extends AppCompatActivity {
     private Button btnLogin;
     private EditText edtuser, edtpass;
     public static String curentpass;
-    public static String passUser;
+    public static String passUser,keyUser;
     public static String tentaikhoanAdmin;
     public static String trangThai;
     public static String passadmin;
@@ -190,6 +190,7 @@ public class Login extends AppCompatActivity {
                                 String nameUser = account.nameUser;
                                 userLogin = account.nameUser;
                                 passUser = account.passWord;
+                                keyUser = account.email.toString().replace("@gmail.com","");
                                 String passWord = account.passWord;
                                 String position = account.position;
                                 String trangThai1 = account.trangthai;
