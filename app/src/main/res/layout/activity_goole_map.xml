@@ -40,6 +40,8 @@
             android:inputType="text"
             android:textColor="#000"
             android:textSize="15dp" />
+
+
     </RelativeLayout>
 
     <ImageView
