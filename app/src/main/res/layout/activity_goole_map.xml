@@ -37,6 +37,7 @@
             android:layout_toRightOf="@+id/ic_magnify"
             android:hint="Enter Address, City or zip code..."
             android:imeOptions="actionSearch"
+            android:inputType="text"
             android:textColor="#000"
             android:textSize="15dp" />
     </RelativeLayout>

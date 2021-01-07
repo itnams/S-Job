@@ -13,11 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.s_job.ChiTietTaiKhoan;
 import com.example.s_job.Datacode.Account;
 import com.example.s_job.GiaoDienAdmin;
 import com.example.s_job.MainActivity;
@@ -28,7 +26,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,12 +35,12 @@ import com.google.firebase.database.annotations.NotNull;
 
 public class Login extends AppCompatActivity {
     private TextView fogotPW;
-    public static  String userLogin;
+    public static String userLogin;
     private TextView Signup;
     private Button btnLogin;
     private EditText edtuser, edtpass;
     public static String curentpass;
-    public static String passUser,keyUser;
+    public static String passUser, keyUser;
     public static String tentaikhoanAdmin;
     public static String trangThai;
     public static String passadmin;
@@ -51,6 +48,7 @@ public class Login extends AppCompatActivity {
     DatabaseReference mData;
     int n = 0;
     private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,30 +90,23 @@ public class Login extends AppCompatActivity {
                         mData.child("User").addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                                if(snapshot.exists())
-                                {
-                                    for(DataSnapshot key : snapshot.getChildren())
-                                    {
+                                if (snapshot.exists()) {
+                                    for (DataSnapshot key : snapshot.getChildren()) {
                                         Account account = key.getValue(Account.class);
                                         String mail = account.email;
-                                        if(edtmailrs.getText().toString().isEmpty() || passrs.getText().toString().isEmpty() || comfirmrs.getText().toString().isEmpty())
-                                        {
+                                        if (edtmailrs.getText().toString().isEmpty() || passrs.getText().toString().isEmpty() || comfirmrs.getText().toString().isEmpty()) {
                                             Toast.makeText(Login.this, "Vui lòng nhập thông tin !", Toast.LENGTH_SHORT).show();
-                                        }
-                                        else {
-                                            if(mail.equals(edtmailrs.getText().toString()))
-                                            {
-                                                if(passrs.getText().toString().equals(comfirmrs.getText().toString()))
-                                                {
+                                        } else {
+                                            if (mail.equals(edtmailrs.getText().toString())) {
+                                                if (passrs.getText().toString().equals(comfirmrs.getText().toString())) {
                                                     account.setPassWord(passrs.getText().toString());
-                                                    mData.child("User").child(account.email.replace("@gmail.com","")).setValue(account);
+                                                    mData.child("User").child(account.email.replace("@gmail.com", "")).setValue(account);
                                                     Toast.makeText(Login.this, "Đổi Mật Khẩu Thành Công !", Toast.LENGTH_SHORT).show();
                                                     bottomSheetDialog.dismiss();
-                                                }else {
+                                                } else {
                                                     Toast.makeText(Login.this, "Mật khẩu không khớp !", Toast.LENGTH_SHORT).show();
                                                 }
-                                            }
-                                            else {
+                                            } else {
                                                 Toast.makeText(Login.this, "Không tìm thấy tài khoản !", Toast.LENGTH_SHORT).show();
                                             }
                                         }
@@ -190,7 +181,7 @@ public class Login extends AppCompatActivity {
                                 String nameUser = account.nameUser;
                                 userLogin = account.nameUser;
                                 passUser = account.passWord;
-                                keyUser = account.email.toString().replace("@gmail.com","");
+                                keyUser = account.email.toString().replace("@gmail.com", "");
                                 String passWord = account.passWord;
                                 String position = account.position;
                                 String trangThai1 = account.trangthai;

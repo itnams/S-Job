@@ -10,10 +10,8 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -86,6 +84,7 @@ public class Goole_map extends FragmentActivity implements OnMapReadyCallback, G
     }
 
     void init() {
+
         mGoogleApi = new GoogleApiClient
                 .Builder(this)
                 .addApi(Places.GEO_DATA_API)
@@ -94,15 +93,33 @@ public class Goole_map extends FragmentActivity implements OnMapReadyCallback, G
                 .build();
         adapter = new PlaceAutoCompleteAdapter(this, mGoogleApi, LAT_LNG_BOUNDS, null);
         mSearchText.setAdapter(adapter);
-        mSearchText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//        mSearchText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+//            @Override
+//            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+//
+//                Log.e("Goole_map", "" + keyEvent.getKeyCode());
+//                Log.e("i:", "" + i);
+////                if (i == EditorInfo.IME_ACTION_SEARCH
+////                        || i == EditorInfo.IME_ACTION_DONE
+////                        || keyEvent.getAction() == KeyEvent.ACTION_DOWN
+////                        || keyEvent.getAction() == KeyEvent.KEYCODE_ENTER
+////                        || keyEvent.getAction() == KeyEvent.FLAG_EDITOR_ACTION) {
+////                    geoLocate();
+////
+////                }
+//                if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+//                    geoLocate();
+//                }
+//                return false;
+//            }
+//        });
+        mSearchText.setOnKeyListener(new View.OnKeyListener() {
             @Override
-            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                if (i == EditorInfo.IME_ACTION_SEARCH
-                        || i == EditorInfo.IME_ACTION_DONE
-                        || keyEvent.getAction() == KeyEvent.ACTION_DOWN
-                        || keyEvent.getAction() == KeyEvent.KEYCODE_ENTER) {
-                    geoLocate();
+            public boolean onKey(View view, int i, KeyEvent keyEvent) {
 
+                if (keyEvent.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                    geoLocate();
+                    return true;
                 }
                 return false;
             }

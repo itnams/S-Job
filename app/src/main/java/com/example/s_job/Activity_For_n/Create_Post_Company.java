@@ -120,6 +120,7 @@ public class Create_Post_Company extends AppCompatActivity {
             }
             // Toast.makeText(this, "" + postForCompany.getSoLuongTuyen(), Toast.LENGTH_LONG).show();
             Luu.setEnabled(false);
+            vitri.setEnabled(false);
         }
 
         date.setOnClickListener(new View.OnClickListener() {
