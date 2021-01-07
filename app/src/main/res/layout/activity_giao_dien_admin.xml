@@ -183,6 +183,30 @@
                 android:textSize="18sp" />
 
         </LinearLayout>
+        <LinearLayout
+            android:id="@+id/listResetPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical='16dp'
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginHorizontal="6dp"
+                android:src="@drawable/question" />
+
+            <TextView
+                android:id="@+id/listrspass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="@string/listresetpass"
+                android:textSize="18sp" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/logout"

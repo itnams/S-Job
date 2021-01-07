@@ -23,6 +23,7 @@ import com.example.s_job.GiaoDienAdmin;
 import com.example.s_job.MainActivity;
 import com.example.s_job.MainActivity1;
 import com.example.s_job.R;
+import com.example.s_job.ResetPass;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
@@ -46,6 +47,7 @@ public class Login extends AppCompatActivity {
     public static String passUser,keyUser;
     public static String tentaikhoanAdmin;
     public static String trangThai;
+    public static String emailrs,newpassrs;
     public static String passadmin;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference mData;
@@ -85,49 +87,21 @@ public class Login extends AppCompatActivity {
                 });
                 EditText edtmailrs = bottomSheetView.findViewById(R.id.edtmailrs);
                 EditText passrs = bottomSheetView.findViewById(R.id.edtnewpassrs);
-                EditText comfirmrs = bottomSheetView.findViewById(R.id.edtcomfimpassrs);
                 bottomSheetView.findViewById(R.id.btnreset).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        mData.child("User").addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull @NotNull DataSnapshot snapshot) {
-                                if(snapshot.exists())
-                                {
-                                    for(DataSnapshot key : snapshot.getChildren())
-                                    {
-                                        Account account = key.getValue(Account.class);
-                                        String mail = account.email;
-                                        if(edtmailrs.getText().toString().isEmpty() || passrs.getText().toString().isEmpty() || comfirmrs.getText().toString().isEmpty())
-                                        {
-                                            Toast.makeText(Login.this, "Vui lòng nhập thông tin !", Toast.LENGTH_SHORT).show();
-                                        }
-                                        else {
-                                            if(mail.equals(edtmailrs.getText().toString()))
-                                            {
-                                                if(passrs.getText().toString().equals(comfirmrs.getText().toString()))
-                                                {
-                                                    account.setPassWord(passrs.getText().toString());
-                                                    mData.child("User").child(account.email.replace("@gmail.com","")).setValue(account);
-                                                    Toast.makeText(Login.this, "Đổi Mật Khẩu Thành Công !", Toast.LENGTH_SHORT).show();
-                                                    bottomSheetDialog.dismiss();
-                                                }else {
-                                                    Toast.makeText(Login.this, "Mật khẩu không khớp !", Toast.LENGTH_SHORT).show();
-                                                }
-                                            }
-                                            else {
-                                                Toast.makeText(Login.this, "Không tìm thấy tài khoản !", Toast.LENGTH_SHORT).show();
-                                            }
-                                        }
-                                    }
-                                }
-                            }
+                        if(edtmailrs.getText().toString().isEmpty() || passrs.getText().toString().isEmpty())
+                        {
+                            Toast.makeText(Login.this, "Vui lòng nhập đủ thông tin", Toast.LENGTH_SHORT).show();
+                        }else {
+                            emailrs = edtmailrs.getText().toString();
+                            newpassrs = passrs.getText().toString();
+                            ResetPass resetPass = new ResetPass(emailrs,newpassrs);
+                            mData.child("ListResetPass").child(emailrs.replace("@gmail.com","")).setValue(resetPass);
+                            Toast.makeText(Login.this, "Vui lòng chờ Admin reset password cho bạn, vui lòng check Email", Toast.LENGTH_SHORT).show();
+                            bottomSheetDialog.dismiss();
+                        }
 
-                            @Override
-                            public void onCancelled(@NonNull @NotNull DatabaseError error) {
-
-                            }
-                        });
                     }
                 });
                 bottomSheetDialog.setContentView(bottomSheetView);

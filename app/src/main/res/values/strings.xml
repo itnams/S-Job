@@ -22,7 +22,9 @@
     <string name="matkhau">Mật khẩu:</string>
     <string name="douutien">Độ ưu tiên:</string>
     <string name="trangthai">Trạng thái:</string>
+    <string name="versionpb" translatable="false">v1.0.0</string>
     <string name="khoa">Khóa</string>
+    <string name="listresetpass" translatable="false">Danh sách yêu cầu Reset Password</string>
     <string name="luu">Lưu</string>
     <string name="tvchangepass">Thay đổi mật khẩu</string>
     <string name="tvcurrentpass">Mật khẩu hiện tại:</string>

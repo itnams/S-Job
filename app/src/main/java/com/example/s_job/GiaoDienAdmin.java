@@ -21,6 +21,7 @@ public class GiaoDienAdmin extends AppCompatActivity {
     TextView tvqltk;
     TextView tvcnyc;
     TextView tvweb;
+    TextView listrspass;
     private FirebaseAuth mAuth;
     LinearLayout changePassword;
     DatabaseReference mData;
@@ -40,6 +41,7 @@ public class GiaoDienAdmin extends AppCompatActivity {
         tvlogout = findViewById(R.id.tvlogout);
         tvcnyc = findViewById(R.id.tvcnyc);
         tvweb = findViewById(R.id.tvweb);
+        listrspass = findViewById(R.id.listrspass);
         tenAdmin = findViewById(R.id.tenAdmin);
         tenAdmin.setText(mAuth.getCurrentUser().getEmail().replace("@gmail.com",""));
         emailAdmin = findViewById(R.id.emailAdmin);
@@ -114,6 +116,13 @@ public class GiaoDienAdmin extends AppCompatActivity {
                 FirebaseAuth.getInstance().signOut();
                 startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 
+            }
+        });
+        listrspass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GiaoDienAdmin.this, ResetPassword.class);
+                startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             }
         });
         tvweb.setOnClickListener(new View.OnClickListener() {
