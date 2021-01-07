@@ -54,9 +54,7 @@ public class GiaoDienQLTK extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Account account = dataSnapshot.getValue(Account.class);
                 String email = account.email;
-                if (account.position.equals("Company") || account.position.equals("User")) {
                     dstaikhoantk.add(email);
-                }
             }
 
             @Override
@@ -89,11 +87,9 @@ public class GiaoDienQLTK extends AppCompatActivity {
                         Account account = dataSnapshot.getValue(Account.class);
                         String email = account.email;
                         if (email.contains(edttim.getText().toString())) {
-                            if (account.position.equals("Company") || account.position.equals("User")) {
                                 dstaikhoantk.add(email);
                                 arrayAdapter = new ArrayAdapter(GiaoDienQLTK.this, R.layout.support_simple_spinner_dropdown_item, dstaikhoantk);
                                 listviewtk.setAdapter(arrayAdapter);
-                            }
                         }
                     }
 
@@ -212,7 +208,6 @@ public class GiaoDienQLTK extends AppCompatActivity {
                 emailkeyword = emailkey;
                 Intent intent = new Intent(getApplicationContext(), ChiTietTaiKhoan.class);
                 startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-
             }
         });
     }

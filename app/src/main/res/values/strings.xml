@@ -31,7 +31,7 @@
     <string name="btnsave">Lưu</string>
     <string name="btncancel">Quay lại</string>
     <string name="mokhoatk">Mở Khóa</string>
-    <string name="changepass">Thay đổi mật khẩu</string>
+    <string name="changepass">Thay đổi mật khẩu (yêu cầu đăng nhập lại)</string>
     <string name="ttchitiettaikhoan">Thông tin chi tiết tài khoản</string>
     <!--Custom String of Admin-->
     <!--Custom String of Login Signup-->
@@ -88,4 +88,6 @@
     <string name="comfirmrs">Comfirm</string>
     <string name="reset">Reset</string>
     <string name="cancel">Cancel</string>
+    <string name="minimum_password" translatable="false">Mật khẩu phải > 6 ký tự</string>
+    <string name="auth_failed" translatable="false">Đăng nhập thất bại !</string>
 </resources>
