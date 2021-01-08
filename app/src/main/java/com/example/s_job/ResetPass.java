@@ -1,11 +1,11 @@
 package com.example.s_job;
 
 public class ResetPass {
-    public String emailrs, newpass;
+    public String emailrs, userreset;
 
-    public ResetPass(String emailrs, String newpass) {
+    public ResetPass(String emailrs, String userreset) {
         this.emailrs = emailrs;
-        this.newpass = newpass;
+        this.userreset = userreset;
     }
 
     public ResetPass() {

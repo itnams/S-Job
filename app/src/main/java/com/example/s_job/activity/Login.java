@@ -86,7 +86,7 @@ public class Login extends AppCompatActivity {
                     }
                 });
                 EditText edtmailrs = bottomSheetView.findViewById(R.id.edtmailrs);
-                EditText passrs = bottomSheetView.findViewById(R.id.edtnewpassrs);
+                EditText passrs = bottomSheetView.findViewById(R.id.edtuserreset);
                 bottomSheetView.findViewById(R.id.btnreset).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

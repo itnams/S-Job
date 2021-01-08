@@ -12,6 +12,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <View android:layout_height="2dp"
+                android:layout_width="match_parent"
+                android:background="#EDCFA2"
+                android:layout_marginHorizontal="2dp"/>
             <TextView
                 android:id="@+id/txtTieuDe"
                 android:layout_width="match_parent"
@@ -28,7 +32,7 @@
                     android:layout_width="match_parent"
                     android:layout_marginTop="2dp"
                     android:layout_height="wrap_content"
-                    android:text="Tài khoản yêu cầu Reset Password "/>
+                    android:text="Email yêu cầu Reset Password "/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -51,7 +55,7 @@
                     android:layout_width="match_parent"
                     android:layout_marginTop="2dp"
                     android:layout_height="wrap_content"
-                    android:text="Mật khẩu người dùng muốn đổi"/>
+                    android:text="Tên tài khoản người dùng "/>
             </LinearLayout>
             <TextView
                 android:id="@+id/tvmatkhaumuongdoi"

@@ -75,7 +75,7 @@ public class GiaoDienChapNhanYCDN extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position1, long id) {
                 String item = dstaikhoanyc.get(position1);
-                String[] namevssdt=item.split(" ");
+                String[] namevssdt = item.split(" ");
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(GiaoDienChapNhanYCDN.this);
                 builder1.setTitle("Vui lòng lựa chọn !");
                 builder1.setMessage("Click Đồng ý để chấp nhận yêu cầu, Click Từ chối để xóa yêu cầu");

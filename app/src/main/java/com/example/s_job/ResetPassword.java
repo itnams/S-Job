@@ -2,11 +2,19 @@ package com.example.s_job;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.example.s_job.Datacode.Account;
+import com.example.s_job.Model.Company;
+import com.example.s_job.db_firebase.dbFireBase;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,21 +27,21 @@ public class ResetPassword extends AppCompatActivity {
     ListView listResetPass;
     ArrayList<ResetPass> passArrayList;
     ResetPassAdapter adapter;
-    ResetPass resetPass;
     DatabaseReference mData;
+    ResetPassAdapter resetPassAdapter;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reset_password);
+        listResetPass = findViewById(R.id.listresetpass);
+        passArrayList = new ArrayList<ResetPass>();
         mData = FirebaseDatabase.getInstance().getReference();
         mData.child("ListResetPass").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 ResetPass resetPass = snapshot.getValue(ResetPass.class);
-                listResetPass = findViewById(R.id.listresetpass);
-                passArrayList = new ArrayList<ResetPass>();
-                passArrayList.add(new ResetPass(resetPass.emailrs,resetPass.newpass));
+                passArrayList.add(new ResetPass(resetPass.emailrs,resetPass.userreset));
                 adapter = new ResetPassAdapter(ResetPassword.this,R.layout.listview_resetpass,passArrayList);
                 listResetPass.setAdapter(adapter);
             }
@@ -56,6 +64,63 @@ public class ResetPassword extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+
+        listResetPass.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(ResetPassword.this);
+                builder1.setTitle("Vui lòng lựa chọn");
+                builder1.setMessage("Click Đồng ý để xóa, Click Từ chối để quay về");
+                builder1.setPositiveButton("Từ Chối",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                            }
+                        });
+                builder1.setNegativeButton("Đồng Ý",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+
+                                mData.child("ListResetPass").addChildEventListener(new ChildEventListener() {
+                                    @Override
+                                    public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                                        ResetPass resetPass = snapshot.getValue(ResetPass.class);
+                                        String emailluu = passArrayList.get(position).emailrs;
+                                        if(emailluu.equals(resetPass.emailrs))
+                                        {
+                                            mData.child("ListResetPass").child(resetPass.emailrs.replace("@gmail.com", "")).removeValue();
+                                            passArrayList.remove(position);
+                                            adapter.notifyDataSetChanged();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                                    }
+
+                                    @Override
+                                    public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                                    }
+
+                                    @Override
+                                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+                                });
+                            }
+                        });
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
             }
         });
 

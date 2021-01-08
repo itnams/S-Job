@@ -41,7 +41,7 @@ public class ResetPassAdapter extends BaseAdapter {
         TextView tvemailrs = (TextView) convertView.findViewById(R.id.tvEmailrspass);
         TextView tvnewpass = (TextView) convertView.findViewById(R.id.tvmatkhaumuongdoi);
         tvemailrs.setText(arrayResetPass.get(position).emailrs);
-        tvnewpass.setText(arrayResetPass.get(position).newpass);
+        tvnewpass.setText(arrayResetPass.get(position).userreset);
         return convertView;
     }
 }
