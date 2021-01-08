@@ -2,7 +2,10 @@ package com.example.s_job.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.Image;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,8 +33,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URL;
 
 
 public class User_Profile extends Fragment {
@@ -40,6 +48,7 @@ public class User_Profile extends Fragment {
     EditText et_current_pass_com,et_new_pass_com,et_confirm_pass_com,et_Full_Name,et_Phone,et_addresss;
     Button btn_save_company,cancel_button;
     private DatabaseReference databaseRef;
+    FirebaseStorage storage = FirebaseStorage.getInstance();
     TextView tvlogout;
     ImageView imageLogout,imangeChangepass,yourFavorited,btnsetting,imageprofile;
     Login login;
@@ -65,6 +74,24 @@ public class User_Profile extends Fragment {
         tvlogout = view.findViewById(R.id.tvlogout);
         imangeChangepass = view.findViewById(R.id.imangeChangepass);
         btnsetting = view.findViewById(R.id.btnsetting);
+        mData = FirebaseDatabase.getInstance().getReference();
+        mData.child("User").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot key : snapshot.getChildren()) {
+                    Account account = key.getValue(Account.class);
+                    if (login.passUser.equals(account.passWord)&&login.userLogin.equals(account.nameUser))
+                    {
+                        new LoadImge().execute(account.image);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         btnsetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,7 +114,18 @@ public class User_Profile extends Fragment {
                 bottomSheetView.findViewById(R.id.btn_save_profile).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        if (et_Full_Name.equals("")||et_Phone.equals("")||et_addresss.equals(""))
+                        {
+                            Toast.makeText(getContext(), "Update fail", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            mData.child("User").child(login.keyUser).child("address").setValue(et_addresss.getText().toString());
+                            mData.child("User").child(login.keyUser).child("nameUser").setValue(et_Full_Name.getText().toString());
+                            mData.child("User").child(login.keyUser).child("phone").setValue(et_Phone.getText().toString());
+                            Toast.makeText(getContext(), "Update success", Toast.LENGTH_SHORT).show();
+                            bottomSheetDialog.cancel();
+                        }
                     }
                 });
                 mData = FirebaseDatabase.getInstance().getReference();
@@ -199,5 +237,28 @@ public class User_Profile extends Fragment {
         });
     }
 
+    private class LoadImge extends AsyncTask<String,Void, Bitmap> {
+        Bitmap bitmapHinh = null;
+        @Override
+        protected Bitmap doInBackground(String... strings) {
 
+            try {
+                URL url = new URL(strings[0]);
+                InputStream inputStream = url.openConnection().getInputStream();
+                bitmapHinh = BitmapFactory.decodeStream(inputStream);
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return bitmapHinh;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            super.onPostExecute(bitmap);
+            imageprofile.setImageBitmap(bitmap);
+
+        }
+    }
 }

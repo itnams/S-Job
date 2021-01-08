@@ -103,12 +103,7 @@
             android:background="@drawable/edit_text"
             android:hint="Address"/>
     </LinearLayout>
-    <Button
-        android:layout_margin="6dp"
-        android:layout_width="wrap_content"
-        android:text="Imange"
-        android:id="@+id/btnImagesetting"
-        android:layout_height="wrap_content"/>
+
     <LinearLayout
         android:paddingTop="16dp"
         android:paddingBottom="32dp"

@@ -134,7 +134,7 @@ public class GiaoDienChapNhanYCDN extends AppCompatActivity {
                                         String douutien = account.douutien;
                                         String trangthai = account.trangthai;
                                         if (dstaikhoanyc.get(Integer.parseInt(String.valueOf(position1))).equals((nameUser + " " + phone).toString())) {
-                                            Account account1 = new Account(nameUser, email, passWord, phone, address, position, douutien, trangthai);
+                                            Account account1 = new Account(nameUser, email, passWord, phone, address, position, douutien, trangthai,"https://firebasestorage.googleapis.com/v0/b/fir-job-f46ea.appspot.com/o/220px-User_icon_2.svg.png?alt=media&token=068e6fd2-287a-451b-94b6-007df2ed264b");
                                             //Nhan ------------
                                             Company ad = new Company();
                                             ad.setEmail(email.replace("@gmail.com", ""));
