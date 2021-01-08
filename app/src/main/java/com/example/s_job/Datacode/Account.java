@@ -3,9 +3,9 @@ package com.example.s_job.Datacode;
 import java.io.Serializable;
 
 public class Account implements Serializable {
-    public String nameUser,email,passWord,phone,address, position, douutien, trangthai;
+    public String nameUser,email,passWord,phone,address, position, douutien, trangthai,image;
 
-    public Account(String nameUser, String email, String passWord, String phone, String address, String position, String douutien, String trangthai) {
+    public Account(String nameUser, String email, String passWord, String phone, String address, String position, String douutien, String trangthai,String image) {
         this.nameUser = nameUser;
         this.email = email;
         this.passWord = passWord;
@@ -14,6 +14,7 @@ public class Account implements Serializable {
         this.position = position;
         this.douutien = douutien;
         this.trangthai = trangthai;
+        this.image = image;
     }
 
     public String getNameUser() {

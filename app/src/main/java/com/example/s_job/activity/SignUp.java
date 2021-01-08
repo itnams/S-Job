@@ -53,7 +53,7 @@ DatabaseReference mData;
                 {
                     String douutien = "Cao";
                     String trangthai = "Bình thường";
-                    account = new Account(name.getText().toString(),email.getText().toString(),pass.getText().toString(),phone.getText().toString(),address.getText().toString(),chucvu.toString(),douutien,trangthai);
+                    account = new Account(name.getText().toString(),email.getText().toString(),pass.getText().toString(),phone.getText().toString(),address.getText().toString(),chucvu.toString(),douutien,trangthai,"https://firebasestorage.googleapis.com/v0/b/fir-job-f46ea.appspot.com/o/220px-User_icon_2.svg.png?alt=media&token=068e6fd2-287a-451b-94b6-007df2ed264b");
                     if(chucvu.equals("Company"))
                     {
                         if(account.email.equals("")||account.address.equals("")||account.douutien.equals("")||account.nameUser.equals("")||account.passWord.equals("")||account.phone.equals("")||account.position.equals(""))

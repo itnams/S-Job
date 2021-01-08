@@ -31,15 +31,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.net.URI;
+
 
 public class User_Profile extends Fragment {
     private LinearLayout editProfile, changePassword, favoritedJob, posts, logout;
     private TextView tvUserName, tvEmail, tvPhone, tvAddress;
-    EditText et_current_pass_com,et_new_pass_com,et_confirm_pass_com;
+    EditText et_current_pass_com,et_new_pass_com,et_confirm_pass_com,et_Full_Name,et_Phone,et_addresss;
     Button btn_save_company,cancel_button;
     private DatabaseReference databaseRef;
     TextView tvlogout;
-    ImageView imageLogout,imangeChangepass,yourFavorited;
+    ImageView imageLogout,imangeChangepass,yourFavorited,btnsetting,imageprofile;
     Login login;
     DatabaseReference mData;
     private Account account;
@@ -59,9 +61,59 @@ public class User_Profile extends Fragment {
         imageLogout = view.findViewById(R.id.imageLogout);
         tvUserName.setText(login.userLogin);
         yourFavorited = view.findViewById(R.id.yourFavorited);
+        imageprofile = view.findViewById(R.id.imageprofile);
         tvlogout = view.findViewById(R.id.tvlogout);
         imangeChangepass = view.findViewById(R.id.imangeChangepass);
+        btnsetting = view.findViewById(R.id.btnsetting);
+        btnsetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(
+                        getContext(), R.style.BottomSheetDialogTheme
+                );
 
+                View bottomSheetView = LayoutInflater.from(getContext())
+                        .inflate(R.layout.bs_setting_profile, (LinearLayout) view.findViewById(R.id.bs_setting_profile));
+//code o day
+                et_Full_Name = bottomSheetView.findViewById(R.id.et_Full_Name);
+                et_Phone = bottomSheetView.findViewById(R.id.et_Phone);
+                et_addresss = bottomSheetView.findViewById(R.id.et_addresss);
+                bottomSheetView.findViewById(R.id.cancel_button).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        bottomSheetDialog.dismiss();
+                    }
+                });
+                bottomSheetView.findViewById(R.id.btn_save_profile).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
+                mData = FirebaseDatabase.getInstance().getReference();
+                mData.child("User").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot key : snapshot.getChildren()) {
+                            Account account = key.getValue(Account.class);
+                            if (login.passUser.equals(account.passWord)&&login.userLogin.equals(account.nameUser))
+                            {
+                                et_Full_Name.setText(account.nameUser);
+                                et_Phone.setText(account.phone);
+                                et_addresss.setText(account.address);
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+                bottomSheetDialog.setContentView(bottomSheetView);
+                bottomSheetDialog.show();
+            }
+        });
         imangeChangepass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
