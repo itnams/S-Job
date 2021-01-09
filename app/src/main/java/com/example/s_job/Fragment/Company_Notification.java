@@ -122,12 +122,13 @@ public class Company_Notification extends Fragment {
                 builder.setNegativeButton(getString(R.string.gui), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getActivity(), "" + i, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), getString(R.string.toastdaguiHotro), Toast.LENGTH_SHORT).show();
                     }
                 }).setPositiveButton(getString(R.string.khong), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(getActivity(), "" + i, Toast.LENGTH_SHORT).show();
+                        dialogInterface.dismiss();
+                        //Toast.makeText(getActivity(), "", Toast.LENGTH_SHORT).show();
                     }
                 });
 

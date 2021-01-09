@@ -116,8 +116,7 @@ public class Company_Profile extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     company.setImage(((HashMap) snapshot.getValue()).get("Image").toString());
-                    Toast.makeText(getActivity(), ""
-                            + company.getImage(), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getActivity(), "" + company.getImage(), Toast.LENGTH_SHORT).show();
                     if (!company.getImage().equals("")) {
                         db.mStorageRef.child(company.getImage() + ".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override

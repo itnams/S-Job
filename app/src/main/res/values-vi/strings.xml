@@ -87,6 +87,10 @@
     <string name="toastDoiPass">Đổi Mật Khẩu Thành Công!!!</string>
     <string name="toastXacNhanPass">Mật Khẩu Mới Và Mật Khẩu Xác Nhận Không Khớp!!!</string>
     <string name="toastMatKhauMacDinhPass">Mật Khẩu Mặc Định Sai!!!</string>
+    <string name="toastdaguiHotro">Đã Gữi Hỗ Trợ!!!</string>
+    <string name="inputPassMacDinh">Nhập Mật Khẩu Mặc Định...</string>
+    <string name="inputPassMoi">Nhập Mật Khẩu Mới...</string>
+    <string name="inputPassComfim">Nhập Xác Nhận Mật Khẩu...</string>
     <!--    Nhan Custom String-->
     <!-- String of resetpass -->
     <string name="titlers">Reset Password</string>

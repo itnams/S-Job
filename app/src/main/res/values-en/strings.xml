@@ -87,6 +87,10 @@
     <string name="toastDoiPass">Change Pass Success!!!</string>
     <string name="toastXacNhanPass">New Pass And Comfirm Pass is Not Equals!!!</string>
     <string name="toastMatKhauMacDinhPass">Current Pass Error!!!</string>
+    <string name="toastdaguiHotro">Send Support!!!</string>
+    <string name="inputPassMacDinh">Input Pass Current...</string>
+    <string name="inputPassMoi">Input New Pass...</string>
+    <string name="inputPassComfim">Input Comfirm Pass...</string>
     <!--    Nhan Custom String-->
     <!-- String of resetpass -->
     <string name="titlers">Reset Password</string>
