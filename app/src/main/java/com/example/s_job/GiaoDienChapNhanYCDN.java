@@ -75,46 +75,18 @@ public class GiaoDienChapNhanYCDN extends AppCompatActivity {
 
         listyeucauDN.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position1, long id) {
+                String emailcanxoa = ycdnList.get(position1).email;
+                String emailluu = ycdnList.get(position1).email;
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(GiaoDienChapNhanYCDN.this);
                 builder1.setTitle("Vui lòng lựa chọn");
                 builder1.setMessage("Click Đồng ý để chấp nhập yêu cầu, Click Từ chối để xóa khỏi danh sách");
                 builder1.setPositiveButton("Từ Chối",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                mData.child("Pending").addChildEventListener(new ChildEventListener() {
-                                    @Override
-                                    public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                                        Account account = snapshot.getValue(Account.class);
-                                        String emailcanxoa = ycdnList.get(position).email;
-                                        if(emailcanxoa.equals(account.email))
-                                        {
-                                            mData.child("Pending").child(account.email.replace("@gmail.com", "")).removeValue();
-                                            ycdnList.remove(position);
-                                            adapter.notifyDataSetChanged();
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                                    }
-
-                                    @Override
-                                    public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-                                    }
-
-                                    @Override
-                                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
-
-                                    }
-                                });
+                                mData.child("Pending").child(emailcanxoa.replace("@gmail.com", "")).removeValue();
+                                ycdnList.remove(position1);
+                                adapter.notifyDataSetChanged();
                             }
                         });
                 builder1.setNegativeButton("Đồng Ý",
@@ -124,7 +96,6 @@ public class GiaoDienChapNhanYCDN extends AppCompatActivity {
                                     @Override
                                     public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                                         Account account = dataSnapshot.getValue(Account.class);
-                                        String emailluu = ycdnList.get(position).email;
                                         String address = account.address;
                                         String email = account.email;
                                         String nameUser = account.nameUser;
@@ -133,16 +104,17 @@ public class GiaoDienChapNhanYCDN extends AppCompatActivity {
                                         String position = account.position;
                                         String douutien = account.douutien;
                                         String trangthai = account.trangthai;
-                                        if (emailluu.equals(account.getEmail())) {
+                                        if(emailluu.equals(email))
+                                        {
                                             Account account1 = new Account(nameUser, email, passWord, phone, address, position, douutien, trangthai);
                                             //Nhan ------------
                                             Company ad = new Company();
                                             ad.setEmail(email.replace("@gmail.com", ""));
                                             new dbFireBase().addDataToCompany(ad);
                                             // ------------
-                                            mData.child("User").child(email.toString().replace("@gmail.com", "")).setValue(account1);
-                                            mData.child("Pending").child(email.toString().replace("@gmail.com", "")).removeValue();
-                                            ycdnList.remove(position);
+                                            mData.child("User").child(emailluu.replace("@gmail.com", "")).setValue(account1);
+                                            mData.child("Pending").child(emailluu.replace("@gmail.com", "")).removeValue();
+                                            ycdnList.remove(position1);
                                             adapter.notifyDataSetChanged();
                                         }
                                     }

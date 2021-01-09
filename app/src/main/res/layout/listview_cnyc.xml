@@ -12,10 +12,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <View android:layout_height="2dp"
-                android:layout_width="match_parent"
-                android:background="#EDCFA2"
-                android:layout_marginHorizontal="2dp"/>
             <TextView
                 android:id="@+id/txtTieuDe"
                 android:layout_width="match_parent"
@@ -64,7 +60,7 @@
                 android:layout_marginTop="2dp" />
             <View android:layout_height="2dp"
                 android:layout_width="match_parent"
-                android:background="#EDCFA2"
+                android:background="#00ACC1"
                 android:layout_marginHorizontal="2dp"/>
         </LinearLayout>
     </LinearLayout>

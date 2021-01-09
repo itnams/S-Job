@@ -69,6 +69,7 @@ public class ResetPassword extends AppCompatActivity {
         listResetPass.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String emailluu = passArrayList.get(position).emailrs;
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(ResetPassword.this);
                 builder1.setTitle("Vui lòng lựa chọn");
                 builder1.setMessage("Click Đồng ý để xóa, Click Từ chối để quay về");
@@ -81,40 +82,9 @@ public class ResetPassword extends AppCompatActivity {
                 builder1.setNegativeButton("Đồng Ý",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                mData.child("ListResetPass").addChildEventListener(new ChildEventListener() {
-                                    @Override
-                                    public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                                        ResetPass resetPass = snapshot.getValue(ResetPass.class);
-                                        String emailluu = passArrayList.get(position).emailrs;
-                                        if(emailluu.equals(resetPass.emailrs))
-                                        {
-                                            mData.child("ListResetPass").child(resetPass.emailrs.replace("@gmail.com", "")).removeValue();
-                                            passArrayList.remove(position);
-                                            adapter.notifyDataSetChanged();
-                                            return;
-                                        }
-                                    }
-
-                                    @Override
-                                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                                    }
-
-                                    @Override
-                                    public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-                                    }
-
-                                    @Override
-                                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
-
-                                    }
-                                });
+                               mData.child("ListResetPass").child(emailluu.replace("@gmail.com","")).removeValue();
+                                passArrayList.remove(position);
+                                adapter.notifyDataSetChanged();
                             }
                         });
                 AlertDialog alert11 = builder1.create();

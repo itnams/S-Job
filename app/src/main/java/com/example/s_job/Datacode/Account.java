@@ -22,6 +22,17 @@ public class Account implements Serializable {
         this.phone = phone;
     }
 
+    public Account(String nameUser, String email, String passWord, String phone, String address, String position, String douutien, String trangthai) {
+        this.nameUser = nameUser;
+        this.email = email;
+        this.passWord = passWord;
+        this.phone = phone;
+        this.address = address;
+        this.position = position;
+        this.douutien = douutien;
+        this.trangthai = trangthai;
+    }
+
     public String getNameUser() {
         return nameUser;
     }

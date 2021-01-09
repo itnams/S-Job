@@ -33,12 +33,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
-import java.net.URI;
 import java.net.URL;
 
 
@@ -48,7 +45,6 @@ public class User_Profile extends Fragment {
     EditText et_current_pass_com,et_new_pass_com,et_confirm_pass_com,et_Full_Name,et_Phone,et_addresss;
     Button btn_save_company,cancel_button;
     private DatabaseReference databaseRef;
-    FirebaseStorage storage = FirebaseStorage.getInstance();
     TextView tvlogout;
     ImageView imageLogout,imangeChangepass,yourFavorited,btnsetting,imageprofile;
     Login login;
