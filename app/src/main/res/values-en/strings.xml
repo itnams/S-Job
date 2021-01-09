@@ -80,6 +80,13 @@
     <string name="caiDatThongTin">Settings</string>
     <string name="doimatKhau">Change Password</string>
     <string name="thoat">Log Out</string>
+    <string name="titleUpload">Choose Picture</string>
+    <string name="mesUpload">Choose Pictute From Libary ?</string>
+    <string name="BtnChupAnh">Camera</string>
+    <string name="BtnThuVien">Libary Picture</string>
+    <string name="toastDoiPass">Change Pass Success!!!</string>
+    <string name="toastXacNhanPass">New Pass And Comfirm Pass is Not Equals!!!</string>
+    <string name="toastMatKhauMacDinhPass">Current Pass Error!!!</string>
     <!--    Nhan Custom String-->
     <!-- String of resetpass -->
     <string name="titlers">Reset Password</string>

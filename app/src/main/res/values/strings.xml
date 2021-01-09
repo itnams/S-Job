@@ -79,7 +79,13 @@
     <string name="caiDatThongTin">Cài Đặt Thông Tin</string>
     <string name="doimatKhau">Đổi Mật Khẩu</string>
     <string name="thoat">Thoát</string>
-
+    <string name="titleUpload">Chọn Thư Viện Ảnh</string>
+    <string name="mesUpload">Bạn Hãy Chọn Thư Viện Để Lấy Ảnh ?</string>
+    <string name="BtnChupAnh">Chụp Ảnh</string>
+    <string name="BtnThuVien">Thư Viện Ảnh</string>
+    <string name="toastDoiPass">Change Pass Success!!!</string>
+    <string name="toastXacNhanPass">Mật Khẩu Mới Và Mật Khẩu Xác Nhận Không Khớp!!!</string>
+    <string name="toastMatKhauMacDinhPass">Mật Khẩu Mặc Định Sai!!!</string>
     <!--    Nhan Custom String-->
     <!-- String of resetpass -->
     <string name="titlers">Reset Password</string>
