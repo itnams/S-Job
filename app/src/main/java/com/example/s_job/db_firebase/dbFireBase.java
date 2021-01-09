@@ -115,6 +115,9 @@ public class dbFireBase {
 
                 dialog.dismiss();
                 Toast.makeText(activity, "Uploaded", Toast.LENGTH_SHORT).show();
+                //activity.recreate();
+                activity.finish();
+                activity.startActivity(activity.getIntent());
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

@@ -71,8 +71,6 @@ public class Company_Profile extends Fragment {
         //----------------------------
         changeTextView();
         init(view);
-
-
         return view;
     }
 
@@ -121,7 +119,7 @@ public class Company_Profile extends Fragment {
                         db.mStorageRef.child(company.getImage() + ".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                             @Override
                             public void onSuccess(Uri uri) {
-                                Glide.with(getActivity())
+                                Glide.with(getContext())
                                         .load(uri)
                                         .into(img_company);
                             }
@@ -178,7 +176,7 @@ public class Company_Profile extends Fragment {
                     db.mStorageRef.child(company.getImage() + ".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                         @Override
                         public void onSuccess(Uri uri) {
-                            Glide.with(getActivity())
+                            Glide.with(getContext())
                                     .load(uri)
                                     .into(imageView_sheet);
                         }
@@ -252,9 +250,11 @@ public class Company_Profile extends Fragment {
                     public void onClick(View view) {
                         UpLoadData();
                         //Fix Send image to firebase
+
                         bottomSheetDialog.dismiss();
 
                         Toast.makeText(getContext(), "Change Infomation Success!!", Toast.LENGTH_SHORT).show();
+
                     }
                 });
 
@@ -392,9 +392,10 @@ public class Company_Profile extends Fragment {
         File f = new File(String.valueOf(linkImage));
         String imageName = f.getName();
         company.setImage(imageName);
-        new dbFireBase().UploadImgToFireBase(linkImage, imageName, getActivity());
+
         new dbFireBase().upDateCompanyFormCompany(company);
         new dbFireBase().upDateCompanyFormUser(company);
+        new dbFireBase().UploadImgToFireBase(linkImage, imageName, getActivity());
     }
 
 }
