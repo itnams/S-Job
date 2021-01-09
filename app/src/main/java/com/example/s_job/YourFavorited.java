@@ -49,7 +49,9 @@ public class YourFavorited extends AppCompatActivity {
                             arrayListPost.add(new PostCompany(allPost.emai,allPost.key,allPost.ngayDang,allPost.tieuDe,allPost.tinhThanh));
                             adapter = new PostCompanyAdapter(
                                     YourFavorited.this,R.layout.dong_post_company,arrayListPost);
+                            adapter.notifyDataSetChanged();
                             listViewYourFavorited.setAdapter(adapter);
+
                         }
                     }
 
