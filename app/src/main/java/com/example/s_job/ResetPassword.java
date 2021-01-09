@@ -28,7 +28,6 @@ public class ResetPassword extends AppCompatActivity {
     ArrayList<ResetPass> passArrayList;
     ResetPassAdapter adapter;
     DatabaseReference mData;
-    ResetPassAdapter resetPassAdapter;
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,8 +81,6 @@ public class ResetPassword extends AppCompatActivity {
                 builder1.setNegativeButton("Đồng Ý",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-
-
                                 mData.child("ListResetPass").addChildEventListener(new ChildEventListener() {
                                     @Override
                                     public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -94,6 +91,7 @@ public class ResetPassword extends AppCompatActivity {
                                             mData.child("ListResetPass").child(resetPass.emailrs.replace("@gmail.com", "")).removeValue();
                                             passArrayList.remove(position);
                                             adapter.notifyDataSetChanged();
+                                            return;
                                         }
                                     }
 

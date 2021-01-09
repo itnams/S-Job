@@ -16,6 +16,11 @@ public class Account implements Serializable {
         this.trangthai = trangthai;
     }
 
+    public Account(String email, String phone) {
+        this.email = email;
+        this.phone = phone;
+    }
+
     public String getNameUser() {
         return nameUser;
     }
