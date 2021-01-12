@@ -3,11 +3,15 @@ package com.example.s_job;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,18 +46,15 @@ public class GiaoDienQLTK extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_giao_dien_q_l_t_k);
         listviewtk = findViewById(R.id.lstviewtk);
+        EditText edttim = findViewById(R.id.edttim);
         dstaikhoantk = new ArrayList<String>();
         mData = FirebaseDatabase.getInstance().getReference();
         mData.child("User").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Account account = dataSnapshot.getValue(Account.class);
-                    String email = account.email;
-                    String position = account.position;
-                    if (account.position.equals("Company") || account.position.equals("User")) {
-                        dstaikhoantk.add(email);
-
-                }
+                String email = account.email;
+                    dstaikhoantk.add(email);
             }
 
             @Override
@@ -73,6 +74,54 @@ public class GiaoDienQLTK extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        edttim.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                arrayAdapter.clear();
+                mData.child("User").addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                        Account account = dataSnapshot.getValue(Account.class);
+                        String email = account.email;
+                        if (email.contains(edttim.getText().toString())) {
+                                dstaikhoantk.add(email);
+                                arrayAdapter = new ArrayAdapter(GiaoDienQLTK.this, R.layout.support_simple_spinner_dropdown_item, dstaikhoantk);
+                                listviewtk.setAdapter(arrayAdapter);
+                        }
+                    }
+
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
 
             }
         });
@@ -159,7 +208,6 @@ public class GiaoDienQLTK extends AppCompatActivity {
                 emailkeyword = emailkey;
                 Intent intent = new Intent(getApplicationContext(), ChiTietTaiKhoan.class);
                 startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-
             }
         });
     }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:paddingVertical="8dp"
+            android:layout_marginHorizontal="6dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/txtTieuDe"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dạy kèm nữ sinh 18 tuổi"
+                android:textSize="19sp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/placeholder"/>
+                <TextView
+                    android:id="@+id/txtTinhThanh"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Hồ Chí Mình"/>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/txtNgayDangllllll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="11/06/2020"/>
+            <View android:layout_height="2dp"
+                android:layout_width="match_parent"
+                android:background="#EDCFA2"
+                android:layout_marginHorizontal="2dp"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

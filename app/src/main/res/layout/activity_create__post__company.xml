@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/xanhnhat"
+    android:orientation="vertical"
+    android:padding="8dp"
+    tools:context=".Activity_For_n.Create_Post_Company">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/et_tieuDe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="15dp"
+            android:background="@color/lucApp"
+            android:gravity="center"
+            android:hint="@string/tieuDe"
+            android:padding="5dp"
+            android:textColor="@color/hongApp"
+            android:textSize="18dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <EditText
+
+                android:id="@+id/et_deLine"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="12"
+                android:background="@color/lucApp"
+                android:enabled="false"
+                android:gravity="center"
+                android:text="@string/timeDemo"
+                android:textColor="@color/doApp"
+                android:textSize="13dp" />
+
+            <ImageButton
+                android:id="@+id/imgBtn_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:layout_weight="12"
+                android:background="@drawable/custom_button"
+                android:padding="10dp"
+                android:src="@drawable/date_range" />
+
+            <EditText
+                android:id="@+id/et_mucLuong"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="7"
+                android:background="@color/lucApp"
+                android:gravity="center"
+                android:hint="@string/mucLuong"
+                android:inputType="number"
+                android:textColor="@color/hongApp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_bangCap"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="15dp"
+                android:layout_weight="6"
+                android:background="@color/lucApp"
+                android:gravity="center"
+                android:hint="@string/bangCap"
+                android:textColor="@color/hongApp" />
+
+
+            <EditText
+                android:id="@+id/et_nganhNghe"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="8"
+                android:background="@color/lucApp"
+                android:gravity="center"
+                android:hint="@string/nganhNghe"
+                android:textColor="@color/hongApp" />
+
+            <ImageButton
+
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:src="@drawable/location_n" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_soLuongTuyen"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="15dp"
+                android:layout_weight="1"
+                android:background="@color/lucApp"
+                android:gravity="center"
+                android:hint="@string/soLuongTuyen"
+                android:inputType="number"
+                android:textColor="@color/hongApp" />
+
+
+            <EditText
+                android:id="@+id/et_diaChi"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:background="@color/lucApp"
+                android:enabled="false"
+
+                android:gravity="center"
+                android:hint="@string/diachi"
+                android:inputType="number"
+                android:textColor="@color/doApp" />
+
+            <ImageButton
+                android:id="@+id/imgBtn_vitri"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/custom_button"
+                android:padding="10dp"
+                android:src="@drawable/location_n" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:background="@color/lucApp"
+            android:padding="5dp"
+            android:text="@string/khuVucTuyen"
+            android:textColor="@color/doApp"
+            android:textSize="20dp" />
+
+        <Spinner
+            android:id="@+id/spn_tinhThanh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/daApp"
+            android:popupBackground="@color/daApp" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/et_moTa"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@color/lucApp"
+        android:ems="10"
+        android:gravity="left|top"
+        android:hint="@string/moTa"
+        android:inputType="textMultiLine"
+        android:padding="5dp"
+        android:textColor="#FF5159"
+        android:textSize="15sp">
+
+    </EditText>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_luu"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+
+            android:padding="20dp"
+            android:text="@string/luu"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_trove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:padding="20dp"
+            android:text="@string/trove"
+            android:textAllCaps="false" />
+
+
+    </LinearLayout>
+
+</LinearLayout>

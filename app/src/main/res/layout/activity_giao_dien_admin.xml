@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="8dp"
         android:layout_weight="2"
-        android:background="@drawable/header_bg">
+        android:background="@android:color/holo_orange_dark">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,8 +49,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="2dp"
                 android:layout_marginLeft="8dp"
-                android:textColor="@color/black"
                 android:fontFamily="serif-monospace"
+                android:textColor="@color/black"
                 android:textSize="24dp"
                 android:textStyle="bold" />
 
@@ -65,63 +65,17 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_marginHorizontal="6dp"
+                    android:layout_marginTop="10dp"
                     android:src="@drawable/mail" />
 
                 <TextView
                     android:id="@+id/emailAdmin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:textColor="@color/black"
                     android:textSize="14sp" />
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical='8dp'
-                android:layout_marginStart="4dp"
-                android:layout_marginLeft="4dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginHorizontal="6dp"
-                    android:src="@drawable/phonel" />
-
-                <TextView
-                    android:id="@+id/sdtAdmin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical='8dp'
-                android:layout_marginStart="4dp"
-                android:layout_marginLeft="4dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginHorizontal="6dp"
-                    android:src="@drawable/location" />
-
-                <TextView
-                    android:id="@+id/diaChiAdmin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-
         </LinearLayout>
     </LinearLayout>
 
@@ -151,32 +105,17 @@
                 android:id="@+id/tvweb"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:text="@string/qlttd"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
+
         </LinearLayout>
 
-        <!--        <LinearLayout-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginVertical='16dp'-->
-        <!--            android:layout_marginStart="4dp"-->
-        <!--            android:orientation="horizontal"-->
-        <!--            android:id="@+id/yourJobs">-->
-
-        <!--            <ImageView-->
-        <!--                android:layout_width="30dp"-->
-        <!--                android:layout_height="30dp"-->
-        <!--                android:layout_marginHorizontal="6dp"-->
-        <!--                android:src="@drawable/suitcase" />-->
-
-        <!--            <TextView-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:text="Your Jobs"-->
-        <!--                android:textSize="18sp" />-->
-        <!--        </LinearLayout>-->
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginHorizontal="5dp"
+            android:background="#FFB300" />
 
         <LinearLayout
             android:id="@+id/your_Posts"
@@ -197,10 +136,16 @@
                 android:id="@+id/tvqltk"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:text="@string/qltk"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginHorizontal="5dp"
+            android:background="#FFB300" />
 
         <LinearLayout
 
@@ -212,8 +157,6 @@
             android:layout_marginLeft="4dp"
             android:orientation="horizontal">
 
-
-
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
@@ -224,11 +167,17 @@
                 android:id="@+id/tvcnyc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:text="@string/cnyc"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
 
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginHorizontal="5dp"
+            android:background="#FFB300" />
 
         <LinearLayout
             android:id="@+id/change_Password"
@@ -248,11 +197,48 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:text="@string/changepass"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
 
         </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginHorizontal="5dp"
+            android:background="#FFB300" />
+
+        <LinearLayout
+            android:id="@+id/listResetPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical='16dp'
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginHorizontal="6dp"
+                android:src="@drawable/question" />
+
+            <TextView
+                android:id="@+id/listrspass"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/listresetpass"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginHorizontal="5dp"
+            android:background="#FFB300" />
 
         <LinearLayout
             android:id="@+id/logout"
@@ -273,12 +259,27 @@
                 android:id="@+id/tvlogout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:text="@string/logout"
+                android:textColor="@color/black"
                 android:textSize="18sp" />
 
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginHorizontal="5dp"
+            android:background="#FFB300" />
     </LinearLayout>
+
+    <me.ibrahimsn.lib.SmoothBottomBar
+        android:id="@+id/bottomBar1"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        app:backgroundColor="@android:color/holo_orange_dark"
+        app:iconSize="24dp"
+        app:menu="@menu/bottom_nav_menu2"
+        app:textSize="14sp" />
 
 </LinearLayout>

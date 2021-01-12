@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">S-Job</string>
     <!--Custom String of Admin-->
-    <string name="qlttd">Quản lý trang tuyển dụng</string>
+    <string name="qlttd">Quản lý trang tìm việc</string>
     <string name="qltk">Quản lý tài khoản</string>
     <string name="logout">Đăng xuất</string>
     <string name="cnyc">Chấp nhận yêu cầu doanh nghiệp</string>
@@ -22,7 +22,9 @@
     <string name="matkhau">Mật khẩu:</string>
     <string name="douutien">Độ ưu tiên:</string>
     <string name="trangthai">Trạng thái:</string>
+    <string name="versionpb" translatable="false">v1.0.0</string>
     <string name="khoa">Khóa</string>
+    <string name="listresetpass" translatable="false">Danh sách yêu cầu Reset Password</string>
     <string name="luu">Lưu</string>
     <string name="tvchangepass">Thay đổi mật khẩu</string>
     <string name="tvcurrentpass">Mật khẩu hiện tại:</string>
@@ -31,7 +33,7 @@
     <string name="btnsave">Lưu</string>
     <string name="btncancel">Quay lại</string>
     <string name="mokhoatk">Mở Khóa</string>
-    <string name="changepass">Thay đổi mật khẩu</string>
+    <string name="changepass">Thay đổi mật khẩu (yêu cầu đăng nhập lại)</string>
     <string name="ttchitiettaikhoan">Thông tin chi tiết tài khoản</string>
     <!--Custom String of Admin-->
     <!--Custom String of Login Signup-->
@@ -71,5 +73,35 @@
     <string name="moKhoa">Mở Khoá Tài Khoản</string>
     <string name="quenMatKhau">Quên Mật Khẩu</string>
     <string name="khac">Khác</string>
+    <string name="gui">Gữi</string>
+    <string name="khong">Không</string>
+    <string name="khoataikhoan">Bạn Đã Bị Khoá Tài Khoản!</string>
+    <string name="thuvien">Thư Viện</string>
+    <string name="listBaiDang">Danh Sách Bài Đăng</string>
+    <string name="caiDatThongTin">Cài Đặt Thông Tin</string>
+    <string name="doimatKhau">Đổi Mật Khẩu</string>
+    <string name="thoat">Thoát</string>
+    <string name="titleUpload">Chọn Thư Viện Ảnh</string>
+    <string name="mesUpload">Bạn Hãy Chọn Thư Viện Để Lấy Ảnh ?</string>
+    <string name="BtnChupAnh">Chụp Ảnh</string>
+    <string name="BtnThuVien">Thư Viện Ảnh</string>
+    <string name="toastDoiPass">Change Pass Success!!!</string>
+    <string name="toastXacNhanPass">Mật Khẩu Mới Và Mật Khẩu Xác Nhận Không Khớp!!!</string>
+    <string name="toastMatKhauMacDinhPass">Mật Khẩu Mặc Định Sai!!!</string>
+    <string name="toastdaguiHotro">Đã Gữi Hỗ Trợ!!!</string>
+    <string name="inputPassMacDinh">Nhập Mật Khẩu Mặc Định...</string>
+    <string name="inputPassMoi">Nhập Mật Khẩu Mới...</string>
+    <string name="inputPassComfim">Nhập Xác Nhận Mật Khẩu...</string>
+
+
     <!--    Nhan Custom String-->
+    <!-- String of resetpass -->
+    <string name="titlers">Reset Password</string>
+    <string name="mailrs">Email</string>
+    <string name="passrs">New Pass</string>
+    <string name="comfirmrs">Comfirm</string>
+    <string name="reset">Reset</string>
+    <string name="cancel">Cancel</string>
+    <string name="minimum_password" translatable="false">Mật khẩu phải > 6 ký tự</string>
+    <string name="auth_failed" translatable="false">Đăng nhập thất bại !</string>
 </resources>
