@@ -7,4 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="vang">#FBFBF8</color>
+    <color name="cam">#FB8C00</color>
+    <!--   Nhan Color-->
+    <color name="daApp">#FFFFD2</color>
+    <color name="doApp">#FF2D03</color>
+    <color name="xanhnhat">#D6FFD4</color>
+    <color name="lucApp">#E0FF9C</color>
+    <color name="timApp">#B6B0FF</color>
+
+    <!--   Nhan Color-->
+
 </resources>

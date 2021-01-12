@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/vang"
+    android:orientation="vertical"
+    tools:context=".ChiTietTaiKhoan">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:text="@string/ttchitiettaikhoan"
+        android:textSize="30sp"
+        android:layout_gravity="center">
+    </TextView>
+    <LinearLayout
+        android:layout_margin="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tentaikhoan"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edttentaikhoan"
+            android:layout_weight="1"
+            android:layout_marginTop="5sp"
+            android:padding="6dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_margin="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/matkhau"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edtmatkhau"
+            android:layout_weight="1"
+            android:padding="6dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:background="@drawable/edit_text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_margin="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/trangthai"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edttrangthai"
+            android:layout_weight="1"
+            android:padding="6dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:background="@drawable/edit_text" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_margin="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/douutien"
+                android:textColor="@color/black"
+                android:layout_marginRight="22dp"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <RadioGroup
+            android:id="@+id/rdoGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/rdothap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginRight="40dp"
+                android:text="Thấp">
+
+            </RadioButton>
+            <RadioButton
+                android:id="@+id/rdocao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Cao">
+            </RadioButton>
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:paddingTop="16dp"
+        android:paddingBottom="32dp"
+        android:gravity="right"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_gravity="center"
+            android:id="@+id/btnkhoa"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="@string/khoa"
+            android:background="@drawable/custom_button"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:id="@+id/btnmokhoa"
+            android:layout_gravity="center"
+            android:layout_marginStart="2sp"
+            android:layout_marginEnd="2sp"
+            android:text="@string/mokhoatk"
+            android:background="@drawable/custom_button"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="40dp"
+            android:id="@+id/btnluu"
+            android:layout_marginEnd="7sp"
+            android:text="@string/luu"
+            android:background="@drawable/custom_button"/>
+    </LinearLayout>
+
+</LinearLayout>

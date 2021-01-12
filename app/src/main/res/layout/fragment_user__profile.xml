@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragment.User_Profile">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -48,6 +47,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tvUser_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="2dp"
@@ -70,6 +70,7 @@
                         android:src="@drawable/mail" />
 
                     <TextView
+                        android:id="@+id/tvEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="tranquangtuan0120@gmail.com"
@@ -90,6 +91,7 @@
                         android:src="@drawable/phonel" />
 
                     <TextView
+                        android:id="@+id/tvPhone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="0967435076"
@@ -111,6 +113,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/tvAddress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Q. Thủ Đức, TP. HCM"
@@ -137,6 +140,7 @@
                 <ImageView
                     android:layout_width="30dp"
                     android:layout_height="30dp"
+                    android:id="@+id/yourFavorited"
                     android:layout_marginHorizontal="6dp"
                     android:src="@drawable/save" />
 
@@ -146,49 +150,6 @@
                     android:text="Your Favorited"
                     android:textSize="18sp" />
             </LinearLayout>
-
-            <!--        <LinearLayout-->
-            <!--            android:layout_width="match_parent"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            android:layout_marginVertical='16dp'-->
-            <!--            android:layout_marginStart="4dp"-->
-            <!--            android:orientation="horizontal"-->
-            <!--            android:id="@+id/yourJobs">-->
-
-            <!--            <ImageView-->
-            <!--                android:layout_width="30dp"-->
-            <!--                android:layout_height="30dp"-->
-            <!--                android:layout_marginHorizontal="6dp"-->
-            <!--                android:src="@drawable/suitcase" />-->
-
-            <!--            <TextView-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="Your Jobs"-->
-            <!--                android:textSize="18sp" />-->
-            <!--        </LinearLayout>-->
-
-            <!--        <LinearLayout-->
-            <!--            android:layout_width="match_parent"-->
-            <!--            android:layout_height="wrap_content"-->
-            <!--            android:layout_marginVertical='16dp'-->
-            <!--            android:layout_marginStart="4dp"-->
-            <!--            android:orientation="horizontal"-->
-            <!--            android:id="@+id/your_Posts">-->
-
-            <!--            <ImageView-->
-            <!--                android:layout_width="30dp"-->
-            <!--                android:layout_height="30dp"-->
-            <!--                android:layout_marginHorizontal="6dp"-->
-            <!--                android:src="@drawable/post" />-->
-
-            <!--            <TextView-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:text="Your Posts"-->
-            <!--                android:textSize="18sp" />-->
-            <!--        </LinearLayout>-->
-
             <LinearLayout
 
                 android:layout_width="match_parent"
@@ -221,6 +182,7 @@
                 android:id="@+id/change_Password">
 
                 <ImageView
+                    android:id="@+id/imangeChangepass"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginHorizontal="6dp"
@@ -243,11 +205,13 @@
 
                 <ImageView
                     android:layout_width="30dp"
+                    android:id="@+id/imageLogout"
                     android:layout_height="30dp"
                     android:layout_marginHorizontal="6dp"
                     android:src="@drawable/logout" />
 
                 <TextView
+                    android:id="@+id/tvlogout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Logout"

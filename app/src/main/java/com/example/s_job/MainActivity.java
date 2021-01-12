@@ -1,18 +1,23 @@
 package com.example.s_job;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.s_job.Datacode.Account;
 import com.example.s_job.Fragment.User_Home;
 import com.example.s_job.Fragment.User_Notification;
 import com.example.s_job.Fragment.User_Profile;
 
+
+import java.io.Serializable;
+
 import me.ibrahimsn.lib.SmoothBottomBar;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity  implements Serializable {
+private Account account;
     private FragmentTransaction fragmentTransaction;
  private SmoothBottomBar smoothBottomBar;
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
         smoothBottomBar = findViewById(R.id.bottomBar);
 
-
+        Intent  intent = getIntent();
+        account = (Account) intent.getSerializableExtra("USER");
 
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
@@ -32,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
             switch (i){
                 case 0:
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();
-
                     fragmentTransaction.replace(R.id.fr_main, new User_Home());
                     fragmentTransaction.commit();
 
@@ -46,8 +51,11 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case 2:
                     fragmentTransaction = getSupportFragmentManager().beginTransaction();
-
-                    fragmentTransaction.replace(R.id.fr_main, new User_Profile());
+                    User_Profile  user_profile = new User_Profile();
+                    Bundle bundle =new Bundle();
+                    bundle.putSerializable("USER", account);
+                    user_profile.setArguments(bundle);
+                    fragmentTransaction.replace(R.id.fr_main, user_profile);
                     fragmentTransaction.commit();
 
                     break;
@@ -64,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
 //        sprDiaDiem.setAdapter(arrayAdapter);
 
     }
+
+
 
 //    private void init() {
 //        editProfile = findViewById(R.id.editProfile);
