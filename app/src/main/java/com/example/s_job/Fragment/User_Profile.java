@@ -110,7 +110,7 @@ public class User_Profile extends Fragment {
                 bottomSheetView.findViewById(R.id.btn_save_profile).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (et_Full_Name.equals("")||et_Phone.equals("")||et_addresss.equals(""))
+                        if (et_Full_Name.getText().toString().equals("")||et_Phone.getText().toString().equals("")||et_addresss.getText().toString().equals(""))
                         {
                             Toast.makeText(getContext(), "Update fail", Toast.LENGTH_SHORT).show();
                         }
